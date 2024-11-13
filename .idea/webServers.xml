@@ -5,6 +5,9 @@
       <webServer id="00003d95-5b94-4d87-96a9-7e396ed1353d" name="desktop" url="http://localhost">
         <fileTransfer mountedRoot="$PROJECT_DIR$" accessType="MOUNT" port="0" />
       </webServer>
+      <webServer id="4a316f06-f5a3-408e-9218-a646ed05d916" name="local" url="http://localhost">
+        <fileTransfer mountedRoot="$PROJECT_DIR$" accessType="MOUNT" port="0" />
+      </webServer>
     </option>
   </component>
 </project>

@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/KapanaLuxuryApartment.iml" filepath="$PROJECT_DIR$/.idea/KapanaLuxuryApartment.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/blogy-html-master/.idea/blogy-html-master.iml" filepath="$USER_HOME$/Downloads/blogy-html-master/.idea/blogy-html-master.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/colorlib-wizard-24/.idea/colorlib-wizard-24.iml" filepath="$USER_HOME$/Downloads/colorlib-wizard-24/.idea/colorlib-wizard-24.iml" />
     </modules>
   </component>
 </project>

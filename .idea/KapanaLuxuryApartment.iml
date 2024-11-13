@@ -8,5 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="blogy-html-master" />
+    <orderEntry type="module" module-name="colorlib-wizard-24" />
   </component>
 </module>
