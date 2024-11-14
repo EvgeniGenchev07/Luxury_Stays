@@ -12,22 +12,25 @@ $(function(){
         transitionEffectSpeed: 500,
         saveState: true,
         enableCancelButton: true,
-        titleTemplate : '<div class="title">#title#</div>',
+        titleTemplate: '<div class="title">#title#</div>',
         labels: {
             cancel: 'Cancel',
-            previous : 'Back Step',
-            next : 'Next Step',
-            finish : 'Submit',
-            current : ''
+            previous: 'Back',
+            next: 'Next',
+            finish: 'Submit',
+            current: ''
         },
-        onStepChanging: function (event, currentIndex, newIndex){
-            if(currentIndex == 1){
+        onStepChanging: function (event, currentIndex, newIndex) {
+            if (currentIndex == 1) {
 
             }
-            else if(currentIndex == 2){
-                OnPayment();
-            }
             return true;
+        },
+        onStepChanged: function (event, currentIndex, priorIndex) {
+            if (currentIndex == 2) {
+                $('#paymentForm').submit(handleSubmit);
+            }
+            OnPayment();
         },
         onFinished: function (event, currentIndex){
             RedirectToHome();
@@ -68,43 +71,38 @@ function SendClientInformation(){
     })
         .then(response =>console.log(response.json()))
 }
+document.getElementById('first_step_information').innerText =
+    "You are about to reserve the apartment for the period from 12.11.2024 to 21.11.2024";
 let elements;
 const stripe = Stripe("pk_test_51QKkDvG0ZquPZmE5y8X2XSnFGPAf395jTRuwetf3DKshaZ6ZpdeqnDK82GJVeMBTxmFXVmNl0vNPHF6O2gnQ1m3o00NgC9bDZy");
 
 function OnPayment()
 {
-// Pass the appearance object to the Elements instance
-
     initialize();
-// The items the customer wants to buy
-
-
-
-    document.getElementById('paymentForm').addEventListener("submit", handleSubmit);
 }
 // Fetches a payment intent and captures the client secret
 async function initialize() {
-    const response = await fetch('https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/createPaymentIntent', {
+    fetch('https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/createPaymentIntent', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: "xl-tshirt", amount: 1000 }),
-    });
-    const { clientSecret, dpmCheckerLink } = await response.json();
+    })
+        .then(response=> response.json())
+        .then(data => {
+            const {clientSecret, dpmCheckerLink} = data;
+            console.log(dpmCheckerLink)
+            const appearance = {
+                theme: 'flat',
+            };
+            elements = stripe.elements({appearance, clientSecret});
 
-    const appearance = {
-        theme: 'stripe',
-    };
-    elements = stripe.elements({ appearance, clientSecret });
+            const paymentElementOptions = {
+                layout: "tabs",
+            };
+            const paymentElement = elements.create("payment", paymentElementOptions);
 
-    const paymentElementOptions = {
-        layout: "tabs",
-    };
-
-    const paymentElement = elements.create("payment", paymentElementOptions);
-    paymentElement.mount("#payment-element");
-
-    // [DEV] For demo purposes only
-    setDpmCheckerLink(dpmCheckerLink);
+            paymentElement.mount("#payment-element");
+        });
 }
 
 async function handleSubmit(e) {
@@ -115,21 +113,14 @@ async function handleSubmit(e) {
         elements,
         confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://localhost:4242/complete.html",
+            //return_url: "http://localhost:4242/complete.html",
         },
     });
-
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
     if (error.type === "card_error" || error.type === "validation_error") {
         showMessage(error.message);
     } else {
         showMessage("An unexpected error occurred.");
     }
-
     setLoading(false);
 }
 
@@ -139,7 +130,7 @@ function showMessage(messageText) {
     const messageContainer = document.querySelector("#payment-message");
 
     messageContainer.classList.remove("hidden");
-    messageContainer.textContent = messageText;
+    messageContainer.innerText = messageText;
 
     setTimeout(function () {
         messageContainer.classList.add("hidden");
@@ -160,8 +151,3 @@ function setLoading(isLoading) {
         document.querySelector("#button-text").classList.remove("hidden");
     }
 }
-
-function setDpmCheckerLink(url) {
-    document.querySelector("#dpm-integration-checker").href = url;
-}
-//const elements = stripe.elements({clientSecret, appearance});

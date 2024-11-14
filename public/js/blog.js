@@ -219,9 +219,6 @@ const postsModel = (posts) => {
                     break;
                 }
             }
-            console.log(firstId)
-            console.log(secondId)
-            console.log(thirdId)
             document.getElementById('1_banner_tag').innerText = posts[firstId].tag;
             document.getElementById('1_banner_title').innerText = posts[firstId].title;
             document.getElementById('1_banner_description').innerText = posts[firstId].summarize;
@@ -266,6 +263,7 @@ slick_el.slick({
     autoplaySpeed: 2000,
     dots: true,
     lazyLoad: false,
+    fade: true,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,

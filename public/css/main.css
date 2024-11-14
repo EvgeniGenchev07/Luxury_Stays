@@ -1699,5 +1699,29 @@ h5 a,
 h5 a:visited{
   color: #212529;
 }
+.btn.btn-default {
+  background-color: #FB743E;
+  color: white;
+  border: none;
+  transition: background-color 0.7s ease, color 0.7s ease, border 0.7s ease;
+}
 
-/*# sourceMappingURL=main.css.map */
+.btn.btn-default:hover {
+  background-color: white;
+  color: #FB743E;
+  border: 1px solid #FB743E;
+}
+
+.btn.btn-default:focus, .btn.btn-default:active {
+  background-color: #FB743E;
+  color: white;
+  border: none;
+}
+
+.btn.btn-default:active,
+.btn.btn-default:focus,
+.btn.btn-default:focus-visible {
+  transition: background-color 0.7s ease, color 0.7s ease;
+  outline: none;
+  box-shadow: none;
+}
