@@ -1,80 +1,140 @@
-$(function(){
-    var form = $("#form-total");
-    form.steps({
-        headerTag: "h2",
-        bodyTag: "section",
-        transitionEffect: "fade",
-        autoFocus: true,
-        enableAllSteps: false,
-        enableKeyNavigation: false,
-        enablePagination: true,
-        suppressPaginationOnFocus: true,
-        transitionEffectSpeed: 500,
-        saveState: true,
-        enableCancelButton: true,
-        titleTemplate: '<div class="title">#title#</div>',
-        labels: {
-            cancel: 'Cancel',
-            previous: 'Back',
-            next: 'Next',
-            finish: 'Submit',
-            current: ''
-        },
-        onStepChanging: function (event, currentIndex, newIndex) {
-            if (currentIndex == 1) {
 
-            }
-            return true;
-        },
-        onStepChanged: function (event, currentIndex, priorIndex) {
-            if (currentIndex == 2) {
-                $('#paymentForm').submit(handleSubmit);
-            }
-            OnPayment();
-        },
-        onFinished: function (event, currentIndex){
-            RedirectToHome();
-        },
-        onCanceled: function (event) {
-            window.open('index.html','_self');
-        },
-        onInit: function (event, currentIndex) {
-            let cancelButton = $(".actions a[href='#cancel']").parent().detach().on("click", function (event) {
-                RedirectToHome();
-            });
-            let customButtonContainer = $('<ul class="actions" id="cancelButtonCustom"></ul>');
-            customButtonContainer.append(cancelButton);
-            form.prepend(customButtonContainer);
-        },
-        });
-});
-function RedirectToHome(){
-    window.open('index.html','_self');
-    history.pushState(null, "", window.location.href);
-}
-function SendClientInformation(){
-    let firstName = $('#first-name-1').value;
-    let lastName = $('#last-name-1').value;
-    let email = $('#email-name-1').value;
-    let phone = $('#phone-name-1').value;
-    const https_address = 'https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/saveContactData'
-    fetch(https_address,{
-        method: 'POST',
-        body:
-            JSON.stringify(
-                {
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    phone: phone,
-                })
+const verified = localStorage.getItem('verified');
+
+if(verified!==null && JSON.parse(verified).value) {
+    window.addEventListener('beforeunload', (event) => {
+        RedirectToHome();
     })
-        .then(response =>console.log(response.json()))
+    setTimeout(() => {
+        RedirectToHome();
+    }, 3600000); // 3600000 => 1 hour
 }
-document.getElementById('first_step_information').innerText =
-    "You are about to reserve the apartment for the period from 12.11.2024 to 21.11.2024";
+else{
+    setNotVerified();
+}
+
+const steps = document.querySelectorAll(".step");
+const progressLine = document.querySelector(".progress-line");
+const nextButton = document.querySelector(".next");
+const cancelButton = document.querySelector(".cancel");
+const stripe = Stripe("pk_live_51QKkDvG0ZquPZmE5PopBNbBkvy3zck19VtGmwLH6e8AolS2KRNaRsOclOgn5hPQtIW0MgHOsJGTFnvvEUFG4b9K700iy2x4QHh");
 let elements;
-const stripe = Stripe("pk_test_51QKkDvG0ZquPZmE5y8X2XSnFGPAf395jTRuwetf3DKshaZ6ZpdeqnDK82GJVeMBTxmFXVmNl0vNPHF6O2gnQ1m3o00NgC9bDZy");
+LoadBookingInformation();
+let currentStep = 0;
+let lastStep = 0;
+function updateProgressLine() {
+    const progressPercentage = (currentStep / (steps.length - 1)) * 100;
+    progressLine.style.width = `${progressPercentage}%`;
+}
+
+nextButton.addEventListener("click", async () => {
+    let stepChanged = false;
+    if(currentStep === 1){
+        if(GetClientInformation()) {
+            stepChanged = true;
+            NextStep();
+        }
+    }
+    else if(currentStep === 2)
+    {
+        await handleSubmit().then(result => {
+            console.log(result);
+            if(result)
+            {
+                cancelButton.classList.add("hidden");
+                nextButton.textContent = "Finish";
+                stepChanged = true;
+                NextStep();
+            }
+        });
+
+    }
+    else if(currentStep === 3)
+    {
+        location.replace('index.html');
+    }
+    else{
+        stepChanged = true;
+        NextStep();
+    }
+    if(stepChanged) {
+        if (currentStep === 1) {
+            if(lastStep === 0)
+            {
+                lastStep = 1;
+                LoadContactForm();
+            }
+            else{
+                LoadContactFormWithSavedData();
+            }
+            cancelButton.textContent = "Back";
+        } else if (currentStep === 2) {
+            lastStep = 2;
+            LoadPaymentForm();
+            nextButton.textContent = "Pay";
+            OnPayment();
+        }
+    }
+});
+
+function NextStep()
+{
+    if (currentStep < steps.length - 1) {
+        steps[currentStep].classList.add("completed");
+        steps[currentStep].classList.remove("active");
+        currentStep++;
+        steps[currentStep].classList.add("active");
+        updateProgressLine();
+    }
+}
+
+cancelButton.addEventListener("click", () => {
+    if(currentStep === 2)
+    {
+        LoadContactFormWithSavedData();
+    }
+    else if (currentStep === 1)
+    {
+        LoadBookingInformation();
+        cancelButton.textContent = "Cancel";
+    }
+    else if (currentStep === 0)
+    {
+        RedirectToHome();
+    }
+    if (currentStep > 0) {
+        steps[currentStep].classList.remove("active");
+        steps[currentStep - 1].classList.remove("completed");
+        currentStep--;
+        steps[currentStep].classList.add("active");
+        updateProgressLine();
+    }
+});
+
+
+function setNotVerified(){
+    document.querySelector('#steps-container').style.display = 'none';
+    document.querySelector('#session_expire_body').style.display = 'flex';
+}
+
+async function RedirectToHome(){
+    let data = localStorage.getItem("data");
+    data = JSON.parse(data);
+    await fetch('https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/onBookingTermination', {
+        method: "POST",
+        body: JSON.stringify({
+            id: data.id,
+        })
+    }).then((response) => {
+        location.replace('index.html');
+        localStorage.removeItem('data')
+        localStorage.removeItem('verified');
+        localStorage.removeItem('paymentId');
+        localStorage.removeItem('clientInformation');
+    }).catch((error) => {
+        console.log(error);
+    })
+}
 
 function OnPayment()
 {
@@ -82,15 +142,20 @@ function OnPayment()
 }
 // Fetches a payment intent and captures the client secret
 async function initialize() {
+    setLoading(true);
+    let data = localStorage.getItem("data");
+    data = JSON.parse(data);
     fetch('https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/createPaymentIntent', {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: "xl-tshirt", amount: 1000 }),
+        body: JSON.stringify({
+            totalNights: data.totalNights,
+        }),
     })
         .then(response=> response.json())
         .then(data => {
-            const {clientSecret, dpmCheckerLink} = data;
-            console.log(dpmCheckerLink)
+            const {clientSecret,paymentId, dpmCheckerLink} = data;
+            console.log(paymentId);
+            localStorage.setItem('paymentId',paymentId);
             const appearance = {
                 theme: 'flat',
             };
@@ -103,51 +168,152 @@ async function initialize() {
 
             paymentElement.mount("#payment-element");
         });
-}
-
-async function handleSubmit(e) {
-    e.preventDefault();
-    setLoading(true);
-
-    const { error } = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-            // Make sure to change this to your payment completion page
-            //return_url: "http://localhost:4242/complete.html",
-        },
-    });
-    if (error.type === "card_error" || error.type === "validation_error") {
-        showMessage(error.message);
-    } else {
-        showMessage("An unexpected error occurred.");
-    }
     setLoading(false);
 }
 
-// ------- UI helpers -------
+async function handleSubmit() {
+    setLoading(true);
+        const {error} = await stripe.confirmPayment({
+            elements,
+            confirmParams: {
 
-function showMessage(messageText) {
-    const messageContainer = document.querySelector("#payment-message");
+            },
+            redirect: 'if_required',
+        });
 
-    messageContainer.classList.remove("hidden");
-    messageContainer.innerText = messageText;
-
-    setTimeout(function () {
-        messageContainer.classList.add("hidden");
-        messageContainer.textContent = "";
-    }, 4000);
+        if (error) {
+            setLoading(false);
+            console.log(error.message);
+            return false;
+        } else {
+            let data = localStorage.getItem("data");
+            data = JSON.parse(data);
+            let clientInformation = localStorage.getItem("clientInformation");
+            clientInformation = JSON.parse(clientInformation);
+            let paymentId = localStorage.getItem("paymentId");
+            await fetch('https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/saveBooking', {
+                method: "POST",
+                body: JSON.stringify({
+                    id: data.id,
+                    first_name: clientInformation.first_name,
+                    last_name: clientInformation.last_name,
+                    email: clientInformation.email,
+                    phone: clientInformation.phone,
+                    paymentId: paymentId,
+                    dateIn: data.dateIn,
+                    dateOut: data.dateOut,
+                    totalNights: data.totalNights,
+                    totalDays: data.totalDays,
+                    adults: data.adults,
+                    children: data.children,
+                }),
+            }).then(res =>
+            {
+                localStorage.removeItem("data");
+                localStorage.removeItem("clientInformation");
+                localStorage.removeItem('verified');
+                localStorage.removeItem("paymentId");
+                document.querySelector("#success").classList.remove('hidden')
+            })
+                .catch(err => document.querySelector("#failure").classList.remove('hidden'));
+            setLoading(false);
+            return true;
+        }
 }
 
-// Show a spinner on payment submission
 function setLoading(isLoading) {
     if (isLoading) {
         // Disable the button and show a spinner
-        document.querySelector("#submit").disabled = true;
         document.querySelector("#spinner").classList.remove("hidden");
-        document.querySelector("#button-text").classList.add("hidden");
     } else {
-        document.querySelector("#submit").disabled = false;
         document.querySelector("#spinner").classList.add("hidden");
-        document.querySelector("#button-text").classList.remove("hidden");
     }
+}
+function LoadContactFormWithSavedData(){
+    LoadContactForm();
+    let clientInformation = localStorage.getItem("clientInformation");
+    clientInformation = JSON.parse(clientInformation);
+    document.querySelector("#first-name-1").value = clientInformation.first_name;
+    document.querySelector('#last-name-1').value = clientInformation.last_name;
+    document.querySelector('#email').value = clientInformation.email;
+    document.querySelector('#phone').value = clientInformation.phone;
+}
+function GetClientInformation() {
+        const firstName = document.querySelector('#first-name-1').value;
+        const lastName = document.querySelector('#last-name-1').value;
+        const email = document.querySelector('#email').value;
+        const phone = document.querySelector('#phone').value;
+        const form = document.querySelector('#contactForm');
+        if(form.reportValidity()) {
+            localStorage.setItem('clientInformation', JSON.stringify({
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                phone: phone,
+            }));
+            return true;
+        }
+        return false;
+}
+function LoadContactForm(){
+    document.querySelector("#step-heading").innerText = "Contact information";
+    document.querySelector("#step-description").innerHTML=`<div class="inner">
+                <form method="post" id="contactForm">
+                  <div class="form-row">
+                    <div class="form-holder">
+                      <label class="form-row-inner">
+                        <input type="text" class="form-control" id="first-name-1" name="first-name-1" required>
+                        <span class="label">First Name</span>
+                        <span class="border"></span>
+                      </label>
+                    </div>
+                    <div class="form-holder">
+                      <label class="form-row-inner">
+                        <input type="text" class="form-control" id="last-name-1" name="last-name-1" required>
+                        <span class="label">Last Name</span>
+                        <span class="border"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-holder form-holder-2">
+                      <label class="form-row-inner">
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <span class="label">Email</span>
+                        <span class="border"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-holder form-holder-2">
+                      <label class="form-row-inner">
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                        <span class="label">Phone</span>
+                        <span class="border"></span>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </div>`;
+}
+function LoadBookingInformation(){
+    let data = localStorage.getItem("data");
+    data = JSON.parse(data);
+    document.querySelector("#step-heading").textContent="Booking";
+    document.querySelector("#step-description").innerHTML = `<div class="inner">
+<div class="booking-description">
+<p>You are about to book the apartment from ${data.dateIn} to ${data.dateOut} for ${data.adults==1?data.adults+ ' adult':data.adults+' adults'}${data.children==0?'':data.children==1?' and '+data.children+' child':' and '+data.children+' children'}.</p>
+<p>Summary Days: ${data.totalDays}, Nights: ${data.totalNights}</p>
+</div>
+</div>`;
+}
+function LoadPaymentForm(){
+    document.querySelector("#step-heading").innerText = "Payment";
+    document.querySelector("#step-description").innerHTML=`<form id="paymentForm">
+                <div id="payment-element">
+                  <!--Stripe.js injects the Payment Element-->
+                </div>
+                  <div class="spinner hidden" id="spinner"></div>
+                <div id="payment-message" class="hidden"></div>
+              </form>`;
 }

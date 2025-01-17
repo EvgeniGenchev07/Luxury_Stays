@@ -12,142 +12,41 @@
   <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
   <!-- Main Style Css -->
   <script src="https://js.stripe.com/v3/"></script>
-  <link rel="stylesheet" href="css/bootstrap.css">
+  <!--<link rel="stylesheet" href="css/bootstrap.css">-->
   <link rel="stylesheet" href="css/payment.css"/>
+
   </head>
   <body>
+  <div style="display: none" id="session_expire_body">
+  <div class="container">
+    <div class="content">
+      <div class="icon">
 
-  <div class="page-content" style="background-image: url('images/wizard-v4.jpg')">
-    <div class="wizard-v4-content">
-      <div class="wizard-form">
-        <div class="wizard-header">
-          <h3 class="heading">Sign Up To Financial</h3>
-          <p>Fill all form field to go next step</p>
-        </div>
-        <form class="form-register" action="#" method="post">
-          <div id="form-total">
-            <!-- SECTION 1 -->
-            <h2>
-              <span class="step-icon"><i class="zmdi zmdi-account"></i></span>
-              <span class="step-text">About</span>
-            </h2>
-            <section>
-              <div class="inner">
-                <h3></h3>
-                <div>
-                  <p id="first_step_information"></p>
-                </div>
-              </div>
-            </section>
-            <!-- SECTION 2 -->
+        <img src="images/session-expire-icon.png" alt="Session Expired Icon" />
+      </div>
+      <h1>Your session has expired</h1>
+      <p>Please return and start again.</p>
+      <button class="refresh-btn" onclick="location.replace('index.html')">Go home</button>
+    </div>
+  </div>
+  </div>
+  <div id="steps-container" class="steps-container">
+    <div class="progress-bar">
+      <div class="progress-line"></div> <!-- Add a dedicated progress line -->
+      <div class="step active" data-step="Booking"></div>
+      <div class="step" data-step="Contact information"></div>
+      <div class="step" data-step="Payment"></div>
+      <div class="step" data-step="Status"></div>
+    </div>
+    <div class="step-content">
+      <h1 id="step-heading"></h1>
 
-            <h2>
-              <span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
-              <span class="step-text">Ownership</span>
-            </h2>
-            <section>
-              <div class="inner">
-                <h3>More About Yourself</h3>
-                <div class="form-row">
-                  <div class="form-holder">
-                    <label class="form-row-inner">
-                      <input type="text" class="form-control" id="first-name-1" name="first-name-1" required>
-                      <span class="label">First Name</span>
-                      <span class="border"></span>
-                    </label>
-                  </div>
-                  <div class="form-holder">
-                    <label class="form-row-inner">
-                      <input type="text" class="form-control" id="last-name-1" name="last-name-1" required>
-                      <span class="label">Last Name</span>
-                      <span class="border"></span>
-                    </label>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-holder form-holder-2">
-                    <label class="form-row-inner">
-                      <input type="text" class="form-control" id="email" name="email" required>
-                      <span class="label">Email</span>
-                      <span class="border"></span>
-                    </label>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-holder form-holder-2">
-                    <label class="form-row-inner">
-                      <input type="text" class="form-control" id="phone" name="phone" required>
-                      <span class="label">Phone</span>
-                      <span class="border"></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <!-- SECTION 3 -->
-            <h2>
-              <span class="step-icon"><i class="zmdi zmdi-lock"></i></span>
-              <span class="step-text">Payment</span>
-            </h2>
-            <section id="payment_section">
-              <form id="paymentForm">
-                <div id="payment-element">
-                  <!--Stripe.js injects the Payment Element-->
-                </div>
-                <button id="submit">
-                  <div class="spinner hidden" id="spinner"></div>
-                  <span id="button-text">Pay now</span>
-                </button>
-                <div id="payment-message" class="hidden"></div>
-              </form>
-            </section>
-            <!-- SECTION 4 -->
-            <h2>
-              <span class="step-icon"><i class="zmdi zmdi-money"></i></span>
-              <span class="step-text">Financing</span>
-            </h2>
-            <section>
-              <div class="inner">
-                <h3>Financing Information</h3>
-                <div class="form-row">
-                  <div class="form-holder form-holder-2">
-                    <select name="inventory" id="inventory">
-                      <option value="Buy Inventory" disabled selected>Buy Inventory</option>
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div id="checkbox">
-                    <span>Do you have existing business financing?: </span>
-                    <input type="checkbox" name="vehicle1" value="Yes"> Yes
-                    <input type="checkbox" name="vehicle2" value="No"> No
-                  </div>
-                </div>
-                <h4>Existing Balance </h4>
-                <div class="form-row">
-                  <div class="form-holder form-holder-2">
-                    <label class="form-row-inner">
-                      <input type="text" name="business" id="business" class="form-control" required>
-                      <span class="label">Business</span>
-                      <span class="border"></span>
-                    </label>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-holder form-holder-2">
-                    <label class="form-row-inner">
-                      <input type="text" name="balance" id="balance" class="form-control" required>
-                      <span class="label">Current Balance</span>
-                      <span class="border"></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </form>
+      <div id="step-description" class="step-description">
+
+      </div>
+      <div class="buttons">
+        <button class="btn cancel">Cancel</button>
+        <button class="btn next">Next</button>
       </div>
     </div>
   </div>
@@ -155,5 +54,6 @@
   <script src="js/jquery.steps.js"></script>
   <script src="js/jquery-ui.min.js"></script>
   <script src="js/payment.js"></script>
+  <script src="js/analytics.js"></script>
   </body>
 </html>

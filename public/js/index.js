@@ -110,3 +110,185 @@ fetch('../blog.post.json')
             }
         });
     });
+localStorage.setItem('verified',JSON.stringify({value: false}))
+document.getElementById('children').addEventListener('change',(event)=>{
+    const adults = document.querySelector('#adults');
+    const value = document.getElementById('children').value
+    if(value == 1|| value == 2){
+        const options = adults.options;
+        for(let i=0; i<options.length; i++){
+            if(options[i].value != 3){
+                adults.options[i].disabled = false;
+                continue;
+            }
+            adults.options[i].disabled = true;
+        }
+    }
+    else if(value == 3){
+        const options = adults.options;
+        for(let i=0; i<options.length; i++){
+            if(options[i].value != 1){
+                options[i].disabled = true;
+                continue;
+            }
+            options[i].disabled = false;
+        }
+    }
+    else{
+        const options = adults.options;
+        for(let i=0; i<options.length; i++){
+            adults.options[i].disabled = false;
+        }
+    }
+})
+document.getElementById('adults').addEventListener('change',(event)=>{
+    const children = document.querySelector('#children');
+    const value = document.getElementById('adults').value
+    if(value == 2){
+        const options = children.options;
+        for(let i=0; i<options.length; i++){
+            if(options[i].value != 3){
+                children.options[i].disabled = false;
+                continue;
+            }
+            children.options[i].disabled = true;
+        }
+    }
+    else if(value == 3){
+        const options = children.options;
+        for(let i=0; i<options.length; i++){
+            if(options[i].value != 0){
+                options[i].disabled = true;
+                continue;
+            }
+            options[i].disabled = false;
+        }
+    }
+    else{
+        const options = children.options;
+        for(let i=0; i<options.length; i++){
+            children.options[i].disabled = false;
+        }
+    }
+})
+document.getElementById('bookingForm').addEventListener('submit',function(event){
+    event.preventDefault();
+    const grecaptcha_response = grecaptcha.getResponse();
+    if(grecaptcha_response === "") return;
+    else {
+        localStorage.setItem('verified',JSON.stringify({value: true}));
+        const email = document.getElementById('contact-email').value;
+        const dateIn = document.getElementById('date-in').value;
+        const dateOut = document.getElementById('date-out').value;
+        const adults = document.getElementById('adults').value;
+        const children = document.getElementById('children').value;
+        const totalDaysAndNights = DaysAndNightsCalculation(dateIn, dateOut);
+        let output = document.getElementById("form-output-global");
+        output.classList.remove("error", "success");
+        this.classList.add('form-in-process');
+        output.innerHTML = '<p><span class="icon text-middle fa fa-circle-o-notch fa-spin icon-xxs"></span><span>Sending</span></p>';
+        output.classList.add("active");
+        console.log(totalDaysAndNights[0]);
+        console.log(totalDaysAndNights[1]);
+        if (this.checkValidity() && dateChecker(dateIn, dateOut)) {
+            const https_address = 'https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/bookRequest'
+            fetch(https_address, {
+                method: 'POST',
+                body:
+                    JSON.stringify(
+                        {
+                            email: email,
+                            dateIn: dateIn,
+                            dateOut: dateOut,
+                            adults: adults,
+                            children: children,
+                            totalDays: totalDaysAndNights[0],
+                            totalNights: totalDaysAndNights[1],
+                            grecaptcha_response: grecaptcha_response,
+                        })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.verified) {
+                        output.innerHTML = ' <p class="snackbars-left"><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>' + 'Successfully complieted!' + '</span></p>';
+                        output.classList.add('success');
+                        this.reset();
+                        setTimeout(() => output.classList.remove("active", "success"), 2000);
+                        if (data.vacant) {
+                            localStorage.setItem("data", JSON.stringify({
+                                id: data.id,
+                                email: email,
+                                dateIn: dateIn,
+                                dateOut: dateOut,
+                                adults: adults,
+                                children: children,
+                                totalDays: totalDaysAndNights[0],
+                                totalNights: totalDaysAndNights[1],
+                            }));
+                            window.open("payment.html", "_self");
+                        } else {
+                            localStorage.setItem("email", email);
+                            window.open("fully-booked.html", "_self");
+                        }
+                    }
+                    else{
+                        output.innerHTML = ' <p class="snackbars-left"><span class="icon icon-xxs mdi mdi-alert-outline text-middle"></span><span>' + 'reCAPTCHA is not verified' + '</span></p>';
+                        output.classList.add('error');
+                        setTimeout(() => output.classList.remove("active", "error"), 2000);
+                    }
+                })
+                .catch(() => {
+                    output.innerHTML = ' <p class="snackbars-left"><span class="icon icon-xxs mdi mdi-alert-outline text-middle"></span><span>' + 'Aw, snap! Something went wrong.' + '</span></p>';
+                    output.classList.add("error");
+                    setTimeout(() => output.classList.remove("active", "error"), 2000);
+                })
+        } else {
+            output.innerHTML = ' <p class="snackbars-left"><span class="icon icon-xxs mdi mdi-alert-outline text-middle"></span><span>' + 'Please, enter correct data.' + '</span></p>';
+            output.classList.add("error");
+            setTimeout(() => output.classList.remove("active", "error"), 2000);
+        }
+    }
+});
+const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
+function dateChecker(dateIn,dateOut){
+        dateIn = dateIn.split(' ');
+        console.log(dateIn);
+        console.log(dateOut)
+        dateOut = dateOut.split(' ');
+        const date1 = new Date(dateIn[3]+'-'+(months.indexOf(dateIn[2])+1)+'-'+dateIn[1]);
+        const date2 = new Date(dateOut[3]+'-'+(months.indexOf(dateOut[2])+1)+'-'+dateOut[1]);
+        return date1 < date2;
+}
+function  DaysAndNightsCalculation(dateIn,dateOut){
+    dateIn = dateIn.split(' ');
+    console.log(dateIn);
+    console.log(dateOut)
+    dateOut = dateOut.split(' ');
+    const fromDate = dateIn[1]+' '+(months.indexOf(dateIn[2])+1)+' '+dateIn[3]; // day-month-year
+    const toDate = dateOut[1]+' '+(months.indexOf(dateOut[2])+1)+' '+dateOut[3]; // day-month-year
+    const nights = calculateDaysBetween(fromDate, toDate);
+    const days = nights+1;
+    console.log(`Number of days between ${fromDate} and ${toDate}:`, nights);
+    console.log(nights)
+    console.log(days)
+    return [days, nights];
+}
+function calculateDaysBetween(fromDate, toDate) {
+    // Parse the day-month-year format into Date objects
+    const [day1, month1, year1] = fromDate.split(' ').map(Number);
+    const [day2, month2, year2] = toDate.split(' ').map(Number);
+
+    const firstDate = new Date(year1, month1 - 1, day1); // JS months are 0-based
+    const secondDate = new Date(year2, month2 - 1, day2);
+
+    // Calculate the difference in time (milliseconds)
+    const diffInMs = secondDate - firstDate;
+
+    // Convert milliseconds to days
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+    return Math.abs(diffInDays); // Return the absolute value to avoid negatives
+}
