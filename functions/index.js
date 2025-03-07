@@ -5,8 +5,8 @@ const functions = require('firebase-functions');
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
 const {onDocumentDeleted} = require("firebase-functions/firestore");
-sgMail.setApiKey('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')
-const stripe = require("stripe")('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');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 initializeApp();
 const db = getFirestore('orders-payments');
 const domains = ['https://luxurystayskapanaplovdiv.web.app','https://luxurystays.bg'];
