@@ -62,13 +62,13 @@
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-nav-scroll-holder">
                     <ul class="rd-navbar-nav">
-                      <li class="box"><a  href="index.html">Home</a>
+                      <li ><a class="box" href="index.html">Home</a>
                       </li>
-                      <li class="box"><a href="about-us.html">About Us</a>
+                      <li ><a class="box" href="about-us.html">About Us</a>
                       </li>
-                      <li class="box active"><a href="contacts.html">Contacts</a>
+                      <li ><a class="box active" href="contacts.html">Contacts</a>
                       </li>
-                      <li class="box"><a  href="blog.html">Blog</a>
+                      <li ><a class="box" href="blog.html">Blog</a>
                       </li>
                     </ul>
                   </div>
@@ -101,22 +101,22 @@
                     <div class="range range-sm-bottom spacing-20">
                       <div class="cell-sm-6">
                         <div class="form-wrap">
-                          <input placeholder="Your name" class="form-input" id="contact-name" type="text" name="name" required="required" data-validation-required-message="Please enter your name.">
+                          <input placeholder="Your name" class="form-input input" id="contact-name" type="text" name="name" required="required" data-validation-required-message="Please enter your name.">
                         </div>
                       </div>
                       <div class="cell-sm-6">
                         <div class="form-wrap">
-                          <input placeholder="Subject" class="form-input" id="contact-subject" type="text" name="subject" required="required" data-validation-required-message="Please enter subject.">
+                          <input placeholder="Subject" class="form-input input" id="contact-subject" type="text" name="subject" required="required" data-validation-required-message="Please enter subject.">
                         </div>
                       </div>
                       <div class="cell-xs-12">
                         <div class="form-wrap">
-                          <textarea placeholder="Your Message" class="form-input" id="contact-message" name="message"  required="required" data-validation-required-message="Please enter message"></textarea>
+                          <textarea placeholder="Your Message" class="form-input input" id="contact-message" name="message"  required="required" data-validation-required-message="Please enter message"></textarea>
                         </div>
                       </div>
                       <div class="cell-xs-12">
                         <div class="form-wrap">
-                          <input placeholder="Email" class="form-input" id="contact-email" type="email" name="email" required="required" data-validation-required-message="Please enter your email address.">
+                          <input placeholder="Email" class="input form-input" id="contact-email" type="email" name="email" required="required" data-validation-required-message="Please enter your email address.">
                         </div>
                       </div>
                       <div class="cell-sm-6">
@@ -125,7 +125,24 @@
                         </div>
                       </div>
                       <div class="cell-sm-6">
-                        <button class="button button-primary button-square button-block button-effect-ujarak" type="submit"><span>send message</span></button>
+                          <button class="send-btn button-block" type="submit">
+                              <span class="svg-wrapper-1">
+                                  <span class="svg-wrapper">
+                              <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 24 24"
+                                      width="24"
+                                      height="24"
+                              >
+                                  <path fill="none" d="M0 0h24v24H0z"></path>
+                                  <path
+                                          fill="currentColor"
+                                          d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                  ></path></svg>
+                                  </span>
+                              </span>
+                              <span class="span"> Send Message</span>
+                          </button>
                       </div>
                     </div>
                   </form>
