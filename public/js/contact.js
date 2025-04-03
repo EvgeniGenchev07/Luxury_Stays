@@ -1,4 +1,4 @@
-document.getElementById("contactForm").addEventListener("submit", function (event)
+document.getElementById("contact-form").addEventListener("submit", function (event)
 {
     event.preventDefault();
     let output = document.getElementById("form-output-global");
@@ -11,10 +11,10 @@ document.getElementById("contactForm").addEventListener("submit", function (even
         if(grecaptcha_response === "") return;
         else {
             const https_address = 'https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/sendMail'
-            let subject = document.getElementById('contact-subject').value;
-            let name = document.getElementById('contact-name').value;
-            let email = document.getElementById('contact-email').value;
-            let message = document.getElementById('contact-message').value;
+            let subject = document.getElementById('subject').value;
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let message = document.getElementById('message').value;
             fetch(https_address, {
                 method: 'POST',
                 body:
@@ -53,3 +53,7 @@ document.getElementById("contactForm").addEventListener("submit", function (even
         setTimeout(() => output.classList.remove("active","error"), 2000);
     }
 });
+<!-- Replace the variables below. -->
+    function onSubmit(token) {
+    document.getElementById("demo-form").submit();
+}
