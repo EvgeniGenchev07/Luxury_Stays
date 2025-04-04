@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.querySelectorAll('.post-link').forEach(el=>{
                 el.addEventListener('click', ()=> {
                     let post_id = el.getAttribute('data-post-id');
-                    window.open("post.html?name=" + posts[parseInt(post_id) - 1].title.toLowerCase(), "_self");
+                    window.open(`../${userLang}/post.html?name=` + posts[parseInt(post_id) - 1].title.toLowerCase(), "_self");
                 });
             });
         });
