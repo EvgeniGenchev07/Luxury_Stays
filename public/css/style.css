@@ -1347,11 +1347,11 @@ textarea.form-control {
 }
 
 .send-btn:hover svg {
-    transform: translateX(4em) rotate(45deg) scale(1.1);
+    transform: translateX(4vw) rotate(45deg) scale(1.1);
 }
 
 .send-btn:hover .span {
-    transform: translateX(10vw);
+    transform: translateX(20vw);
 }
 
 .send-btn:active {
@@ -1368,12 +1368,6 @@ textarea.form-control {
     }
 }
 
-
-/*
-*
-* Snackbars
-* --------------------------------------------------
-*/
 .snackbars {
     max-width: 280px;
     padding: 9px 16px;
@@ -1497,4 +1491,28 @@ body{
     font-style: normal;
     margin-left: -0.5vw;
 
+}
+
+.multi-button {
+    display: flex;
+}
+.btn-lang {
+    font-family: 'Warnes', cursive;
+
+    font-size: 30px;
+    margin: 0;
+    background-color: transparent;
+    color: #0000008c;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+.btn-lang:hover {
+    transition: all 1s ease;
+}
+.btn-lang:hover, .btn-lang:focus, .btn-lang:active, .btn-lang.preferred {
+    text-shadow: 1px 1px 1px #eac007;
+    border: none;
+    outline: none;
 }

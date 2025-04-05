@@ -46,9 +46,11 @@ function page_indicator_builder(posts_count,posts_per_page){
 }
 
 function load_posts(start_post_index, posts_count) {
-    const userLang = navigator.language.startsWith("bg") ? "bg" : "en";
-    console.log(userLang);
-    fetch(`../locales/${userLang}.json`)
+    let lang = sessionStorage.getItem("lang");
+    if(lang==null){
+        lang = "en";
+    }
+    fetch(`../locales/${lang}.json`)
         .then(response => response.json())
         .then(data => {
             let posts = data.posts;

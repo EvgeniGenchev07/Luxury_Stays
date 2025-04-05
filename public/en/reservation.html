@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Luxury Stays</title>
       <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <meta name="keywords" content="luxury stays, book apartments Kapana, reservation Plovdiv, short-term rental booking, book vacation rentals Plovdiv, luxury apartments booking, Kapana district booking, Plovdiv booking, online booking Plovdiv, short-term rental Bulgaria">
       <meta name="robots" content="index, follow">
       <meta name="author" content="Luxury Stays Kapana Plovdiv" />
@@ -156,6 +156,10 @@
                         <li><a href="posts.html">Posts</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li class="active"><a href="reservation.html">Reservation</a></li>
+                          <li><div class="multi-button">
+                              <button id="en" class="btn-lang">English</button>
+                              <button id="bg" class="btn-lang">Български</button>
+                          </div></li>
                       </ul>
                     </div>
                   </div>
@@ -195,33 +199,33 @@
         <div class="row">
           <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
             
-            <form action="#" method="post" class="bg-white p-md-5 p-4 mb-5 border">
+            <form id="reservation-form" method="post" data-form-output="form-output-global" class="bg-white p-md-5 p-4 mb-5 border">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label class="text-black font-weight-bold" for="name">Name</label>
-                  <input type="text" id="name" class="form-control contact-section-input">
+                  <input type="text" id="name" class="form-control contact-section-input" required="required">
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="text-black font-weight-bold" for="phone">Phone</label>
-                  <input type="text" id="phone" class="form-control contact-section-input">
+                  <input type="text" id="phone" class="form-control contact-section-input" required="required">
                 </div>
               </div>
           
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label class="text-black font-weight-bold" for="email">Email</label>
-                  <input type="email" id="email" class="form-control contact-section-input">
+                  <input type="email" id="email" class="form-control contact-section-input" required="required">
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label class="text-black font-weight-bold" for="checkin_date">Date Check In</label>
-                  <input type="text" id="checkin_date" class="form-control contact-section-input">
+                  <input type="text" id="checkin_date" class="form-control contact-section-input" required="required">
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="text-black font-weight-bold" for="checkout_date">Date Check Out</label>
-                  <input type="text" id="checkout_date" class="form-control contact-section-input">
+                  <input type="text" id="checkout_date" class="form-control contact-section-input" required="required">
                 </div>
               </div>
 
@@ -230,11 +234,10 @@
                   <label for="adults" class="font-weight-bold text-black">Adults</label>
                   <div class="field-icon-wrap">
                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="" id="adults" class="form-control contact-section-input">
-                      <option value="">1</option>
-                      <option value="">2</option>
-                      <option value="">3</option>
-                      <option value="">4+</option>
+                    <select name="" id="adults" class="form-control contact-section-input" required="required">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
                     </select>
                   </div>
                 </div>
@@ -242,11 +245,11 @@
                   <label for="children" class="font-weight-bold text-black">Children</label>
                   <div class="field-icon-wrap">
                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="" id="children" class="form-control contact-section-input">
-                      <option value="">1</option>
-                      <option value="">2</option>
-                      <option value="">3</option>
-                      <option value="">4+</option>
+                    <select name="" id="children" class="form-control contact-section-input" required="required">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
                     </select>
                   </div>
                 </div>
@@ -401,7 +404,7 @@
                     <ul class="list-unstyled link">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About us</a></li>
-                        <li><a href="posts.html">Events</a></li>
+                        <li><a href="posts.html">Posts</a></li>
                         <li><a href="contact.html">Contact us</a></li>
                     </ul>
                 </div>
@@ -440,7 +443,8 @@
             </div>
         </div>
     </footer>
-    
+    <div class="snackbars" id="form-output-global"></div>
+
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/jquery-migrate-3.0.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
@@ -455,5 +459,6 @@
     <script src="../js/jquery.timepicker.min.js"></script>
 
     <script src="../js/main.js"></script>
+    <script src="../js/reservation.js"></script>
   </body>
 </html>

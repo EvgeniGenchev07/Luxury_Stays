@@ -1,5 +1,8 @@
-const userLang = navigator.language.startsWith("bg") ? "bg" : "en";
-fetch(`../locales/${userLang}.json`)
+let lang = sessionStorage.getItem("lang");
+if(lang==null){
+    lang = "en";
+}
+fetch(`../locales/${lang}.json`)
 
     .then(response => response.json())
     .then(data => {

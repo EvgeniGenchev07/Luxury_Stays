@@ -53,7 +53,3 @@ document.getElementById("contact-form").addEventListener("submit", function (eve
         setTimeout(() => output.classList.remove("active","error"), 2000);
     }
 });
-<!-- Replace the variables below. -->
-    function onSubmit(token) {
-    document.getElementById("demo-form").submit();
-}

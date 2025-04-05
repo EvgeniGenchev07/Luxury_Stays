@@ -5,19 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Luxury Stays</title>
       <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
       <meta name="keywords" content="блог Пловдив, новини Капана, събития Пловдив, луксозни апартаменти блог, пътеводител Пловдив, съвети за почивка Пловдив, активност в Капана, неща за правене в Пловдив, събития в Пловдив блог">
       <meta name="robots" content="index, follow">
       <meta name="author" content="Luxury Stays Kapana Plovdiv" />
       <meta name="description" content="Следете нашия блог за последните новини, събития и съвети от квартал Капана на Пловдив. Нашите статии обхващат всичко от местни атракции до пътеводители за пътуване в България.">
       <meta property="og:title" content="Публикации – Открийте най-доброто от квартал Капана на Пловдив">
       <meta property="og:description" content="Четете нашия блог, за да откриете последните събития, съвети и новини от Капана на Пловдив. Разгледайте местната култура и забележителности в България.">
-      <meta property="og:image" content="https://luxurystays.bg/images/blog_image.jpg">
+      <meta property="og:image" content="https://luxurystays.bg/images/bedroom_3.JPG">
       <meta property="og:url" content="https://luxurystays.bg/bg/posts.html">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Публикации – Открийте най-доброто от квартал Капана на Пловдив">
       <meta name="twitter:description" content="Четете нашия блог за актуални новини и събития от квартал Капана на Пловдив. Прочетете за местните забележителности и култура.">
-      <meta name="twitter:image" content="https://luxurystays.bg/images/blog_image.jpg">
+      <meta name="twitter:image" content="https://luxurystays.bg/images/bedroom_3.JPG">
       <link rel="alternate" href="https://luxurystays.bg/bg/posts.html" hreflang="bg">
       <link rel="alternate" href="https://luxurystays.bg/posts.html" hreflang="en">
       <link rel="canonical" href="https://luxurystays.bg/bg/posts.html">
@@ -156,6 +156,10 @@
                                       <li><a href="posts.html">Публикации</a></li>
                                       <li><a href="contact.html">Контакти</a></li>
                                       <li class="active"><a href="reservation.html">Резервация</a></li>
+                                      <li><div class="multi-button">
+                                          <button id="en" class="btn-lang">English</button>
+                                          <button id="bg" class="btn-lang">Български</button>
+                                      </div></li>
                                   </ul>
                               </div>
                           </div>
@@ -195,33 +199,33 @@
             <div class="row">
                 <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
 
-                    <form action="#" method="post" class="bg-white p-md-5 p-4 mb-5 border">
+                    <form id="reservation-form" method="post" class="bg-white p-md-5 p-4 mb-5 border">
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label class="text-black font-weight-bold" for="name">Име</label>
-                                <input type="text" id="name" class="form-control contact-section-input">
+                                <input type="text" id="name" class="form-control contact-section-input" required="required">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="text-black font-weight-bold" for="phone">Телефон</label>
-                                <input type="text" id="phone" class="form-control contact-section-input">
+                                <input type="text" id="phone" class="form-control contact-section-input" required="required">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label class="text-black font-weight-bold" for="email">Имейл</label>
-                                <input type="email" id="email" class="form-control contact-section-input">
+                                <input type="email" id="email" class="form-control contact-section-input" required="required">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label class="text-black font-weight-bold" for="checkin_date">Дата на настаняване</label>
-                                <input type="text" id="checkin_date" class="form-control contact-section-input">
+                                <input type="text" id="checkin_date" class="form-control contact-section-input" required="required">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="text-black font-weight-bold" for="checkout_date">Дата на напускане</label>
-                                <input type="text" id="checkout_date" class="form-control contact-section-input">
+                                <input type="text" id="checkout_date" class="form-control contact-section-input" required="required">
                             </div>
                         </div>
 
@@ -230,11 +234,10 @@
                                 <label for="adults" class="font-weight-bold text-black">Възрастни</label>
                                 <div class="field-icon-wrap">
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="adults" class="form-control contact-section-input">
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
-                                        <option value="">4+</option>
+                                    <select name="" id="adults" class="form-control contact-section-input" required="required">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
                                 </div>
                             </div>
@@ -242,11 +245,11 @@
                                 <label for="children" class="font-weight-bold text-black">Деца</label>
                                 <div class="field-icon-wrap">
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="children" class="form-control contact-section-input">
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
-                                        <option value="">4+</option>
+                                    <select name="" id="children" class="form-control contact-section-input" required="required">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
                                 </div>
                             </div>
@@ -319,7 +322,7 @@
                     <ul class="list-unstyled link">
                         <li><a href="index.html">Начало</a></li>
                         <li><a href="about.html">За нас</a></li>
-                        <li><a href="posts.html">Събития</a></li>
+                        <li><a href="posts.html">Публикации</a></li>
                         <li><a href="contact.html">Свържете се с нас</a></li>
                     </ul>
                 </div>
@@ -358,7 +361,8 @@
             </div>
         </div>
     </footer>
-    
+    <div class="snackbars" id="form-output-global"></div>
+
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/jquery-migrate-3.0.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
@@ -373,5 +377,6 @@
     <script src="../js/jquery.timepicker.min.js"></script>
 
     <script src="../js/main.js"></script>
+    <script src="../js/reservation.js"></script>
   </body>
 </html>

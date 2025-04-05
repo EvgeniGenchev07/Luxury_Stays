@@ -1,3 +1,22 @@
+const userLang = navigator.language.startsWith("en") ? "en" : "bg";
+let lang = sessionStorage.getItem('lang');
+if(lang == null){
+    lang = userLang;
+    sessionStorage.setItem('lang',lang);
+    let currentPath = window.location.pathname;
+    if(!currentPath.includes(lang)){
+        if(currentPath == '/'){
+            currentPath = lang==="en"?"/en":"/bg";
+        }
+        else {
+            currentPath = currentPath.replace(lang==="en"?"/bg":"/en",'/'+lang);
+        }
+        window.location.href = currentPath;
+    }
+}else{
+    document.getElementById(lang).classList.add("preferred");
+}
+
 (function($) {
 
 	'use strict';
@@ -211,3 +230,33 @@
 
 
 })(jQuery);
+
+
+document.getElementById('en').addEventListener('click', ()=> {
+    let lang = sessionStorage.getItem('lang');
+    let currentPath = window.location.pathname;
+    if(lang == null){
+        lang = userLang;
+    }
+    if(lang == 'bg'){
+        sessionStorage.setItem('lang', 'en');
+        currentPath = currentPath.replace('/bg','/en');
+        window.location.replace(currentPath);
+    }
+});
+document.getElementById('bg').addEventListener('click', ()=> {
+    let lang = sessionStorage.getItem('lang');
+    let currentPath = window.location.pathname;
+    if(lang == null){
+        lang = userLang;
+    }
+    if(lang == 'en'){
+        sessionStorage.setItem('lang', 'bg');
+        if(currentPath == '/'){
+            currentPath = '/bg';
+        }else {
+            currentPath = currentPath.replace('/en', '/bg');
+        }
+        window.location.replace(currentPath);
+    }
+});
