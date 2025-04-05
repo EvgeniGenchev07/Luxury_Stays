@@ -10,13 +10,17 @@ const post_body = (position,id,tag,title,short_description,cover_image)=>{
             </div>
           </div>`;
 }
-
 document.addEventListener("DOMContentLoaded", function() {
-    let lang = sessionStorage.getItem("lang");
-    if(lang==null){
-        lang = "en";
+    const userLang = navigator.language.startsWith("bg") ? "bg" : "en";
+    const currentPath = window.location.pathname;
+
+    if (!currentPath.startsWith(`/${userLang}`) && !currentPath.startsWith(`/${userLang}/`)) {
+        if(!currentPath.startsWith(``) && userLang !== "en") {
+            window.location.href = `/${userLang}${currentPath}`;
+        }
     }
-    fetch(`../locales/${lang}.json`)
+
+    fetch(`../locales/${userLang}.json`)
         .then(response => response.json())
         .then(data => {
             let posts = data.posts;
@@ -47,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.querySelectorAll('.post-link').forEach(el=>{
                 el.addEventListener('click', ()=> {
                     let post_id = el.getAttribute('data-post-id');
-                    window.open(`../${lang}/post.html?name=` + posts[parseInt(post_id) - 1].title.toLowerCase(), "_self");
+                    window.open(`../${userLang}/post.html?name=` + posts[parseInt(post_id) - 1].title.toLowerCase(), "_self");
                 });
             });
         });
@@ -58,7 +62,8 @@ document.querySelectorAll('.tab-menu').forEach(el=>{
         document.querySelector("#tab-section").style.setProperty("background-image", `url('${el.getAttribute('data-image')}')`);
     });
 });
-
+function vacancyCheck(){
+}
 document.getElementById('children').addEventListener('change',(event)=>{
     const adults = document.querySelector('#adults');
     const value = document.getElementById('children').value
