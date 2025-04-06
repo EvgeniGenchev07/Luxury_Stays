@@ -1,4 +1,4 @@
-const userLang = navigator.language.startsWith("en") ? "en" : "bg";
+const userLang = navigator.language.startsWith("bg") ? "bg" : "en";
 let lang = sessionStorage.getItem('lang');
 if(lang == null){
     lang = userLang;
