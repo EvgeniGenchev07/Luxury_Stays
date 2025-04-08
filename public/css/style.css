@@ -1519,6 +1519,6 @@ body{
 @media (max-width: 768px) {
   .bg-image .overlay {
     background-position: top center;
-    background-size: cover; /* Or use `contain` if you want full image visible */
+    background-size: contain; /* Or use `contain` if you want full image visible */
   }
 }
