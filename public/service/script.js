@@ -4,7 +4,12 @@ const form = document.getElementById('registrationForm');
         event.preventDefault()
         event.stopPropagation()
       if (form.checkValidity()) {
-          const nationality = document.querySelector('input[name="nationality"]:checked')?.value;
+          const statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
+          document.getElementById('loader-popup').classList.remove('hidden');
+          document.getElementById('error-popup').classList.add('hidden');
+          document.getElementById('success-popup').classList.add('hidden');
+          statusModal.show();
+          const nationality = document.querySelector('input[name="nationality"]')?.value;
         const firstName = document.querySelector('input[name="first_name"]')?.value;
           const middleName = document.querySelector('input[name="middle_name"]')?.value;
           const lastName = document.querySelector('input[name="last_name"]')?.value;
@@ -13,8 +18,7 @@ const form = document.getElementById('registrationForm');
           const dateOfBirth = document.querySelector('input[id="date_of_birth"]')?.value;
           const documentType = document.querySelector('#document_type').value;
           const documentNumber = document.querySelector('input[name="doc_number"]').value;
-          const dateOfArrival = document.querySelector('input[id="date_of_arrival"]')?.value;
-          const dateOfDeparture = document.querySelector('input[id="date_of_departure"]')?.value;
+          const phone = document.querySelector('input[name="phone"]')?.value;
           const touristPacket = document.querySelector('input[id="tourist_packet"]')?.checked;
           const bundle = JSON.stringify({
               nationality: nationality,
@@ -26,8 +30,7 @@ const form = document.getElementById('registrationForm');
               dateOfBirth: dateOfBirth,
               documentType: documentType,
               documentNumber: documentNumber,
-              dateOfArrival: dateOfArrival,
-              dateOfDeparture: dateOfDeparture,
+              phone: phone,
               touristPacket: touristPacket,
           });
           const https_address = 'https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/registrationRequest'
@@ -36,12 +39,32 @@ const form = document.getElementById('registrationForm');
               body: bundle
           }).then(response => {
               if (response.ok) {
-                  alert("Successfully registered");
+                  const popup = document.getElementById('success-popup');
+                  popup.classList.remove('hidden');
+                  const counter = document.getElementById('counter');
+                  let timeLeft = 3;
+                  counter.innerText = timeLeft.toString();
+                  const countdown = setInterval(() => {
+                      timeLeft--;
+                      counter.innerText = timeLeft.toString();
+
+                      if (timeLeft < 0) {
+                          clearInterval(countdown);
+                          counter.innerText = '0'
+                          window.location.replace('luxurystays.bg/en/index.html');
+                      }
+                  }, 1000);
               }else {
-                  alert("Failed to register");
+                  document.getElementById('title-error').innerText = 'Failed to register!';
+                  document.getElementById('message-error').innerText = 'Some data may not be valid!';
+                  document.getElementById('error-popup').classList.remove('hidden');
               }
+              document.getElementById('loader-popup').classList.add('hidden');
           }).catch(error => {
-              alert("Something went wrong");
+              document.getElementById('title-error').innerText = 'Something went wrong!';
+              document.getElementById('message-error').innerText = 'Please check your internet connection or try again later!';
+              document.getElementById('error-popup').classList.remove('hidden');
+              document.getElementById('loader-popup').classList.add('hidden');
           });
       }
         form.classList.add('was-validated');
@@ -66,3 +89,7 @@ for (const elem of elems) {
         title: getDatePickerTitle(elem),
     });
 }
+
+document.getElementById('resubmit-btn').addEventListener('click', (e) => {
+    form.requestSubmit();
+});

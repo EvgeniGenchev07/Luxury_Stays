@@ -1165,9 +1165,9 @@ textarea.form-control {
   background-size: cover;
   background-position: center center;
   position: relative;
-  z-index: 1; }
+  z-index: 1;}
   .bg-image.overlay {
-    position: relative; }
+    position: relative;}
     .bg-image.overlay > .container {
       position: relative;
       z-index: 3; }
@@ -1306,7 +1306,7 @@ textarea.form-control {
     transition: 0.2s;
     box-shadow: 20px 20px 60px #c5c5c5,
     -20px -20px 60px #ffffff;
-    outline: none; !important;
+    outline: none !important;
 
 }
 
@@ -1515,10 +1515,4 @@ body{
     text-shadow: 1px 1px 1px #eac007;
     border: none;
     outline: none;
-}
-@media (max-width: 768px) {
-  .bg-image .overlay {
-    background-position: top center;
-    background-size: contain; /* Or use `contain` if you want full image visible */
-  }
 }
