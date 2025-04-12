@@ -1,0 +1,1 @@
+const events=["resize","load"];events.forEach((function(n){window.addEventListener(n,(function(){const n=45/(window.innerWidth/window.innerHeight);document.getElementById("visual").style.transform="translate(-50%, -50%) rotate(-"+n+"deg)"}))}));
