@@ -1,9 +1,12 @@
 import gulp from 'gulp';
 import cleanCSS from 'gulp-clean-css';
 import htmlmin from 'gulp-htmlmin';
-import tester from 'gulp-terser';
+import terser from 'gulp-terser';
 import imagemin from 'gulp-imagemin';
-
+import purgecss from 'gulp-purgecss';
+import mozjpeg from 'imagemin-mozjpeg';
+import optipng from 'imagemin-optipng';
+import svgo from 'imagemin-svgo';
 gulp.task('minify-html-en', () => {
   return gulp.src('source/en/*.html')
     .pipe(htmlmin({ collapseWhitespace: true,removeComments: true,
@@ -20,7 +23,7 @@ gulp.task('minify-html-service', () => {
 
 gulp.task('js-service', () => {
   return gulp.src('source/service/*.js')
-    .pipe(tester())
+    .pipe(terser())
     .pipe(gulp.dest('dist/service'));
 });
 
@@ -40,18 +43,42 @@ gulp.task('minify-html-bg', () => {
 
 gulp.task('scripts', () => {
   return gulp.src('source/js/*.js')
-    .pipe(tester())
+    .pipe(terser({
+      mangle: true,
+      compress: true,
+      output: {
+        comments: false
+      }
+    }))
     .pipe(gulp.dest('dist/js'));
 });
 
+
 gulp.task('images', () => {
   return gulp.src('source/images/**/*')
-    .pipe(imagemin())
+    .pipe(imagemin([
+      // JPEG compression (0–100, lower = more compression)
+      mozjpeg({ quality: 75, progressive: true }),
+
+      // PNG compression (0–7, higher = more compression)
+      optipng({ optimizationLevel: 5 }),
+
+      // SVG optimization
+      svgo({
+        plugins: [
+          { name: 'removeViewBox', active: false },
+          { name: 'cleanupIDs', active: false }
+        ]
+      }),
+    ]))
     .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('styles', () => {
   return gulp.src('source/css/*.css')
+    .pipe(purgecss({
+      content: ['source/en/*.html','source/en/*.html', 'source/js/*.js'] // paths to your HTML/JS
+    }))
     .pipe(cleanCSS())
     .pipe(gulp.dest('dist/css'));
 });

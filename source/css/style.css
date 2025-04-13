@@ -471,8 +471,6 @@ textarea.form-control {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    height: calc(100vh - 117px);
-    min-height: 700px;
     position: relative; }
     .owl-carousel.home-slider .slider-item .slider-text {
       color: #fff;
@@ -500,6 +498,7 @@ textarea.form-control {
       color: #000; }
   .owl-carousel.home-slider .owl-dots {
     position: absolute;
+      top: 100%;
     bottom: 100px;
     width: 100%; }
     .owl-carousel.home-slider .owl-dots .owl-dot {
@@ -515,7 +514,7 @@ textarea.form-control {
       transition: .3s all ease;
       background: #fff; }
       .owl-carousel.home-slider .owl-dots .owl-dot.active {
-        border: 2px solid white;
+        border: 2px solid #e7b500;
         background: none; }
 
 .owl-carousel.major-caousel .owl-stage-outer {

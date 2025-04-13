@@ -51,14 +51,13 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
 });
-
+const tab_section = document.querySelector("#tab-section");
 document.querySelectorAll('.tab-menu').forEach(el=>{
     el.addEventListener('click', ()=> {
-        document.querySelector("#tab-section").style.setProperty("background-image", `url('${el.getAttribute('data-image')}')`);
+        tab_section.style.setProperty("background-image", `url('${el.getAttribute('data-image')}')`);
     });
 });
-function vacancyCheck(){
-}
+
 document.getElementById('children').addEventListener('change',(event)=>{
     const adults = document.querySelector('#adults');
     const value = document.getElementById('children').value
@@ -145,7 +144,7 @@ function dateFormatChanger(date){
     return new Date(date[2]+'-'+(months.indexOf(date[1])+1)+'-'+date[0]);
 }
 
-function dateChecker(dateIn,dateOut){
+/*function dateChecker(dateIn,dateOut){
     dateIn = dateIn.split(' ');
     console.log(dateIn);
     console.log(dateOut)
@@ -167,7 +166,7 @@ function  DaysAndNightsCalculation(dateIn,dateOut){
     console.log(nights)
     console.log(days)
     return [days, nights];
-}
+}*/
 function calculateDaysBetween(fromDate, toDate) {
     const [day1, month1, year1] = fromDate.split(' ').map(Number);
     const [day2, month2, year2] = toDate.split(' ').map(Number);

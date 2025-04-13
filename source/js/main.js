@@ -68,7 +68,7 @@ if(lang == null){
     nav:true,
     autoplayHoverPause: true,
     items: 1,
-    autoheight: true,
+    autoHeight: true,
     navText : ["<span class='ion-chevron-left'></span>","<span class='ion-chevron-right'></span>"],
     responsive:{
       0:{
@@ -123,8 +123,6 @@ if(lang == null){
     autoplay: true,
     stagePadding: 7,
     margin: 20,
-    // animateOut: 'fadeOut',
-    // animateIn: 'fadeIn',
     nav: true,
     autoplayHoverPause: true,
     autoHeight: true,
@@ -202,7 +200,7 @@ if(lang == null){
   windowScroll();
 
 
-  var goToTop = function() {
+  /*var goToTop = function() {
 
     $('.js-gotop').on('click', function(event){
       
@@ -226,7 +224,7 @@ if(lang == null){
 
     });
   
-  };
+  };*/
 
 
 })(jQuery);
