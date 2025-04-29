@@ -101,3 +101,12 @@ gulp.task('base', gulp.series(
   'css-service',
   'styles',
 ));
+gulp.task('js', gulp.series(
+  'js-service',
+  'scripts',
+));
+gulp.task('service', gulp.series(
+  'js-service',
+  'css-service',
+  'minify-html-service'
+));

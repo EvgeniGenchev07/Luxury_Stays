@@ -6,12 +6,16 @@ if(lang == null){
     let currentPath = window.location.pathname;
     if(!currentPath.includes(lang)){
         if(currentPath == '/'){
-            currentPath = lang==="en"?"/en":"/bg";
+            if(lang === 'bg') {
+              currentPath = '/bg';
+              window.location.href = currentPath;
+            }
         }
         else {
             currentPath = currentPath.replace(lang==="en"?"/bg":"/en",'/'+lang);
+            window.location.href = currentPath;
+
         }
-        window.location.href = currentPath;
     }
 }else{
     document.getElementById(lang).classList.add("preferred");

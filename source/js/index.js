@@ -122,23 +122,40 @@ document.getElementById('adults').addEventListener('change',(event)=>{
         }
     }
 })
-document.getElementById('vacancy-check-form').addEventListener('submit',function(event){
-    event.preventDefault();
-    if(this.checkValidity()) {
-        let adults = document.getElementById('adults').value;
-        let children = document.getElementById('children').value;
-        let dateIn = document.getElementById('checkin_date').value;
-        let dateOut = document.getElementById('checkout_date').value;
-        dateIn = dateFormatChanger(dateIn);
-        dateOut = dateFormatChanger(dateOut);
-        dateIn = new Date(dateIn.getTime() - dateIn.getTimezoneOffset() * 60000);
-        dateOut = new Date(dateOut.getTime() - dateOut.getTimezoneOffset() * 60000);
-        dateIn = dateIn.toISOString().split('T')[0];
-        dateOut = dateOut.toISOString().split('T')[0];
+document.getElementById('vacancy-check-button').addEventListener('click', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
 
-        window.open(`https://www.booking.com/hotel/bg/luxury-stays-kapana-plovdiv.html?aid=390156&label=duc511jc-1FCAsobEIbbHV4dXJ5c3RheXMtaW1wZXJpYWwtc3VpdGVzSDNYA2gXiAEBmAExuAEYyAEP2AEB6AEB-AECiAIBqAIEuAKZvrS_BsACAdICJGEyNzIzY2ZiLTMyOWItNGI2Ni04MjA1LTZlNmZlMjFlZWI3NtgCBeACAQ&sid=572c465057440bc89a55a1e29348ab72&all_sr_blocks=1376798401_409804318_2_0_0_857973&checkin=${dateIn}&checkout=${dateOut}&dest_id=13767984&dest_type=hotel&dist=0&group_adults=${adults}&group_children=${children}&hapos=1&highlighted_blocks=1376798401_409804318_2_0_0_857973&hpos=1&matching_block_id=1376798401_409804318_2_0_0_857973&no_rooms=1&req_adults=${adults}&req_children=${children}&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=1376798401_409804318_2_0_0_857973_17157&srepoch=1743593322&srpvid=b99e50b58c8803cb&type=total&ucfs=1&`, '_blank');
-    }
+  const form = document.getElementById('vacancy-check-form');
+  if (form.checkValidity()) {
+    let adults = document.getElementById('adults').value;
+    let children = document.getElementById('children').value;
+    let dateIn = document.getElementById('checkin_date').value;
+    let dateOut = document.getElementById('checkout_date').value;
+
+    dateIn = dateFormatChanger(dateIn);
+    dateOut = dateFormatChanger(dateOut);
+
+    dateIn = new Date(dateIn.getTime() - dateIn.getTimezoneOffset() * 60000);
+    dateOut = new Date(dateOut.getTime() - dateOut.getTimezoneOffset() * 60000);
+
+    dateIn = dateIn.toISOString().split('T')[0];
+    dateOut = dateOut.toISOString().split('T')[0];
+
+    const url = `https://www.booking.com/hotel/bg/luxury-stays-kapana-plovdiv.html?aid=390156&checkin=${dateIn}&checkout=${dateOut}&group_adults=${adults}&group_children=${children}`;
+
+    // 🔥 iOS-proof link trick
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.click();
+  } else {
+    form.reportValidity();
+  }
 });
+
+
 
 
 function dateFormatChanger(date){
