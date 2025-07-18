@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -14,25 +14,34 @@
         "destination": "/en/index.html"
       },
       {
+        "source": "/en",
+        "destination": "/en/index.html"
+      },
+      {
+        "source": "/bg",
+        "destination": "/bg/index.html"
+      },
+      {
         "source": "/en/**",
         "destination": "/en/404.html"
       },
       {
         "source": "/bg/**",
         "destination": "/bg/404.html"
-
-      }],
+      }
+    ],
     "headers": [
       {
         "source": "/**",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=3600"
+            "value": "public, max-age=3600"
           }
         ]
       }
     ],
+    "errorPage": "/en/404.html",
     "appAssociation": "AUTO"
   },
   "functions": [

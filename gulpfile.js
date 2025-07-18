@@ -7,106 +7,102 @@ import purgecss from 'gulp-purgecss';
 import mozjpeg from 'imagemin-mozjpeg';
 import optipng from 'imagemin-optipng';
 import svgo from 'imagemin-svgo';
-gulp.task('minify-html-en', () => {
-  return gulp.src('source/en/*.html')
-    .pipe(htmlmin({ collapseWhitespace: true,removeComments: true,
-      ignoreCustomFragments: [ /<script type="application\/ld\+json">[\s\S]*?<\/script>/ ]
-     }))
-    .pipe(gulp.dest('dist/en'));
-});
 
-gulp.task('minify-html-service', () => {
+export function minifyHtmlEn() {
+  return gulp.src('source/en/*.html')
+    .pipe(htmlmin({
+      collapseWhitespace: true,
+      removeComments: true,
+      ignoreCustomFragments: [/<script type="application\/ld\+json">[\s\S]*?<\/script>/]
+    }))
+    .pipe(gulp.dest('dist/en'));
+}
+
+export function minifyHtmlService() {
   return gulp.src('source/service/*.html')
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest('dist/service'));
-});
+}
 
-gulp.task('js-service', () => {
+export function jsService() {
   return gulp.src('source/service/*.js')
     .pipe(terser())
     .pipe(gulp.dest('dist/service'));
-});
+}
 
-gulp.task('css-service', () => {
+export function cssService() {
   return gulp.src('source/service/*.css')
     .pipe(cleanCSS())
     .pipe(gulp.dest('dist/service'));
-});
+}
 
-gulp.task('minify-html-bg', () => {
+export function minifyHtmlBg() {
   return gulp.src('source/bg/*.html')
-    .pipe(htmlmin({ collapseWhitespace: true,removeComments: true,
-      ignoreCustomFragments: [ /<script type="application\/ld\+json">[\s\S]*?<\/script>/ ]
-     }))
+    .pipe(htmlmin({
+      collapseWhitespace: true,
+      removeComments: true,
+      ignoreCustomFragments: [/<script type="application\/ld\+json">[\s\S]*?<\/script>/]
+    }))
     .pipe(gulp.dest('dist/bg'));
-});
+}
 
-gulp.task('scripts', () => {
+export function scripts() {
   return gulp.src('source/js/*.js')
     .pipe(terser({
       mangle: true,
       compress: true,
-      output: {
-        comments: false
-      }
+      output: { comments: false }
     }))
     .pipe(gulp.dest('dist/js'));
-});
+}
 
-
-gulp.task('images', () => {
+export function images() {
   return gulp.src('source/images/**/*')
     .pipe(imagemin([
-      // JPEG compression (0–100, lower = more compression)
       mozjpeg({ quality: 75, progressive: true }),
-
-      // PNG compression (0–7, higher = more compression)
       optipng({ optimizationLevel: 5 }),
-
-      // SVG optimization
       svgo({
         plugins: [
           { name: 'removeViewBox', active: false },
           { name: 'cleanupIDs', active: false }
         ]
-      }),
+      })
     ]))
     .pipe(gulp.dest('dist/images'));
-});
+}
 
-gulp.task('styles', () => {
+export function styles() {
   return gulp.src('source/css/*.css')
     .pipe(purgecss({
-      content: ['source/en/*.html','source/en/*.html', 'source/js/*.js'] // paths to your HTML/JS
+      content: ['source/en/*.html', 'source/js/*.js']
     }))
     .pipe(cleanCSS())
     .pipe(gulp.dest('dist/css'));
-});
+}
 
-gulp.task('default', gulp.series(
-  'minify-html-en',
-  'minify-html-service',
-  'minify-html-bg',
-  'js-service',
-  'css-service',
-  'scripts',
-  'images',
-  'styles'
-));
+export const base = gulp.series(
+  minifyHtmlEn,
+  minifyHtmlService,
+  minifyHtmlBg,
+  cssService,
+  styles
+);
 
-gulp.task('base', gulp.series(
-  'minify-html-en',
-  'minify-html-service',
-  'minify-html-bg',
-  'css-service',
-  'styles',
-));
-gulp.task('js', gulp.series(
-  'js-service',
-  'scripts',
-));
-gulp.task('service', gulp.series(
-  'js-service',
-  'css-service',
-  'minify-html-service'
-));
+export const js = gulp.series(jsService, scripts);
+
+export const service = gulp.series(
+  jsService,
+  cssService,
+  minifyHtmlService
+);
+
+export default gulp.series(
+  minifyHtmlEn,
+  minifyHtmlService,
+  minifyHtmlBg,
+  jsService,
+  cssService,
+  scripts,
+  images,
+  styles
+);

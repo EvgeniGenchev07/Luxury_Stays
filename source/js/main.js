@@ -151,16 +151,32 @@ if(lang == null){
 	});
 
   var siteStellar = function() {
-    $(window).stellar({
-      responsive: false,
-      parallaxBackgrounds: true,
-      parallaxElements: true,
-      horizontalScrolling: false,
-      hideDistantElements: false,
-      scrollProperty: 'scroll'
-    });
+    if (window.innerWidth > 768) {
+      $(window).stellar({
+        responsive: true,
+        parallaxBackgrounds: true,
+        parallaxElements: true,
+        horizontalScrolling: false,
+        hideDistantElements: false,
+        scrollProperty: 'scroll'
+      });
+    }
   }
   siteStellar();
+  
+  $(window).on('resize', function() {
+    $(window).stellar('destroy');
+    if (window.innerWidth > 768) {
+      $(window).stellar({
+        responsive: true,
+        parallaxBackgrounds: true,
+        parallaxElements: true,
+        horizontalScrolling: false,
+        hideDistantElements: false,
+        scrollProperty: 'scroll'
+      });
+    }
+  });
 
   var smoothScroll = function() {
     var $root = $('html, body');
