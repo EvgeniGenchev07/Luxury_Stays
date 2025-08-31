@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Apartment Management System - Luxury Stays</title>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="control.css">
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h2>Apartment Manager</h2>
+  </div>
+  <div class="sidebar-menu">
+    <div class="menu-item active" data-tab="dashboard">
+      <i class="fas fa-tachometer-alt"></i>
+      <span>Dashboard</span>
+    </div>
+    <div class="menu-item" data-tab="apartments">
+      <i class="fas fa-home"></i>
+      <span>Apartments</span>
+    </div>
+    <div class="menu-item" data-tab="reservations">
+      <i class="fas fa-calendar-check"></i>
+      <span>Reservations</span>
+    </div>
+    <div class="menu-item" data-tab="users">
+      <i class="fas fa-users"></i>
+      <span>Users</span>
+    </div>
+    <div class="menu-item" data-tab="templates">
+      <i class="fas fa-envelope"></i>
+      <span>Email Templates</span>
+    </div>
+    <div class="menu-item" data-tab="contacts">
+      <i class="fas fa-address-book"></i>
+      <span>Contacts</span>
+    </div>
+  </div>
+  <div class="user-info">
+    <div>
+      <div>Admin User</div>
+      <small>Administrator</small>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <header>
+    <div class="header-title">Dashboard</div>
+    <div class="header-actions">
+      <button class="btn btn-light">
+        <i class="fas fa-bell"></i>
+      </button>
+      <button class="btn btn-light ml-2">
+        <i class="fas fa-cog"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="content-container">
+    <!-- Dashboard Content -->
+    <div id="dashboard" class="tab-content active">
+      <div class="dashboard">
+        <div class="dashboard-card total-apartments">
+          <h3>Total Apartments</h3>
+          <div class="value">24</div>
+        </div>
+        <div class="dashboard-card active-apartments">
+          <h3>Active Apartments</h3>
+          <div class="value">18</div>
+        </div>
+        <div class="dashboard-card upcoming-reservations">
+          <h3>Upcoming Reservations</h3>
+          <div class="value">12</div>
+        </div>
+        <div class="dashboard-card current-guests">
+          <h3>Current Guests</h3>
+          <div class="value">8</div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <h3>Reservations & Revenue Overview</h3>
+        <canvas id="reservationsChart"></canvas>
+      </div>
+
+      <div class="recent-activity">
+        <h3>Recent Activity</h3>
+        <div class="activity-item">
+          <div class="activity-icon">R</div>
+          <div class="activity-details">
+            <div class="activity-description">New reservation #45678 for Apartment 3A</div>
+            <div class="activity-time">10 minutes ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">G</div>
+          <div class="activity-details">
+            <div class="activity-description">Guest checked in to Apartment 5B</div>
+            <div class="activity-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">P</div>
+          <div class="activity-details">
+            <div class="activity-description">Payment received for Reservation #45677</div>
+            <div class="activity-time">5 hours ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">M</div>
+          <div class="activity-details">
+            <div class="activity-description">Maintenance request for Apartment 2C</div>
+            <div class="activity-time">Yesterday</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Apartments Content -->
+    <div id="apartments" class="tab-content">
+      <div class="card" id="apartmentListCard">
+        <div class="card-header">
+          <div class="card-title">Apartments</div>
+          <button class="btn btn-primary" id="addApartmentBtn">
+            <i class="fas fa-plus"></i> Add Apartment
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="filter-section">
+            <div class="filter-row">
+              <div class="filter-group" style="flex: 2;">
+                <label>Search</label>
+                <input type="text" class="form-control" id="apartmentSearch" placeholder="Search apartments...">
+              </div>
+              <div class="filter-group">
+                <label>Status</label>
+                <select class="form-control" id="apartmentStatusFilter">
+                  <option value="">All Statuses</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label>Location</label>
+                <select class="form-control" id="apartmentLocationFilter">
+                  <option value="">All Locations</option>
+                  <option value="downtown">Downtown</option>
+                  <option value="beachfront">Beachfront</option>
+                  <option value="city-center">City Center</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <button class="btn btn-primary" id="filterApartmentsBtn">
+                  <i class="fas fa-filter"></i> Filter
+                </button>
+                <button class="btn btn-light" id="resetApartmentFiltersBtn">
+                  <i class="fas fa-undo"></i> Reset
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table id="apartmentsTable">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Beds</th>
+                <th>Status</th>
+                <th>Electronic Lock</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody id="apartmentsTableBody">
+              <!-- Apartments will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apartment Detail View -->
+      <div id="apartmentDetail" class="apartment-detail">
+        <div class="detail-header">
+          <h2 id="detailApartmentName">Apartment 1A</h2>
+          <button class="btn btn-light" id="backToList">
+            <i class="fas fa-arrow-left"></i> Back to List
+          </button>
+        </div>
+
+        <div class="detail-section">
+          <h3>Basic Information</h3>
+          <div class="detail-row">
+            <div class="detail-label">Location:</div>
+            <div class="detail-value" id="detailLocation">Downtown</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Beds:</div>
+            <div class="detail-value" id="detailBeds">2</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Status:</div>
+            <div class="detail-value">
+              <span class="badge badge-success" id="detailStatus">Active</span>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Electronic Lock:</div>
+            <div class="detail-value" id="detailElectronicLock">Yes (ID: LK-1234)</div>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Reservations</h3>
+            <button class="btn btn-sm btn-primary" id="addReservationBtn">
+              <i class="fas fa-plus"></i> Add Reservation
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+                <th>Guest</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody id="reservationList">
+              <!-- Reservations will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="detail-section" id="electronicLockSection">
+          <h3>Electronic Lock Management</h3>
+          <div class="alert alert-info">
+            This apartment has an electronic lock (ID: <strong id="lockIdDisplay">LK-1234</strong>)
+          </div>
+
+          <h4>Generate New Door Code</h4>
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label>Valid From</label>
+                <input type="datetime-local" class="form-control" id="codeStart">
+              </div>
+            </div>
+            <div class="form-col">
+              <div class="form-group">
+                <label>Valid To</label>
+                <input type="datetime-local" class="form-control" id="codeEnd">
+              </div>
+            </div>
+            <div class="form-col" style="display: flex; align-items: flex-end;">
+              <button class="btn btn-primary" id="generateCodeBtn">
+                <i class="fas fa-key"></i> Generate Code
+              </button>
+            </div>
+          </div>
+
+          <h4 style="margin-top: 20px;">Active Door Codes</h4>
+          <div class="table-responsive">
+            <table>
+              <thead>
+              <tr>
+                <th>Code</th>
+                <th>Valid From</th>
+                <th>Valid To</th>
+                <th>Guest</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody id="doorCodesList">
+              <!-- Door codes will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add/Edit Apartment Form -->
+      <div id="apartmentForm" class="apartment-detail">
+        <div class="detail-header">
+          <h2 id="formTitle">Add New Apartment</h2>
+          <button class="btn btn-light" id="cancelForm">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+        </div>
+
+        <div class="detail-section">
+          <form id="apartmentFormData">
+            <div class="form-row">
+              <div class="form-col">
+                <div class="form-group">
+                  <label>Apartment Name</label>
+                  <input type="text" class="form-control" id="apartmentName" required>
+                </div>
+              </div>
+              <div class="form-col">
+                <div class="form-group">
+                  <label>Location</label>
+                  <select class="form-control" id="apartmentLocation" required>
+                    <option value="">Select Location</option>
+                    <option value="downtown">Downtown</option>
+                    <option value="beachfront">Beachfront</option>
+                    <option value="city-center">City Center</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-col">
+                <div class="form-group">
+                  <label>Number of Beds</label>
+                  <input type="number" class="form-control" id="apartmentBeds" min="1" required>
+                </div>
+              </div>
+              <div class="form-col">
+                <div class="form-group">
+                  <label>Status</label>
+                  <select class="form-control" id="apartmentStatus" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="hasElectronicLock">
+                <label class="form-check-label" for="hasElectronicLock">Has Electronic Lock</label>
+              </div>
+            </div>
+
+            <div class="form-group" id="lockIdGroup" style="display: none;">
+              <label>Lock ID</label>
+              <input type="text" class="form-control" id="lockId">
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-danger" id="cancelFormBtn">
+                <i class="fas fa-times"></i> Cancel
+              </button>
+              <button type="submit" class="btn btn-success" id="saveApartmentBtn">
+                <i class="fas fa-save"></i> Save Apartment
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reservations Content -->
+    <div id="reservations" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Reservations</div>
+          <button class="btn btn-primary" id="addReservationGlobalBtn">
+            <i class="fas fa-plus"></i> Add Reservation
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="filter-section">
+            <div class="filter-row">
+              <div class="filter-group" style="flex: 2;">
+                <label>Search</label>
+                <input type="text" class="form-control" id="reservationSearch" placeholder="Search reservations...">
+              </div>
+              <div class="filter-group">
+                <label>Apartment</label>
+                <select class="form-control" id="reservationApartmentFilter">
+                  <option value="">All Apartments</option>
+                  <!-- Apartments will be loaded here -->
+                </select>
+              </div>
+              <div class="filter-group">
+                <label>Status</label>
+                <select class="form-control" id="reservationStatusFilter">
+                  <option value="">All Statuses</option>
+                  <option value="confirmed">Confirmed</option>
+                  <option value="checked-in">Checked In</option>
+                  <option value="checked-out">Checked Out</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label>Date From</label>
+                <input type="date" class="form-control" id="reservationDateFrom">
+              </div>
+              <div class="filter-group">
+                <label>Date To</label>
+                <input type="date" class="form-control" id="reservationDateTo">
+              </div>
+              <div class="filter-group">
+                <button class="btn btn-primary" id="filterReservationsBtn">
+                  <i class="fas fa-filter"></i> Filter
+                </button>
+                <button class="btn btn-light" id="resetReservationFiltersBtn">
+                  <i class="fas fa-undo"></i> Reset
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Apartment</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+                <th>Guest</th>
+                <th>Status</th>
+                <th>Revenue</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody id="reservationsTableBody">
+              <!-- Reservations will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Users Content -->
+    <div id="users" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Users</div>
+          <button class="btn btn-primary" id="addUserBtn">
+            <i class="fas fa-plus"></i> Add User
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="filter-section">
+            <div class="filter-row">
+              <div class="filter-group" style="flex: 2;">
+                <label>Search</label>
+                <input type="text" class="form-control" id="userSearch" placeholder="Search users...">
+              </div>
+              <div class="filter-group">
+                <label>Role</label>
+                <select class="form-control" id="userRoleFilter">
+                  <option value="">All Roles</option>
+                  <option value="admin">Administrator</option>
+                  <option value="manager">Manager</option>
+                  <option value="cleaner">Cleaner</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <button class="btn btn-primary" id="filterUsersBtn">
+                  <i class="fas fa-filter"></i> Filter
+                </button>
+                <button class="btn btn-light" id="resetUserFiltersBtn">
+                  <i class="fas fa-undo"></i> Reset
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Last Login</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody id="usersTableBody">
+              <!-- Users will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Templates Content -->
+    <div id="templates" class="tab-content">
+      <div class="card" id="templatesListCard">
+        <div class="card-header">
+          <div class="card-title">Email Templates</div>
+          <button class="btn btn-primary" id="addTemplateBtn">
+            <i class="fas fa-plus"></i> Add Template
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="template-list" id="templatesList">
+            <!-- Templates will be loaded here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Template Form -->
+      <div id="templateForm" class="apartment-detail">
+        <div class="detail-header">
+          <h2 id="templateFormTitle">Add New Template</h2>
+          <button class="btn btn-light" id="cancelTemplateForm">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+        </div>
+
+        <div class="detail-section">
+          <form id="templateFormData">
+            <div class="form-group">
+              <label>Template Name</label>
+              <input type="text" class="form-control" id="templateName" required>
+            </div>
+
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" class="form-control" id="templateSubject" required>
+            </div>
+
+            <div class="form-group">
+              <label>Available Variables</label>
+              <div class="alert alert-info">
+                <p>You can use these variables in your template:</p>
+                <ul>
+                  <li><code>[Guest Name]</code> - Full name of the guest</li>
+                  <li><code>[Apartment Name]</code> - Name of the apartment</li>
+                  <li><code>[Check-In Date]</code> - Check-in date</li>
+                  <li><code>[Check-Out Date]</code> - Check-out date</li>
+                  <li><code>[Door Code]</code> - Door access code</li>
+                  <li><code>[Code Start]</code> - Code activation time</li>
+                  <li><code>[Code End]</code> - Code expiration time</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Message</label>
+              <textarea class="form-control" id="templateMessage" rows="10" required></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-danger" id="cancelTemplateFormBtn">
+                <i class="fas fa-times"></i> Cancel
+              </button>
+              <button type="submit" class="btn btn-success" id="saveTemplateBtn">
+                <i class="fas fa-save"></i> Save Template
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contacts Content -->
+    <div id="contacts" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Contacts</div>
+          <button class="btn btn-primary" id="sendEmailBtn">
+            <i class="fas fa-envelope"></i> Send Email
+          </button>
+          <button class="btn btn-success ml-2" id="addTemplateFromContactsBtn">
+            <i class="fas fa-plus"></i> Add Template
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="filter-section">
+            <div class="filter-row">
+              <div class="filter-group" style="flex: 2;">
+                <label>Search</label>
+                <input type="text" class="form-control" id="contactSearch" placeholder="Search contacts...">
+              </div>
+              <div class="filter-group">
+                <label>Type</label>
+                <select class="form-control" id="contactTypeFilter">
+                  <option value="">All Types</option>
+                  <option value="guest">Guest</option>
+                  <option value="owner">Owner</option>
+                  <option value="supplier">Supplier</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <button class="btn btn-primary" id="filterContactsBtn">
+                  <i class="fas fa-filter"></i> Filter
+                </button>
+                <button class="btn btn-light" id="resetContactFiltersBtn">
+                  <i class="fas fa-undo"></i> Reset
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Type</th>
+                <th>Last Contact</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody id="contactsTableBody">
+              <!-- Contacts will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Email Modal -->
+<div id="emailModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">Send Email</h2>
+      <span class="close" onclick="closeModal('emailModal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Recipient</label>
+        <input type="text" class="form-control" id="emailRecipient" readonly>
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" class="form-control" id="emailSubject" required>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea class="form-control" id="emailMessage" rows="8" required></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-danger" onclick="closeModal('emailModal')">
+          <i class="fas fa-times"></i> Cancel
+        </button>
+        <button type="button" class="btn btn-success" id="sendEmailNowBtn">
+          <i class="fas fa-paper-plane"></i> Send Email
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reservation Modal -->
+<div id="reservationModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title" id="reservationModalTitle">Add Reservation</h2>
+      <span class="close" onclick="closeModal('reservationModal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <form id="reservationForm">
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label>Apartment</label>
+              <select class="form-control" id="reservationApartment" required>
+                <!-- Apartments will be loaded here -->
+              </select>
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label>Status</label>
+              <select class="form-control" id="reservationStatus" required>
+                <option value="confirmed">Confirmed</option>
+                <option value="checked-in">Checked In</option>
+                <option value="checked-out">Checked Out</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label>Check-In Date</label>
+              <input type="datetime-local" class="form-control" id="reservationCheckIn" required>
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label>Check-Out Date</label>
+              <input type="datetime-local" class="form-control" id="reservationCheckOut" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Guest Name</label>
+          <input type="text" class="form-control" id="reservationGuestName" required>
+        </div>
+
+        <div class="form-group">
+          <label>Guest Email</label>
+          <input type="email" class="form-control" id="reservationGuestEmail" required>
+        </div>
+
+        <div class="form-group">
+          <label>Revenue ($)</label>
+          <input type="number" class="form-control" id="reservationRevenue" min="0" step="0.01" required>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-danger" onclick="closeModal('reservationModal')">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-save"></i> Save Reservation
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- User Modal -->
+<div id="userModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title" id="userModalTitle">Add User</h2>
+      <span class="close" onclick="closeModal('userModal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <form id="userForm">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" id="userName" required>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" id="userEmail" required>
+        </div>
+
+        <div class="form-group">
+          <label>Role</label>
+          <select class="form-control" id="userRole" required>
+            <option value="admin">Administrator</option>
+            <option value="manager">Manager</option>
+            <option value="cleaner">Cleaner</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" id="userPassword" required>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-danger" onclick="closeModal('userModal')">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+          <button type="submit" class="btn btn-success">
+            <i class="fas fa-save"></i> Save User
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Door Code Modal -->
+<div id="doorCodeModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">Generated Door Code</h2>
+      <span class="close" onclick="closeModal('doorCodeModal')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="alert alert-info">
+        <p>Your door code has been generated successfully!</p>
+      </div>
+
+      <div class="form-group">
+        <label>Door Code</label>
+        <div class="door-code" id="generatedDoorCode">3428</div>
+      </div>
+
+      <div class="form-group">
+        <label>Valid From</label>
+        <div id="generatedCodeStart">July 25, 2025 at 3:00 PM</div>
+      </div>
+
+      <div class="form-group">
+        <label>Valid To</label>
+        <div id="generatedCodeEnd">July 27, 2025 at 12:00 PM</div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-primary" id="sendDoorCodeBtn">
+          <i class="fas fa-envelope"></i> Send to Guest
+        </button>
+        <button type="button" class="btn btn-success" onclick="closeModal('doorCodeModal')">
+          <i class="fas fa-check"></i> Done
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="control.js" type="module"></script>
+</body>
+</html>

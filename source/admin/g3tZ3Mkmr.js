@@ -1,0 +1,9 @@
+export const data = {
+  apiKey: "AIzaSyBgQlkfp_s0Z4TBagISenG1KA7-NFZUo4A",
+  authDomain: "luxurystayskapanaplovdiv.firebaseapp.com",
+  projectId: "luxurystayskapanaplovdiv",
+  storageBucket: "luxurystayskapanaplovdiv.firebasestorage.app",
+  messagingSenderId: "189672077614",
+  appId: "1:189672077614:web:8d43d734c7ddf9609062bf",
+  measurementId: "G-WHFW92MV10"
+}

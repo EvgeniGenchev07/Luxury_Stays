@@ -2,101 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form</title>
-  <style>
-      body {
-          font-family: Arial, sans-serif;
-          background-color: #f4f4f4;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          margin: 0;
-      }
-      .login-form {
-          background: #fff;
-          padding: 20px;
-          border-radius: 5px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          width: 300px;
-      }
-      .login-form h2 {
-          text-align: center;
-          margin-bottom: 20px;
-      }
-      .form-group {
-          margin-bottom: 15px;
-      }
-      .form-group label {
-          display: block;
-          margin-bottom: 5px;
-          font-weight: bold;
-      }
-      .form-group input {
-          width: 100%;
-          padding: 8px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          box-sizing: border-box;
-      }
-      .login-btn {
-          width: 100%;
-          padding: 10px;
-          background-color: #4CAF50;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 16px;
-      }
-      .login-btn:hover {
-          background-color: #45a049;
-      }
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Login - Luxury Stays</title>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
 <div class="login-form">
   <h2>Login</h2>
   <form id="loginForm">
     <div class="form-group">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
+      <input type="email" placeholder="Email" id="email" name="email" required>
     </div>
     <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+      <input type="password" placeholder="Password" id="password" name="password" required>
     </div>
     <button type="submit" class="login-btn">Login</button>
     <div id="login-error" style="color:red;margin-top:10px;"></div>
   </form>
 </div>
-<script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
-    import { getAuth } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js';
-    // Your Firebase config here
-    const firebaseConfig = {
-      apiKey: "AIzaSyBgQlkfp_s0Z4TBagISenG1KA7-NFZUo4A",
-
-  authDomain: "luxurystayskapanaplovdiv.firebaseapp.com",
-
-  projectId: "luxurystayskapanaplovdiv",
-
-  storageBucket: "luxurystayskapanaplovdiv.firebasestorage.app",
-
-  messagingSenderId: "189672077614",
-
-  appId: "1:189672077614:web:8d43d734c7ddf9609062bf",
-
-  measurementId: "G-WHFW92MV10"
-
-    };
-    window.firebaseApp = initializeApp(firebaseConfig);
-    window.firebaseAuth = getAuth(window.firebaseApp);
-  </script>
   <script type="module" src="login.js"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@ const form = document.getElementById('guestForm');
             email: email,
             guests: guests
           });
-          const https_address = 'https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/registrationRequest'
+          const https_address = 'https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/api/registrationRequest'
           fetch(https_address, {
               method: 'POST',
               body: bundle
