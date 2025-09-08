@@ -10,7 +10,7 @@ document.getElementById("contact-form").addEventListener("submit", function (eve
         const grecaptcha_response = grecaptcha.getResponse();
         if(grecaptcha_response === "") return;
         else {
-            const https_address = 'https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/sendMail'
+            const https_address = 'https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/api/sendMail'
             let subject = document.getElementById('subject').value;
             let name = document.getElementById('name').value;
             let email = document.getElementById('email').value;

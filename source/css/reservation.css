@@ -1,0 +1,347 @@
+.site-header {
+    z-index: 100;
+}
+.container-wizard {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    justify-items: center;
+    justify-self: center;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.8s ease-out;
+}
+
+
+.header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}
+
+.form-container {
+    padding: 30px;
+}
+
+.step-progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.step-progress::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background: #e0e0e0;
+    z-index: 1;
+}
+
+.step-progress::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: var(--progress, 0%);
+    background: #eac007;
+    transition: width 0.5s ease;
+    z-index: 2;
+}
+
+.step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #777;
+    position: relative;
+    z-index: 3;
+    transition: all 0.4s ease;
+}
+
+.step.active {
+    background: #eac007;
+    color: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 4px rgba(170, 104, 2, 0.78);
+}
+
+.step.completed {
+    background: #aa6802;
+    color: white;
+}
+
+.step-label {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: #777;
+    white-space: nowrap;
+}
+
+.step.active .step-label {
+    color: #eac007;
+    font-weight: bold;
+}
+
+.form-step {
+    display: none;
+    animation: slideIn 0.5s ease forwards;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.step-header {
+    color: #aa6802;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    font-family: 'Playfair Display', serif;
+}
+
+.guest-age {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    animation: fadeIn 0.5s ease;
+}
+
+.guest-age label {
+    margin-right: 10px;
+    margin-bottom: 0;
+    flex: 1;
+}
+
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button.prev {
+    background: #e0e0e0;
+    color: #444;
+}
+
+button.prev:hover {
+    background: #d0d0d0;
+}
+
+button.next, button.submit {
+    background: linear-gradient(to right, #aa6802, #eac007);
+    color: white;
+}
+
+button.next:hover, button.submit:hover {
+    background: linear-gradient(to right, #eac007, #aa6802);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.confirmation {
+    text-align: center;
+    padding: 40px 20px;
+    animation: zoomIn 0.5s ease;
+}
+
+.confirmation i {
+    font-size: 5rem;
+    color: #eac007;
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+.confirmation h2 {
+    color: #aa6802;
+    margin-bottom: 15px;
+    border: none;
+}
+
+.confirmation p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.date-inputs {
+    display: flex;
+    gap: 15px;
+}
+
+.date-inputs .input-group {
+    flex: 1;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease;
+}
+
+.modal h3 {
+    color: #aa6802;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+.modal p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.modal button {
+    margin: 0 10px;
+    padding: 10px 20px;
+}
+.loading-container{
+    margin: 10px 0;
+    justify-content: center;
+    align-items: center;
+}
+.loading {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    horiz-align: center;
+    border: 4px solid rgba(170, 104, 2, 0.78);
+    border-radius: 50%;
+    border-top-color: #eac007;
+    animation: spin 1s linear infinite;
+}
+
+.error-message {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background: #ffeaea;
+    border-radius: 8px;
+    display: none;
+}
+
+.retry-btn {
+    background: #e74c3c;
+    color: white;
+    margin-top: 15px;
+}
+
+.retry-btn:hover {
+    background: #c0392b;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+    .date-inputs {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

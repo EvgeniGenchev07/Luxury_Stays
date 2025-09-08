@@ -106,19 +106,11 @@
     <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <link rel="stylesheet" href="../css/aos.css">
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
-    <link rel="stylesheet" href="../css/fancybox.min.css">
-    <!-- Flatpickr CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <!-- Flatpickr Theme for modern look -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
-    
-    <link rel="stylesheet" href="../fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="../css/style.css">
-
+    <link rel="stylesheet" href="../css/reservation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 
   </head>
@@ -149,7 +141,7 @@
                         <li><a href="posts.html">Posts</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li class="active"><a href="reservation.html">Reservation</a></li>
-                          <li><div class="multi-button">
+                          <li><div id="lang_button_container" class="multi-button">
                               <button id="en" class="btn-lang">English</button>
                               <button id="bg" class="btn-lang">Български</button>
                           </div></li>
@@ -186,133 +178,154 @@
       </a>
     </section>
     <!-- END section -->
+    <section class="section" id="next">
 
-    <!-- Modern Dual Picker UI Start -->
-    <section class="section dual-picker-section" id="dual-picker-section">
-      <div class="container">
-        <div class="row justify-content-center mb-4">
-          <div class="col-md-10">
-            <div class="dual-picker-bar d-flex flex-wrap align-items-center justify-content-center p-4 mb-3 shadow rounded-lg bg-white">
-              <!-- Date Range Picker Field (hidden) -->
-              <div class="picker-field mr-3 mb-2 mb-md-0" style="display:none;">
-                <label for="dual-date-range" class="picker-label">Dates</label>
-                <div id="dual-date-range-field" class="picker-input" tabindex="0">
-                  <span id="dual-date-range-display">Check-in — Check-out</span>
-                  <i class="fa fa-calendar ml-2"></i>
-                </div>
-                <div id="dual-date-range-calendar" class="picker-calendar-popup" style="display:none;"></div>
-              </div>
-              <!-- Guests/Rooms Picker Field (will be moved into card) -->
-            </div>
+    <div class="container-wizard" >
+      <div class="header">
+        <h1>Luxury Stays Kapana Plovdiv</h1>
+        <p class="text-center">Book your perfect stay with us</p>
+      </div>
+
+      <div class="form-container">
+        <div class="step-progress">
+          <div class="step active" id="step1">
+            <span>1</span>
+            <span class="step-label">Dates & Guests</span>
+          </div>
+          <div class="step" id="step2">
+            <span>2</span>
+            <span class="step-label">Your Information</span>
+          </div>
+          <div class="step" id="step3">
+            <span>3</span>
+            <span class="step-label">Confirmation</span>
           </div>
         </div>
+
+        <form id="reservation-form">
+          <!-- Step 1: Dates and Guests -->
+          <div class="form-step active" id="form-step-1">
+            <h2 class="text-center step-header">Select Dates & Guests</h2>
+            <div class="row">
+
+              <div class="form-group col-md-6">
+                  <label for="checkin"><i class="fas fa-calendar-alt"></i> Check-in Date</label>
+                  <input type="date" class="contact-section-input form-control" id="checkin" required>
+              </div>
+
+              <div class="form-group col-md-6">
+                  <label for="checkout"><i class="fas fa-calendar-alt"></i> Check-out Date</label>
+                  <input type="date" class="contact-section-input form-control" id="checkout" required>
+              </div>
+            </div>
+<div id="adults_children_row" class="row">
+
+            <div class="form-group col-md-6">
+              <label for="adults"><i class="fas fa-user"></i> Adults</label>
+              <select id="adults" class="contact-section-input form-control" required>
+                <option value="1">1 Adult</option>
+                <option value="2">2 Adults</option>
+                <option value="3">3 Adults</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="children"><i class="fas fa-child"></i> Children</label>
+              <select id="children" class="contact-section-input form-control" required>
+                <option value="0">No Children</option>
+                <option value="1">1 Child</option>
+                <option value="2">2 Children</option>
+                <option value="3">3 Children</option>
+              </select>
+            </div>
+</div>
+
+            <div id="child-ages" class="child-ages-container">
+            </div>
+
+            <div class="btn-group justify-content-end">
+              <button type="button" class="next" id="step1-next">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Personal Information -->
+          <div class="form-step" id="form-step-2">
+            <h2 class="text-center step-header">Your Information</h2>
+            <div class="row">
+            <div class="form-group col-md-6">
+              <label for="firstName"><i class="fas fa-user"></i> First Name</label>
+              <input type="text" id="firstName" class="contact-section-input form-control" required>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="lastName"><i class="fas fa-user"></i> Last Name</label>
+              <input type="text" id="lastName" class="contact-section-input form-control" required>
+            </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+              <input type="email" id="email" class="contact-section-input form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+              <input type="tel" id="phone" class="contact-section-input form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="note"><i class="fas fa-sticky-note"></i> Special Requests</label>
+              <textarea id="note" rows="4" class="contact-section-input form-control" placeholder="Any special requests or notes..."></textarea>
+            </div>
+
+            <div class="btn-group">
+              <button type="button" class="prev">Previous</button>
+              <button type="button" class="next" id="step2-next">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Confirmation -->
+          <div class="form-step" id="form-step-3">
+            <div class="confirmation" id="confirmation-success">
+              <i class="fas fa-check-circle"></i>
+              <h2 class="text-center step-header">Thank You For Your Reservation Request!</h2>
+              <p>We have received your booking details and will process your request shortly.</p>
+              <p>You will receive a confirmation invoice by email within the next 24 hours.</p>
+              <p>If you have any urgent questions, please contact us at <strong class="font-weight-bold">booking@luxurystays.bg</strong></p>
+            </div>
+
+            <div class="confirmation" id="confirmation-error" style="display: none;">
+              <i class="fas fa-exclamation-circle" style="color: #e74c3c;"></i>
+              <h2 class="text-center step-header">Unable to Process Your Reservation</h2>
+              <p>We encountered an issue while processing your reservation request.</p>
+              <p>Please try again in a few moments.</p>
+              <button class="retry-btn" id="retry-btn"><i class="fas fa-redo"></i> Try Again</button>
+            </div>
+          </div>
+        </form>
       </div>
+    </div>
     </section>
-    <!-- Modern Dual Picker UI End -->
 
-    <!-- Reservation Wizard Start -->
-    <section class="section reservation-wizard-section" id="reservation-wizard">
-      <div class="container">
-        <div id="reservation-steps">
-          <!-- Step 1: Dates & Guests -->
-          <div class="reservation-step calendar-card mx-auto my-5" id="step-calendar" style="display:block;">
-            <div class="calendar-card-accent"></div>
-            <div class="calendar-card-step mb-2">Step 1 of 3</div>
-            <h2 class="calendar-card-title mb-2">Choose Your Dates</h2>
-            <div class="calendar-card-subtitle mb-4">Select your arrival and departure dates and number of guests.</div>
-            <div id="calendar-container" class="mb-3">
-              <div id="date-range"></div>
-              <div id="calendar-prices-legend" class="mt-3">
-                <small class="text-muted">Prices are shown under each date</small>
-              </div>
-            </div>
-            <div class="picker-field mb-3">
-              <label for="dual-guests-field" class="picker-label">Guests & Rooms</label>
-              <div id="dual-guests-field" class="picker-input" tabindex="0">
-                <span id="dual-guests-display">2 adults · 0 children · 1 room</span>
-                <i class="fa fa-user ml-2"></i>
-              </div>
-              <div id="dual-guests-popup" class="picker-guests-popup" style="display:none;">
-                <div class="picker-row mb-2">
-                  <span>Adults</span>
-                  <div class="picker-controls">
-                    <button type="button" class="picker-btn" id="adults-minus">-</button>
-                    <span id="adults-count">2</span>
-                    <button type="button" class="picker-btn" id="adults-plus">+</button>
-                  </div>
-                </div>
-                <div class="picker-row mb-2">
-                  <span>Children</span>
-                  <div class="picker-controls">
-                    <button type="button" class="picker-btn" id="children-minus">-</button>
-                    <span id="children-count">0</span>
-                    <button type="button" class="picker-btn" id="children-plus">+</button>
-                  </div>
-                </div>
-                <div class="picker-row mb-3">
-                  <span>Rooms</span>
-                  <div class="picker-controls">
-                    <button type="button" class="picker-btn" id="rooms-minus">-</button>
-                    <span id="rooms-count">1</span>
-                    <button type="button" class="picker-btn" id="rooms-plus">+</button>
-                  </div>
-                </div>
-                <button type="button" class="btn btn-primary btn-block" id="guests-done">Done</button>
-              </div>
-            </div>
-            <div id="calendar-error" class="text-danger mt-2" style="display:none;"></div>
-            <button id="to-details-step" class="btn btn-primary btn-lg btn-block mt-4" disabled>Next: Your Details</button>
-          </div>
+    <!-- Date Conflict Modal -->
+    <div class="modal" id="dateConflictModal">
+      <div class="modal-content">
+        <h3><i class="fas fa-calendar-times"></i> Date Conflict</h3>
+        <p>We're sorry, the dates you selected are not available. Please choose different dates for your stay.</p>
+        <button id="modal-ok-btn">OK</button>
+      </div>
+    </div>
 
-          <!-- Step 2: Guest Details -->
-          <div class="reservation-step calendar-card mx-auto my-5" id="step-details" style="display:none;">
-            <div class="calendar-card-accent"></div>
-            <div class="calendar-card-step mb-2">Step 2 of 3</div>
-            <h2 class="calendar-card-title mb-2">Your Details</h2>
-            <div class="calendar-card-subtitle mb-4">Please enter your contact information.</div>
-            <form id="guest-details-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label class="text-black font-weight-bold" for="name">Name</label>
-                  <input type="text" id="name" class="form-control contact-section-input" required="required">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label class="text-black font-weight-bold" for="phone">Phone</label>
-                  <input type="text" id="phone" class="form-control contact-section-input" required="required">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="email">Email</label>
-                  <input type="email" id="email" class="form-control contact-section-input" required="required">
-                </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-md-12 form-group">
-                  <label class="text-black font-weight-bold" for="message">Notes</label>
-                  <textarea name="message" id="message" class="form-control contact-section-input" cols="30" rows="4"></textarea>
-                </div>
-              </div>
-              <button id="to-payment-step" class="btn btn-primary btn-lg btn-block">Next: Payment</button>
-              <button id="back-to-calendar" class="btn btn-secondary btn-lg btn-block mt-2">Back</button>
-            </form>
-          </div>
-
-          <!-- Step 3: Payment -->
-          <div class="reservation-step calendar-card mx-auto my-5" id="step-payment" style="display:none;">
-            <div class="calendar-card-accent"></div>
-            <div class="calendar-card-step mb-2">Step 3 of 3</div>
-            <h2 class="calendar-card-title mb-2">Payment</h2>
-            <div class="calendar-card-subtitle mb-4">Review your reservation and proceed to payment.</div>
-            <div id="payment-summary" class="mb-4"></div>
-            <button id="pay-now" class="btn btn-success btn-lg btn-block">Pay Now</button>
-            <button id="back-to-details" class="btn btn-secondary btn-lg btn-block mt-2">Back</button>
-            <div id="payment-success" class="alert alert-success mt-4" style="display:none;">Thank you! Your reservation is complete.</div>
-          </div>
+    <!-- Loading Modal -->
+    <div class="modal" id="loadingModal">
+      <div class="modal-content">
+        <h3>Processing Your Request</h3>
+        <div class="loading-container">
+          <div class="loading"></div>
         </div>
+        <p>Please wait while we check availability...</p>
       </div>
-    </section>
-    <!-- Reservation Wizard End -->
+    </div>
 
     <section class="section testimonial-section bg-light">
       <div class="container">
@@ -326,67 +339,67 @@
             
             <div class="testimonial text-center slider-item">
               <div class="author-image mb-3">
-                <img src="images/person_1.jpg" alt="Image placeholder" class="rounded-circle mx-auto">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
               </div>
               <blockquote>
 
-                <p>&ldquo;A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&rdquo;</p>
+                <p>&ldquo;A great apartment in the heart of the Kapana, everything is walkable and easy. The apartment is quiet, clean and very comfortable. The building is new and secure, having a private secure underground locked parking space is a huge advantage in this area. Would highly recommend this place, and will definitely come again.&rdquo;</p>
               </blockquote>
-              <p><em>&mdash; Jean Smith</em></p>
+              <p><em>&mdash; Alon</em></p>
             </div> 
 
             <div class="testimonial text-center slider-item">
               <div class="author-image mb-3">
-                <img src="images/person_2.jpg" alt="Image placeholder" class="rounded-circle mx-auto">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
               </div>
               <blockquote>
-                <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+                <p>&ldquo;The apartment was awesome! Great location in Kapana, a very short distance from all the restaurants. The bed (and lounge) were really comfortable. The apartment had everything we needed (toiletries and even laundry liquid so we could wash our clothes). Borislava was an amazing host, so helpful with all my questions about Plovdiv and even delivered us some ice when we arrived in the heat. It was really lovely and peaceful to sit on the balcony too. Would definitely stay here again. Thanks!!!&rdquo;</p>
               </blockquote>
-              <p><em>&mdash; John Doe</em></p>
+              <p><em>&mdash; Clare</em></p>
             </div>
 
             <div class="testimonial text-center slider-item">
               <div class="author-image mb-3">
-                <img src="images/person_3.jpg" alt="Image placeholder" class="rounded-circle mx-auto">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
               </div>
               <blockquote>
 
-                <p>&ldquo;When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.&rdquo;</p>
+                <p>&ldquo;Excellent apartment, as seen on the listing, and very responsive host. The place has a convenient garage which is a real amenity in that neighbourhood. Highly recommended!&rdquo;</p>
               </blockquote>
-              <p><em>&mdash; John Doe</em></p>
+              <p><em>&mdash; Peter</em></p>
             </div>
 
 
             <div class="testimonial text-center slider-item">
               <div class="author-image mb-3">
-                <img src="images/person_1.jpg" alt="Image placeholder" class="rounded-circle mx-auto">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
               </div>
               <blockquote>
 
-                <p>&ldquo;A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&rdquo;</p>
+                <p>&ldquo;Highly recommended and absolutely amazing property! Great location! I would definitely stay there again!&rdquo;</p>
               </blockquote>
-              <p><em>&mdash; Jean Smith</em></p>
+              <p><em>&mdash; Georgi</em></p>
             </div> 
 
             <div class="testimonial text-center slider-item">
               <div class="author-image mb-3">
-                <img src="images/person_2.jpg" alt="Image placeholder" class="rounded-circle mx-auto">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
               </div>
               <blockquote>
-                <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+                <p>&ldquo;Perfect location, right in Kapana; modern, clean apartment, equipped with everything you need; secure parking; very friendly landlord—in short everything perfect :)&rdquo;</p>
               </blockquote>
-              <p><em>&mdash; John Doe</em></p>
+              <p><em>&mdash; Patrick</em></p>
             </div>
 
             <div class="testimonial text-center slider-item">
               <div class="author-image mb-3">
-                <img src="images/person_3.jpg" alt="Image placeholder" class="rounded-circle mx-auto">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
               </div>
               <blockquote>
 
-                <p>&ldquo;When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.&rdquo;</p>
+                <p>&ldquo;It is a great location and the property let us check in a little early and park the car. We were met by someone with the keys to the garage, showed us to the parking, helped guide me while parking, showed us to the apartment, waited while we used the code to get in, and then left. There was an open WhatsApp chat for any questions. The apartment is newly refurbished, very clean, spacious, very well appointed, basically perfect.. Everything was in walking distance. I would highly recommend this property.&rdquo;</p>
               </blockquote>
-              <p><em>&mdash; John Doe</em></p>
+              <p><em>&mdash; Scot</em></p>
             </div>
 
           </div>
@@ -394,7 +407,7 @@
         </div>
 
       </div>
-    </section>-->
+    </section>
 
     
     

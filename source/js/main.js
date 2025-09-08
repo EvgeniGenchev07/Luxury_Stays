@@ -1,25 +1,17 @@
-const userLang = navigator.language.startsWith("bg") ? "bg" : "en";
-let lang = sessionStorage.getItem('lang');
-if(lang == null){
-    lang = userLang;
-    sessionStorage.setItem('lang',lang);
-    let currentPath = window.location.pathname;
-    if(!currentPath.includes(lang)){
-        if(currentPath == '/'){
-            if(lang === 'bg') {
-              currentPath = '/bg';
-              window.location.href = currentPath;
-            }
-        }
-        else {
-            currentPath = currentPath.replace(lang==="en"?"/bg":"/en",'/'+lang);
-            window.location.href = currentPath;
-
-        }
-    }
-}else{
-    document.getElementById(lang).classList.add("preferred");
-}
+const isBG = window.location.pathname.includes('/bg/');
+const lang = isBG ? 'bg' : 'en';
+const langButtonsContainer = document.querySelector('#lang_button_container');
+langButtonsContainer.querySelector('#'+lang).classList.add("preferred");
+langButtonsContainer.querySelectorAll('.btn-lang').forEach(el=>{
+    el.addEventListener('click', ()=> {
+      console.log(el.id);
+      if(el.id !== lang) {
+        langButtonsContainer.querySelector('.preferred').classList.remove("preferred");
+        el.classList.add("preferred");
+        window.location.replace( window.location.pathname.replace('/' + lang, '/' + el.id));
+      }
+    });
+});
 
 (function($) {
 
@@ -248,33 +240,3 @@ if(lang == null){
 
 
 })(jQuery);
-
-
-document.getElementById('en').addEventListener('click', ()=> {
-    let lang = sessionStorage.getItem('lang');
-    let currentPath = window.location.pathname;
-    if(lang == null){
-        lang = userLang;
-    }
-    if(lang == 'bg'){
-        sessionStorage.setItem('lang', 'en');
-        currentPath = currentPath.replace('/bg','/en');
-        window.location.replace(currentPath);
-    }
-});
-document.getElementById('bg').addEventListener('click', ()=> {
-    let lang = sessionStorage.getItem('lang');
-    let currentPath = window.location.pathname;
-    if(lang == null){
-        lang = userLang;
-    }
-    if(lang == 'en'){
-        sessionStorage.setItem('lang', 'bg');
-        if(currentPath == '/'){
-            currentPath = '/bg';
-        }else {
-            currentPath = currentPath.replace('/en', '/bg');
-        }
-        window.location.replace(currentPath);
-    }
-});

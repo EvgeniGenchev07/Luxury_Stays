@@ -1,5 +1,5 @@
 require('dotenv').config();
-const mailtrap = require("mailtrap")
+const mailtrap = require('mailtrap');
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -12,6 +12,7 @@ const ical = require('node-ical');
 const logger = require('firebase-functions/logger');
 admin.initializeApp();
 const db = getFirestore('orders-payments');
+db.settings({ ignoreUndefinedProperties: true });
 const seam = new Seam({ apiKey: process.env.SEAM_API_KEY });
 const app = express();
 const client = new mailtrap.MailtrapClient({ token: process.env.MAILTRAP_API_KEY });
@@ -31,8 +32,10 @@ const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const checkInTimeRegion = '15:00';
 const checkOutTimeRegion = '12:00';
 const lock_device_id = 'b40baeff-9d6d-4f24-98d5-ef14f41b4d6e';
-const url = 'https://www.airbnb.com/calendar/ical/1383334985601570255.ics?s=f8b8b382af45dd8c91b2903582f332ee';
+const airbnb_ical = 'https://www.airbnb.com/calendar/ical/1383334985601570255.ics?s=f8b8b382af45dd8c91b2903582f332ee';
+const booking_ical = 'https://ical.booking.com/v1/export?t=47f76e8c-7038-42c3-840e-3e67866829bc';
 const apartmentsContext = db.collection('apartments');
+const reservationRequestContext = db.collection('reservationRequests');
 const reservationMessageHtml = (
   name,
   ApartmentDoorCode,
@@ -120,44 +123,15 @@ function verifyRecaptcha(response, ip) {
     });
 }
 
-function FormatDate(date) {
+/*function FormatDate(date) {
   date = date.split(' ');
   let months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
   return new Date(`${date[3]}-${months.indexOf(date[2]) + 1}-${date[1]}`);
-}
+}*/
 
-const getCheckInOutDates = () => new Promise((resolve, reject) => {
-  ical.fromURL(url, {}, (err, data) => {
-    if (err) {
-      return reject(err);
-    }
-    const dates = [];
-
-    for (let key in data) {
-      const event = data[key];
-      if (event.type === 'VEVENT') {
-        const date = new Date(event.start);
-        const newDate = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), 12, 0, 0));
-        dates.push(newDate.toISOString());
-
-        const date2 = new Date(event.end);
-        const newDate2 = new Date(Date.UTC(date2.getUTCFullYear(), date2.getUTCMonth(), date2.getUTCDate(), 9, 0, 0));
-        dates.push(newDate2.toISOString());
-      }
-    }
-
-    dates.sort((a, b) => new Date(a) - new Date(b));
-    let index = dates.findIndex(d => new Date(d).getUTCDate() >= new Date(Date.now()).getUTCDate());
-    index = index % 2 === 0 ? index : index + 1;
-    const checkInDate = dates[index];
-    const checkOutDate = dates[index + 1];
-    logger.info(dates, { structuredData: true });
-    resolve([checkInDate, checkOutDate]);
-  });
-});
 
 // Email sending functionality
 app.post('/sendMail', async (req, res) => {
@@ -166,21 +140,21 @@ app.post('/sendMail', async (req, res) => {
   logger.info(recap);
   if (recap) {
     const msg = {
-      to: [{email:'luxurystays.help@gmail.com'}],
-      from: { name: "Luxury Stays", email: 'service@luxurystays.bg'},
+      to: [{ email: 'luxurystays.help@gmail.com' }],
+      from: { name: 'Luxury Stays', email: 'service@luxurystays.bg' },
       subject: obj.subject,
       html: '<p>' + obj.message + '\n from ' + obj.name + ' (' + obj.email + ')</p>'
     };
     client
       .send(msg)
       .then(() => {
-        let output = {response: 'email sent successfully',verified: true};
+        let output = { response: 'email sent successfully', verified: true };
         res.status(200).json(output);
-        logger.info(output, {structuredData: true});
+        logger.info(output, { structuredData: true });
       })
       .catch((error) => {
-        logger.error("Error sending email", error);
-        res.status(500).json({error: "Failed to send email", details: error.message,verified: true});
+        logger.error('Error sending email', error);
+        res.status(500).json({ error: 'Failed to send email', details: error.message, verified: true });
       });
   } else {
     logger.info('recaptcha not verified');
@@ -199,7 +173,7 @@ app.post('/registrationRequest', async (req, res) => {
 
   const apartmentRef = apartmentsContext.doc(propertyName);
   const apartmentReservations = apartmentRef.collection('reservations');
-  const [checkInDate, checkOutDate] = await getCheckInOutDates().catch((err) => {
+  const [checkInDate, checkOutDate] = await getNearestCheckinOutDate().catch((err) => {
   });
   const checkInTs = Timestamp.fromDate(new Date(checkInDate));
   const checkOutTs = Timestamp.fromDate(new Date(checkOutDate));
@@ -265,8 +239,8 @@ app.post('/registrationRequest', async (req, res) => {
           const checkOutDateOnly = checkOutDate.split('T')[0];
           const msg_to_guest_html = reservationMessageHtml(guests[0].firstName, code, checkInDateOnly, checkOutDateOnly, checkInTimeRegion, checkOutTimeRegion, 'Luxury Stays');
           const msg_to_guest = {
-            to: [{email}],
-            from: {name:'Luxury Stays', email:'booking@luxurystays.bg'},
+            to: [{ email }],
+            from: { name: 'Luxury Stays', email: 'booking@luxurystays.bg' },
             subject: 'Successful Registration',
             html: msg_to_guest_html
           };
@@ -285,44 +259,97 @@ app.post('/registrationRequest', async (req, res) => {
     });
 });
 
-// Reservation request
-app.post('/reservationRequest', async (req, res) => {
+app.post('/availability', async (req, res) => {
+  const { checkin, checkout, adults, children, children_age } = req.body;
   try {
-    const { checkInDate, checkOutDate } = await getCheckInOutDates();
-    res.status(200).json({ checkInDate, checkOutDate });
+    const response = await checkIfDatesAvailable(checkin, checkout);
+    logger.info
+    (`Availability request from ${checkin} to ${checkout} for ${adults} adults and ${children} children at age ${children_age} with response: ${response}`);
+    res.status(200).json({ available: response });
+  } catch (err) {
+    logger.error('Availability request error: ' + err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Reservation request
+app.post('/reservation', async (req, res) => {
+  try {
+    const {
+      propertyName,
+      first_name,
+      last_name,
+      email,
+      phone,
+      checkin,
+      checkout,
+      adults,
+      children,
+      children_age,
+      note
+    } = req.body;
+    const reservationRequestId = await reservationRequestContext.add(
+      {
+        propertyName,
+        first_name,
+        last_name,
+        email,
+        phone,
+        checkin,
+        checkout,
+        adults,
+        children,
+        children_age,
+        note
+      }
+    );
+    const msg_to_admin = {
+      to: [{ email:'luxurystays.help@gmail.com'}],
+      from: { name: 'Luxury Stays Service', email: 'service@luxurystays.bg' },
+      subject: 'One new reservation request',
+      html: `<p>You have a new reservation request from ${first_name} ${last_name} (${email}) with id: ${reservationRequestId.id}</p>`
+    };
+    client
+      .send(msg_to_admin).then(() => {
+      logger.info('successfully sent message to admin');
+    }).catch(err => {
+      logger.error('Unable to send message to admin', err.message);
+    });
+    res.status(200).json({ success: true });
   } catch (error) {
+    logger.error('Reservation request error: ' + error.message);
     res.status(500).json({ error: error.message });
   }
 });
 
 // Login session
 app.post('/login', async (req, res) => {
-  const authHeader = req.headers.authorization || "";
-  const token = authHeader.startsWith("Bearer ") ? authHeader.split(" ")[1] : null;
+  const authHeader = req.headers.authorization || '';
+  const token = authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
   if (!token) {
-    return res.status(401).send("Unauthorized: No token provided");
+    return res.status(401).send('Unauthorized: No token provided');
   }
 
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
     await admin.auth().setCustomUserClaims(decodedToken.uid, { admin: true });
-    logger.info("Authenticated user EMAIL:", decodedToken.email);
+    logger.info('Authenticated user EMAIL:', decodedToken.email);
     if (decodedToken) {
       res.status(200).send();
     } else {
-      return res.status(401).send("Unauthorized: No token provided");
+      return res.status(401).send('Unauthorized: No token provided');
     }
   } catch (error) {
-    logger.error("Token verification failed:", error);
-    res.status(401).send("Unauthorized: Invalid token");
+    logger.error('Token verification failed:', error);
+    res.status(401).send('Unauthorized: Invalid token');
   }
 });
 
 app.post('/authentication', async (req, res) => {
-  const authHeader = req.headers.authorization || "";
-  const token = authHeader.startsWith("Bearer ") ? authHeader.split(" ")[1] : null;
+  const authHeader = req.headers.authorization || '';
+  const token = authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
   if (!token) {
-    return res.status(401).send("Unauthorized: No token provided");
+    return res.status(401).send('Unauthorized: No token provided');
   }
 
   try {
@@ -332,21 +359,118 @@ app.post('/authentication', async (req, res) => {
       const data = {
         apartments: [],
         contacts: [],
-        users:[],
-        templates:[]
+        users: [],
+        templates: []
       };
-      if(decodedToken.admin) {
-        logger.info("User admin EMAIL:", decodedToken.admin);
+      if (decodedToken.admin) {
+        logger.info('User admin EMAIL:', decodedToken.admin);
       }
       res.status(200).send(data);
     } else {
-      return res.status(401).send("Unauthorized: No token provided");
+      return res.status(401).send('Unauthorized: No token provided');
     }
   } catch (error) {
-    logger.error("Token verification failed:", error);
-    res.status(401).send("Unauthorized: Invalid token");
+    logger.error('Token verification failed:', error);
+    res.status(401).send('Unauthorized: Invalid token');
   }
 });
+
+const getCheckInOutDates = (ical_url) => new Promise((resolve, reject) => {
+  ical.fromURL(ical_url, {}, (err, data) => {
+    if (err) {
+      return reject(err);
+    }
+    const dates = [];
+
+    for (let key in data) {
+      const event = data[key];
+      if (event.type === 'VEVENT') {
+        const date = new Date(event.start);
+        const newDate = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), 12, 0, 0));
+        dates.push(newDate.toISOString());
+
+        const date2 = new Date(event.end);
+        const newDate2 = new Date(Date.UTC(date2.getUTCFullYear(), date2.getUTCMonth(), date2.getUTCDate(), 9, 0, 0));
+        dates.push(newDate2.toISOString());
+      }
+    }
+
+    dates.sort((a, b) => new Date(a) - new Date(b));
+    resolve(dates);
+  });
+});
+
+const getNearestCheckinOutDate = () => new Promise(async (resolve, reject) => {
+  const dates = await getCheckInOutDates(airbnb_ical);
+  let index = dates.findIndex(d => new Date(d).getUTCDate() >= new Date(Date.now()).getUTCDate());
+  index = index % 2 === 0 ? index : index + 1;
+  const checkInDate = dates[index];
+  const checkOutDate = dates[index + 1];
+  logger.info(dates, { structuredData: true });
+  resolve([checkInDate, checkOutDate]);
+});
+function toDateOnly(d) {
+  return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+}
+function getCalendarDates(url) {
+  return new Promise((resolve, reject) => {
+    ical.fromURL(url, {}, (err, data) => {
+      if (err) return reject(err);
+
+      const dates = [];
+
+      for (let key in data) {
+        const ev = data[key];
+        if (ev.type === "VEVENT") {
+          const start = toDateOnly(new Date(ev.start));
+          const end = toDateOnly(new Date(ev.end));
+          dates.push(start, end);
+        }
+      }
+
+      dates.sort((a, b) => a - b);
+      resolve(dates);
+    });
+  });
+}
+const checkIfDatesAvailable = (checkin, checkout) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const booking_dates = await getCalendarDates(booking_ical);
+      const airbnb_dates = await getCalendarDates(airbnb_ical);
+      const allDates = [...booking_dates, ...airbnb_dates].sort((a, b) => a - b);
+
+      if (!allDates.length) {
+        return reject(new Error("No dates available (both calendars empty)"));
+      }
+
+      const ci = toDateOnly(new Date(checkin));
+      const co = toDateOnly(new Date(checkout));
+
+      for (let i = 0; i < allDates.length; i += 2) {
+        const start = allDates[i];
+        const end = allDates[i + 1];
+        if (!end) continue;
+
+        // overlap check
+        if (ci < end && co > start) {
+          // ✅ allow back-to-back
+          if ((co.toISOString().split('T'))[0] === (start.toISOString().split('T'))[0] || (ci.toISOString().split('T'))[0] === (end.toISOString().split('T'))[0]) {
+            continue;
+          }
+          return resolve(false); // ❌ real overlap
+        }
+      }
+
+      resolve(true); // ✅ available
+    } catch (err) {
+      reject(err);
+    }
+  });
+
+
+
+
 
 // Final export
 exports.api = onRequest({

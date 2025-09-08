@@ -105,15 +105,11 @@
     <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <link rel="stylesheet" href="../css/aos.css">
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
-    <link rel="stylesheet" href="../css/fancybox.min.css">
-    
-    <link rel="stylesheet" href="../fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../fonts/fontawesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../css/style.css">
-
+    <link rel="stylesheet" href="../css/reservation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   </head>
   <body>
@@ -143,7 +139,7 @@
                                       <li><a href="posts.html">Публикации</a></li>
                                       <li><a href="contact.html">Контакти</a></li>
                                       <li class="active"><a href="reservation.html">Резервация</a></li>
-                                      <li><div class="multi-button">
+                                      <li><div id="lang_button_container" class="multi-button">
                                           <button id="en" class="btn-lang">English</button>
                                           <button id="bg" class="btn-lang">Български</button>
                                       </div></li>
@@ -180,114 +176,231 @@
         </a>
     </section>
     <!-- END section -->
+    <section class="section" id="next">
 
-    <section class="section contact-section" id="next">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
-
-                    <form id="reservation-form" method="post" class="bg-white p-md-5 p-4 mb-5 border">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label class="text-black font-weight-bold" for="name">Име</label>
-                                <input type="text" id="name" class="form-control contact-section-input" required="required">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="text-black font-weight-bold" for="phone">Телефон</label>
-                                <input type="text" id="phone" class="form-control contact-section-input" required="required">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <label class="text-black font-weight-bold" for="email">Имейл</label>
-                                <input type="email" id="email" class="form-control contact-section-input" required="required">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label class="text-black font-weight-bold" for="checkin_date">Дата на настаняване</label>
-                                <input type="text" id="checkin_date" class="form-control contact-section-input" required="required">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="text-black font-weight-bold" for="checkout_date">Дата на напускане</label>
-                                <input type="text" id="checkout_date" class="form-control contact-section-input" required="required">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label for="adults" class="font-weight-bold text-black">Възрастни</label>
-                                <div class="field-icon-wrap">
-                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="adults" class="form-control contact-section-input" required="required">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for="children" class="font-weight-bold text-black">Деца</label>
-                                <div class="field-icon-wrap">
-                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="children" class="form-control contact-section-input" required="required">
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="row mb-4">
-                            <div class="col-md-12 form-group">
-                                <label class="text-black font-weight-bold" for="message">Бележки</label>
-                                <textarea name="message" id="message" class="form-control contact-section-input" cols="30" rows="8"></textarea>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <div class="g-recaptcha" data-size="compact" data-sitekey="6LelIwYrAAAAADB96e-yjYMj62EroB7YIuJnSjzR"></div>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <button class="send-btn font-weight-bold" type="submit">
-                          <span class="svg-wrapper-1">
-                              <span class="svg-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="4" width="18" height="16" rx="2" ry="2"/>
-                                     <line x1="16" y1="2" x2="16" y2="6"/>
-                                     <line x1="8" y1="2" x2="8" y2="6"/>
-                                     <line x1="3" y1="10" x2="21" y2="10"/>
-                                     <path d="M9 16l2 2 4-4"/>
-                                </svg>
-                              </span>
-                          </span>
-                                    <span class="span">Проверете наличността</span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-                <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
-                    <div class="row">
-                        <div class="col-md-10 ml-auto contact-info">
-                            <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Адрес:</span> <span> <a class="contact-info-el" href="https://maps.app.goo.gl/MjG9y5eHqBKvikp59" target="_blank">ул. Стефан Веркович 9, <br> Капана, Пловдив</a></span></p>
-                            <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Телефон:</span> <span> <a class="contact-info-el" href="tel: 00359 87 613 1555">+359 87 613 1555</a></span></p>
-                            <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Имейл:</span> <span> <a class="contact-info-el" href="mailto: booking@luxurystays.bg">booking@luxurystays.bg</a></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container-wizard" >
+        <div class="header">
+          <h1>Luxury Stays Kapana Plovdiv</h1>
+          <p class="text-center">Резервирайте своя перфектен престой при нас</p>
         </div>
+
+        <div class="form-container">
+          <div class="step-progress">
+            <div class="step active" id="step1">
+              <span>1</span>
+              <span class="step-label">Дати и гости</span>
+            </div>
+            <div class="step" id="step2">
+              <span>2</span>
+              <span class="step-label">Вашата информация</span>
+            </div>
+            <div class="step" id="step3">
+              <span>3</span>
+              <span class="step-label">Потвърждение</span>
+            </div>
+          </div>
+
+          <form id="reservation-form">
+            <!-- Стъпка 1: Дати и гости -->
+            <div class="form-step active" id="form-step-1">
+              <h2 class="text-center step-header">Изберете дати и гости</h2>
+              <div class="row">
+
+                <div class="form-group col-md-6">
+                  <label for="checkin"><i class="fas fa-calendar-alt"></i> Настаняване</label>
+                  <input type="date" class="contact-section-input form-control" id="checkin" required>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="checkout"><i class="fas fa-calendar-alt"></i> Напускане</label>
+                  <input type="date" class="contact-section-input form-control" id="checkout" required>
+                </div>
+              </div>
+              <div id="adults_children_row" class="row">
+
+                <div class="form-group col-md-6">
+                  <label for="adults"><i class="fas fa-user"></i> Възрастни</label>
+                  <select id="adults" class="contact-section-input form-control" required>
+                    <option value="1">1 възрастен</option>
+                    <option value="2">2 възрастни</option>
+                    <option value="3">3 възрастни</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="children"><i class="fas fa-child"></i> Деца</label>
+                  <select id="children" class="contact-section-input form-control" required>
+                    <option value="0">Без деца</option>
+                    <option value="1">1 дете</option>
+                    <option value="2">2 деца</option>
+                    <option value="3">3 деца</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="child-ages" class="child-ages-container">
+              </div>
+
+              <div class="btn-group justify-content-end">
+                <button type="button" class="next" id="step1-next">Напред</button>
+              </div>
+            </div>
+
+            <!-- Стъпка 2: Лична информация -->
+            <div class="form-step" id="form-step-2">
+              <h2 class="text-center step-header">Вашата информация</h2>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="firstName"><i class="fas fa-user"></i> Име</label>
+                  <input type="text" id="firstName" class="contact-section-input form-control" required>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="lastName"><i class="fas fa-user"></i> Фамилия</label>
+                  <input type="text" id="lastName" class="contact-section-input form-control" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Имейл адрес</label>
+                <input type="email" id="email" class="contact-section-input form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone"><i class="fas fa-phone"></i> Телефонен номер</label>
+                <input type="tel" id="phone" class="contact-section-input form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label for="note"><i class="fas fa-sticky-note"></i> Специални изисквания</label>
+                <textarea id="note" rows="4" class="contact-section-input form-control" placeholder="Вашите специални изисквания или бележки..."></textarea>
+              </div>
+
+              <div class="btn-group">
+                <button type="button" class="prev">Назад</button>
+                <button type="button" class="next" id="step2-next">Напред</button>
+              </div>
+            </div>
+
+            <!-- Стъпка 3: Потвърждение -->
+            <div class="form-step" id="form-step-3">
+              <div class="confirmation" id="confirmation-success">
+                <i class="fas fa-check-circle"></i>
+                <h2 class="text-center step-header">Благодарим Ви за заявката за резервация!</h2>
+                <p>Получихме Вашите данни и ще обработим заявката Ви скоро.</p>
+                <p>Ще получите потвърждение и фактура по имейл в рамките на 24 часа.</p>
+                <p>Ако имате спешни въпроси, моля свържете се с нас на <strong class="font-weight-bold">booking@luxurystays.bg</strong></p>
+              </div>
+
+              <div class="confirmation" id="confirmation-error" style="display: none;">
+                <i class="fas fa-exclamation-circle" style="color: #e74c3c;"></i>
+                <h2 class="text-center step-header">Неуспешна обработка на резервацията</h2>
+                <p>Възникна проблем при обработката на Вашата заявка.</p>
+                <p>Моля, опитайте отново след малко.</p>
+                <button class="retry-btn" id="retry-btn"><i class="fas fa-redo"></i> Опитайте отново</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </section>
 
+    <!-- Модал за конфликт на дати -->
+    <div class="modal" id="dateConflictModal">
+      <div class="modal-content">
+        <h3><i class="fas fa-calendar-times"></i> Конфликт на дати</h3>
+        <p>Съжаляваме, избраните от Вас дати не са налични. Моля, изберете други дати за престоя си.</p>
+        <button id="modal-ok-btn">OK</button>
+      </div>
+    </div>
 
+    <!-- Модал за зареждане -->
+    <div class="modal" id="loadingModal">
+      <div class="modal-content">
+        <h3>Обработваме Вашата заявка</h3>
+        <div class="loading-container">
+          <div class="loading"></div>
+        </div>
+        <p>Моля, изчакайте, докато проверяваме наличността...</p>
+      </div>
+    </div>
+
+    <section class="section testimonial-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-7">
+            <h2 class="heading" data-aos="fade-up">Мнения на гости</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="js-carousel-2 owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="testimonial text-center slider-item">
+              <div class="author-image mb-3">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
+              </div>
+              <blockquote>
+                <p>&ldquo;Страхотен апартамент в сърцето на Капана, всичко е на пешеходно разстояние и лесно достъпно. Апартаментът е тих, чист и много удобен. Сградата е нова и сигурна, а частното подземно заключено паркомясто е огромно предимство за този район. Горещо препоръчвам това място и със сигурност ще дойда отново.&rdquo;</p>
+              </blockquote>
+              <p><em>&mdash; Alon</em></p>
+            </div>
+
+            <div class="testimonial text-center slider-item">
+              <div class="author-image mb-3">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
+              </div>
+              <blockquote>
+                <p>&ldquo;Апартаментът беше страхотен! Страхотна локация в Капана, на много кратко разстояние от всички ресторанти. Леглото (и диванът) бяха наистина удобни. Апартаментът имаше всичко необходимо (тоалетни принадлежности и дори препарат за пране, за да изперем дрехите си). Борислава беше невероятен домакин, много отзивчива към всички мои въпроси за Пловдив и дори ни донесе лед, когато пристигнахме в жегата. Беше много приятно и спокойно да седим на балкона. Определено бих отседнала отново. Благодаря!!!&rdquo;</p>
+              </blockquote>
+              <p><em>&mdash; Clare</em></p>
+            </div>
+
+            <div class="testimonial text-center slider-item">
+              <div class="author-image mb-3">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
+              </div>
+              <blockquote>
+                <p>&ldquo;Отличен апартамент, точно както е в обявата, и много отзивчив домакин. Мястото има удобно гаражно място, което е истинско удобство в този квартал. Силно препоръчвам!&rdquo;</p>
+              </blockquote>
+              <p><em>&mdash; Peter</em></p>
+            </div>
+
+            <div class="testimonial text-center slider-item">
+              <div class="author-image mb-3">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
+              </div>
+              <blockquote>
+                <p>&ldquo;Силно препоръчвам и абсолютно невероятен имот! Страхотна локация! Определено бих отседнал там отново!&rdquo;</p>
+              </blockquote>
+              <p><em>&mdash; Georgi</em></p>
+            </div>
+
+            <div class="testimonial text-center slider-item">
+              <div class="author-image mb-3">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
+              </div>
+              <blockquote>
+                <p>&ldquo;Перфектна локация, точно в Капана; модерен, чист апартамент, оборудван с всичко необходимо; сигурен паркинг; много приятелски настроен хазяин — с две думи всичко беше перфектно :)&rdquo;</p>
+              </blockquote>
+              <p><em>&mdash; Patrick</em></p>
+            </div>
+
+            <div class="testimonial text-center slider-item">
+              <div class="author-image mb-3">
+                <img src="../images/default_profile.png" alt="Image placeholder" class="rounded-circle mx-auto">
+              </div>
+              <blockquote>
+                <p>&ldquo;Страхотна локация и собственикът ни позволи да се настаним малко по-рано и да паркираме колата. Посрещна ни човек с ключовете за гаража, показа ни паркинга, помогна ми докато паркирах, заведе ни до апартамента, изчака докато въведем кода за вход и след това си тръгна. Имаше отворен чат в WhatsApp за всички въпроси. Апартаментът е наскоро реновиран, много чист, просторен, много добре обзаведен – просто перфектен. Всичко беше на пешеходно разстояние. Горещо препоръчвам този имот.&rdquo;</p>
+              </blockquote>
+              <p><em>&mdash; Scot</em></p>
+            </div>
+
+          </div>
+          <!- END slider --
+        </div>
+
+      </div>
+    </section>
 
     <section class="section bg-image overlay" style="background-image: url('../images/building_face.jpg');">
         <div class="container" >
@@ -337,7 +450,7 @@
             </div>
             <div class="row pt-5">
                 <p class="col-md-6 text-left">
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> Всички права запазени | Luxury Stays Капана Пловдив
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> Всички права запазени | Luxury Stays Kapana Plovdiv
                 </p>
 
                 <p class="col-md-6 text-right social">
