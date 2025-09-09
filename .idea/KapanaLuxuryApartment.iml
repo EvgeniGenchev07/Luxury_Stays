@@ -15,5 +15,11 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="chart.js" level="application" />
     <orderEntry type="library" name="font-awesome" level="application" />
+    <orderEntry type="library" name="api" level="application" />
+    <orderEntry type="library" name="3889158" level="application" />
+    <orderEntry type="library" name="stub" level="application" />
+    <orderEntry type="library" name="safe-tcf-v2" level="application" />
+    <orderEntry type="library" name="iubenda_cs" level="application" />
+    <orderEntry type="library" name="stub-v2" level="application" />
   </component>
 </module>

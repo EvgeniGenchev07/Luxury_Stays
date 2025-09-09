@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{font-awesome}" />
+    <file url="PROJECT" libraries="{3889158, api, font-awesome, iubenda_cs, safe-tcf-v2, stub, stub-v2}" />
   </component>
 </project>

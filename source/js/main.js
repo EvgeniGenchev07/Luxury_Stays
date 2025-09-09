@@ -1,4 +1,4 @@
-const isBG = window.location.pathname.includes('/bg/');
+const isBG = window.location.pathname.includes('/bg');
 const lang = isBG ? 'bg' : 'en';
 const langButtonsContainer = document.querySelector('#lang_button_container');
 langButtonsContainer.querySelector('#'+lang).classList.add("preferred");
@@ -8,7 +8,8 @@ langButtonsContainer.querySelectorAll('.btn-lang').forEach(el=>{
       if(el.id !== lang) {
         langButtonsContainer.querySelector('.preferred').classList.remove("preferred");
         el.classList.add("preferred");
-        window.location.replace( window.location.pathname.replace('/' + lang, '/' + el.id));
+        if(window.location.pathname === '/' || window.location.pathname.length === 0) window.location.replace(window.location.pathname.replace('/', '/' + el.id));
+        else window.location.replace( window.location.pathname.replace('/' + lang, '/' + el.id));
       }
     });
 });
