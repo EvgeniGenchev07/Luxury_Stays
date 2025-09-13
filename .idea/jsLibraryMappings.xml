@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{3889158, api, font-awesome, iubenda_cs, safe-tcf-v2, stub, stub-v2}" />
+    <file url="PROJECT" libraries="{3889158, OwlCarousel2, animate.css, aos, api, bootstrap, bootstrap-datepicker, bootstrap-icons, fancybox, font-awesome, ionicons, iubenda_cs, jquery-3.3.1, jquery-migrate-3.0.1, moment.js, popper.js, safe-tcf-v2, stellar.js, stub, stub-v2, tempusdominus-bootstrap-4, timepicker}" />
   </component>
 </project>

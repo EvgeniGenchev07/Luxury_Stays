@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
   checkinInput.min = formatDate(today);
   checkoutInput.min = formatDate(tomorrow);
 
-  checkinInput.value = params_checkin ||formatDate(today);
-  checkoutInput.value = params_checkout|| formatDate(tomorrow);
+  checkinInput.value = params_checkin || formatDate(today);
+  checkoutInput.value = params_checkout || formatDate(tomorrow);
   const adults_children = document.querySelector('#adults_children_row');
   const adults = adults_children.querySelector('#adults');
   const children = adults_children.querySelector('#children');
@@ -41,74 +41,70 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  document.getElementById('children').addEventListener('change',(event)=>{
+  document.getElementById('children').addEventListener('change', (event) => {
     const adults = document.querySelector('#adults');
-    const value = document.getElementById('children').value
-    if(value == 1|| value == 2){
+    const value = document.getElementById('children').value;
+    if (value == 1 || value == 2) {
       const options = adults.options;
-      for(let i=0; i<options.length; i++){
-        if(options[i].value != 3){
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].value != 3) {
           adults.options[i].disabled = false;
           continue;
         }
         adults.options[i].disabled = true;
       }
-    }
-    else if(value == 3){
+    } else if (value == 3) {
       const options = adults.options;
-      for(let i=0; i<options.length; i++){
-        if(options[i].value != 1){
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].value != 1) {
           options[i].disabled = true;
           continue;
         }
         options[i].disabled = false;
       }
-    }
-    else{
+    } else {
       const options = adults.options;
-      for(let i=0; i<options.length; i++){
+      for (let i = 0; i < options.length; i++) {
         adults.options[i].disabled = false;
       }
     }
-  })
-  document.getElementById('adults').addEventListener('change',(event)=>{
+  });
+  document.getElementById('adults').addEventListener('change', (event) => {
     const children = document.querySelector('#children');
-    const value = document.getElementById('adults').value
-    if(value == 2){
+    const value = document.getElementById('adults').value;
+    if (value == 2) {
       const options = children.options;
-      for(let i=0; i<options.length; i++){
-        if(options[i].value != 3){
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].value != 3) {
           children.options[i].disabled = false;
           continue;
         }
         children.options[i].disabled = true;
       }
-    }
-    else if(value == 3){
+    } else if (value == 3) {
       const options = children.options;
-      for(let i=0; i<options.length; i++){
-        if(options[i].value != 0){
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].value != 0) {
           options[i].disabled = true;
           continue;
         }
         options[i].disabled = false;
       }
-    }
-    else{
+    } else {
       const options = children.options;
-      for(let i=0; i<options.length; i++){
+      for (let i = 0; i < options.length; i++) {
         children.options[i].disabled = false;
       }
     }
-  })
+  });
 
   // Handle children selection
   const childrenSelect = document.getElementById('children');
   const childAgesContainer = document.getElementById('child-ages');
-const getChildAges = ()=>{
-   const selects = childAgesContainer.querySelectorAll("select");
-  return Array.from(selects).map(select => parseInt(select.value));
-}
+  const getChildAges = () => {
+    const selects = childAgesContainer.querySelectorAll('select');
+    return Array.from(selects).map(select => parseInt(select.value));
+  };
   childrenSelect.addEventListener('change', function() {
     const childCount = parseInt(this.value);
     childAgesContainer.innerHTML = '';
@@ -213,8 +209,8 @@ const getChildAges = ()=>{
           checkout: checkoutInput.value,
           adults: adults.value,
           children: children.value,
-          children_age: getChildAges(),
-        }),
+          children_age: getChildAges()
+        })
       });
 
       if (!res.ok) {
@@ -224,7 +220,7 @@ const getChildAges = ()=>{
       const data = await res.json();
       return { available: data.available };
     } catch (err) {
-      console.error("Availability fetch error:", err);
+      console.error('Availability fetch error:', err);
       return { available: false };
     }
   };
@@ -242,26 +238,26 @@ const getChildAges = ()=>{
           adults: parseInt(adults.value),
           children: parseInt(children.value),
           children_age: getChildAges(),
-          firstName: document.getElementById("first_name").value,
-          lastName: document.getElementById("last_name").value,
-          email: document.getElementById("email").value,
-          phone: document.getElementById("phone").value,
-          note: document.getElementById("note").value,
-        }),
+          firstName: document.getElementById('first_name').value,
+          lastName: document.getElementById('last_name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          note: document.getElementById('note').value
+        })
       });
 
       if (!res.ok) {
-        return { success: false, message: "Server error" };
+        return { success: false, message: 'Server error' };
       }
 
       const data = await res.json();
       if (data.success) {
         return { success: true };
       }
-      return { success: false, message: "Dates are not available" };
+      return { success: false, message: 'Dates are not available' };
     } catch (err) {
-      console.error("Reservation error:", err);
-      return { success: false, message: "Network or server error" };
+      console.error('Reservation error:', err);
+      return { success: false, message: 'Network or server error' };
     }
   };
 

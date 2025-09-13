@@ -6,6 +6,7 @@ import imagemin from 'gulp-imagemin';
 import purgecss from 'gulp-purgecss';
 import mozjpeg from 'imagemin-mozjpeg';
 import optipng from 'imagemin-optipng';
+import webp from 'imagemin-webp';
 import svgo from 'imagemin-svgo';
 import rev from 'gulp-rev';
 import revDel from 'gulp-rev-delete-original';
@@ -52,35 +53,9 @@ function minifyCss(src, dest, purge = false, purgeContent = []) {
   };
 }
 
-// ---------- HTML tasks ----------
-export const minifyHtmlEn = minifyHtml('source/en/*.html', 'dist/en', true);
-export const minifyHtmlBg = minifyHtml('source/bg/*.html', 'dist/bg', true);
-export const minifyHtmlService = minifyHtml('source/service/*.html', 'dist/service');
-export const minifyHtmlAdmin = minifyHtml('source/admin/*.html', 'dist/admin');
-
-// ---------- JS tasks ----------
-export const jsService = minifyJs('source/service/*.js', 'dist/service');
-export const jsAdmin = minifyJs('source/admin/*.js', 'dist/admin');
-export const scripts = minifyJs('source/js/*.js', 'dist/js');
-
-// ---------- CSS tasks ----------
-export const cssService = minifyCss('source/service/*.css', 'dist/service');
-export const cssAdmin = minifyCss('source/admin/*.css', 'dist/admin');
-export const styles = minifyCss('source/css/*.css', 'dist/css', true, ['source/en/*.html', 'source/js/*.js']);
-
-// ---------- Images ----------
+// ---------- Image optimization ---------
 export function images() {
-  return gulp.src('source/images/**/*')
-    .pipe(imagemin([
-      mozjpeg({ quality: 75, progressive: true }),
-      optipng({ optimizationLevel: 5 }),
-      svgo({
-        plugins: [
-          { name: 'removeViewBox', active: false },
-          { name: 'cleanupIDs', active: false }
-        ]
-      })
-    ]))
+  return gulp.src('source/images/**/*.{jpg,jpeg,png,svg,webp}', { base: 'source/images' })
     .pipe(gulp.dest('dist/images'));
 }
 
@@ -89,9 +64,9 @@ function hashAssets() {
   return gulp.src(['dist/**/*.{css,js}'], { base: 'source' })
     .pipe(rev())
     .pipe(revDel())
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('source'))
     .pipe(rev.manifest())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('source'));
 }
 
 function updateHtmlReferences() {
@@ -124,6 +99,22 @@ function updateHtmlReferences() {
     .pipe(gulp.dest('dist'));
 }
 
+// ---------- HTML tasks ----------
+export const minifyHtmlEn = minifyHtml('source/en/*.html', 'dist/en', true);
+export const minifyHtmlBg = minifyHtml('source/bg/*.html', 'dist/bg', true);
+export const minifyHtmlService = minifyHtml('source/service/*.html', 'dist/service');
+export const minifyHtmlAdmin = minifyHtml('source/admin/*.html', 'dist/admin');
+
+// ---------- JS tasks ----------
+export const jsService = minifyJs('source/service/*.js', 'dist/service');
+export const jsAdmin = minifyJs('source/admin/*.js', 'dist/admin');
+export const scripts = minifyJs('source/js/*.js', 'dist/js');
+
+// ---------- CSS tasks ----------
+export const cssService = minifyCss('source/service/*.css', 'dist/service');
+export const cssAdmin = minifyCss('source/admin/*.css', 'dist/admin');
+export const styles = minifyCss('source/css/*.css', 'dist/css', true, ['source/en/*.html', 'source/js/*.js']);
+
 // ---------- Pipelines ----------
 export const base = gulp.series(
   minifyHtmlEn,
@@ -149,7 +140,6 @@ export const build = gulp.series(
   cssService,
   cssAdmin,
   scripts,
-  images,
   styles,
   hashAssets,
   updateHtmlReferences

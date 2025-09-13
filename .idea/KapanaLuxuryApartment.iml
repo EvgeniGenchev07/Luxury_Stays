@@ -21,5 +21,20 @@
     <orderEntry type="library" name="safe-tcf-v2" level="application" />
     <orderEntry type="library" name="iubenda_cs" level="application" />
     <orderEntry type="library" name="stub-v2" level="application" />
+    <orderEntry type="library" name="bootstrap-datepicker" level="application" />
+    <orderEntry type="library" name="aos" level="application" />
+    <orderEntry type="library" name="fancybox" level="application" />
+    <orderEntry type="library" name="stellar.js" level="application" />
+    <orderEntry type="library" name="OwlCarousel2" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="popper.js" level="application" />
+    <orderEntry type="library" name="jquery-migrate-3.0.1" level="application" />
+    <orderEntry type="library" name="jquery-3.3.1" level="application" />
+    <orderEntry type="library" name="animate.css" level="application" />
+    <orderEntry type="library" name="ionicons" level="application" />
+    <orderEntry type="library" name="timepicker" level="application" />
+    <orderEntry type="library" name="moment.js" level="application" />
+    <orderEntry type="library" name="tempusdominus-bootstrap-4" level="application" />
+    <orderEntry type="library" name="bootstrap-icons" level="application" />
   </component>
 </module>
