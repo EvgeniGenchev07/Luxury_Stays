@@ -31,7 +31,7 @@ langButtonsContainer.querySelectorAll('.btn-lang').forEach(el=>{
     }
   });
 
-	
+
 	$('nav .dropdown').hover(function(){
 		var $this = $(this);
 		$this.addClass('show');
@@ -162,7 +162,7 @@ langButtonsContainer.querySelectorAll('.btn-lang').forEach(el=>{
     }
   }
   siteStellar();
-  
+
   $(window).on('resize', function() {
     $(window).stellar('destroy');
     if (window.innerWidth > 768) {
@@ -233,13 +233,13 @@ langButtonsContainer.querySelectorAll('.btn-lang').forEach(el=>{
   /*var goToTop = function() {
 
     $('.js-gotop').on('click', function(event){
-      
+
       event.preventDefault();
 
       $('html, body').animate({
         scrollTop: $('html').offset().top
       }, 500, 'easeInOutExpo');
-      
+
       return false;
     });
 
@@ -253,7 +253,7 @@ langButtonsContainer.querySelectorAll('.btn-lang').forEach(el=>{
       }
 
     });
-  
+
   };*/
 
 
