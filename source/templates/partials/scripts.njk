@@ -1,0 +1,59 @@
+<script type="text/javascript">
+  var _iub = _iub || [];
+  _iub.csConfiguration = {
+    'siteId': 3889158,
+    'cookiePolicyId': 20321686,
+    'lang': '{{ lang }}',
+    'storage': { 'useSiteId': true }
+  };
+</script>
+<script src="https://cs.iubenda.com/autoblocking/3889158.js" type="text/javascript" defer></script>
+<script src="//cdn.iubenda.com/cs/tcf/stub-v2.js" type="text/javascript" defer></script>
+<script src="//cdn.iubenda.com/cs/tcf/safe-tcf-v2.js" type="text/javascript" defer></script>
+<script src="//cdn.iubenda.com/cs/gpp/stub.js" type="text/javascript" defer></script>
+<script charset="UTF-8" src="//cdn.iubenda.com/cs/iubenda_cs.js" type="text/javascript" defer></script>
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSZTKXJC" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+    {% if pageId == 'contact' or pageId == 'reservation' or pageId == 'index' %}
+        {% if pageId != 'index' %}
+            <script async defer src="https://www.google.com/recaptcha/api.js"></script>
+        {% endif %}
+        <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha384-duAtk5RV7s42V6Zuw+tRBFcqD8RjRKw6RFnxmxIj1lUGAQJyum/vtcUQX8lqKQjp" defer></script>
+    {% endif %}
+
+    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"></script>
+
+    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-migrate-3.0.1.min.js" integrity="sha384-w5FBDpYZssTSnIDL59XH9TYLpEJ2dDP4RPhSPtJd2iLxUY5L8AATkjOsbM4Ohmax"></script>
+    {% if pageId != 'post' or pageId != 'posts' %}
+    <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" defer></script>
+
+    <script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" defer></script>
+    {% endif %}
+
+    {% if pageId == 'about' or pageId == 'index' or pageId == 'reservation' %}
+        <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha384-l/y5WJTphApmSlx76Ev6k4G3zxu/+19CVvn9OTKI7gs4Yu5Hm8mjpdtdr5oyhnNo" defer></script>
+        {% if pageId != 'reservation' %}
+            <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha384-Zm+UU4tdcfAm29vg+MTbfu//q5B/lInMbMCr4T8c9rQFyOv6PlfQYpB5wItcXWe7" defer></script>
+        {% endif %}
+    {% endif %}
+    <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js" integrity="sha384-pPQqVsrLJIDmHCvvNX3mu8xxDcJeddG3vulN1v9TyQ7uTqXMQfmQchRrwkFMf1T2" defer></script>
+
+
+    <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha384-n1AULnKdMJlK1oQCLNDL9qZsDgXtH6jRYFCpBtWFc+a9Yve0KSoMn575rk755NJZ" defer></script>
+    <script defer src="../js/main.js"></script>
+{% if pageId == 'index' %}
+    <script defer src="../js/index.js"></script>
+{% endif %}
+{% if pageId == 'contact' %}
+    <script defer src="../js/contact.js"></script>
+{% endif %}
+{% if pageId == 'reservation' %}
+    <script defer src="../js/reservation.js"></script>
+{% endif %}
+{% if pageId == 'post' %}
+    <script defer src="../js/post.js"></script>
+{% endif %}
+{% if pageId == 'posts' %}
+    <script defer src="../js/posts.js"></script>
+{% endif %}

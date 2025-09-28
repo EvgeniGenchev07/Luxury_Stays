@@ -1,0 +1,6 @@
+<div class="home-slider major-carousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
+  {% for img in [
+  'living_room_6','living_room_1','kitchen_2','collage_4','bedroom_11','bedroom_3','bedroom_7','bedroom_13','bathroom_2','bathroom_1','hall_3','balcony_1','balcony_2','living_room_2','living_room_7','bedroom_1','bedroom_2','bedroom_4','bedroom_6','bedroom_8','bedroom_9','bedroom_10','bedroom_12','collage_1','collage_2','collage_3','collage_5'] %}
+  <div class="slider-item"><a data-fancybox="images" href="../images/{{ img }}.webp"><img {% if img != 'living_room_6' and img != 'living_room_1' %}loading="lazy"{% endif%} class="img-fluid" src="../images/{{ img }}.webp" alt="{{ img | replace('_',' ') }}"></a></div>
+  {% endfor %}
+</div>

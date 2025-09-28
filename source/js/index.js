@@ -1,70 +1,62 @@
-const post_body = (position, id, tag, title, short_description, cover_image) => {
-  return `<div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="${position * 100}">
-            <div class="media media-custom d-block mb-4 h-100">
-              <a data-post-id="${id}" class="mb-4 d-block post-link"><img src="images/${cover_image}" alt="" class="img-fluid"></a>
-              <div class="media-body">
-                <span class="meta-post">${tag}</span>
-                <h2 class="mt-0 mb-3"><a class="post-link" data-post-id="${id}">${title}</a></h2>
-                <p>${short_description}</p>
-              </div>
-            </div>
-          </div>`;
-};
+
 const months = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ];
-document.addEventListener('DOMContentLoaded', function() {
-  let lang = sessionStorage.getItem('lang');
-  if (lang == null) {
-    lang = 'en';
-  }
+document.addEventListener('DOMContentLoaded', function()
+{
   fetch(`../locales/${lang}.json`)
     .then(response => response.json())
     .then(data => {
       let posts = data.posts;
-      let firstId = Math.floor(Math.random() * 9);
-      let secondId = 0;
-      let thirdId = 0;
-      while (true) {
-        let num = Math.floor(Math.random() * 9);
-        if (num != firstId) {
-          secondId = num;
-          break;
-        }
+      let postIds = [];
+      const max = posts.length-1;
+      const getUniqueRandom = (ids) =>{
+        let num;
+        do {
+          num = Math.floor(Math.random() * max);
+        } while (ids.includes(num));
+        return num;
       }
-      while (true) {
-        let num = Math.floor(Math.random() * 9);
-        if (num != firstId && num != secondId) {
-          thirdId = num;
-          break;
-        }
+      for(let i = 0; i < 3; i++) {
+        postIds.push(getUniqueRandom(postIds));
       }
-      let first_post = posts[firstId];
-      let second_post = posts[secondId];
-      let third_post = posts[thirdId];
       let container = document.getElementById('posts-container');
-      container.innerHTML += post_body(1, first_post.id, first_post.tag, first_post.title, first_post.summarize, first_post.main_image);
-      container.innerHTML += post_body(2, second_post.id, second_post.tag, second_post.title, second_post.summarize, second_post.main_image);
-      container.innerHTML += post_body(3, third_post.id, third_post.tag, third_post.title, third_post.summarize, third_post.main_image);
-      document.querySelectorAll('.post-link').forEach(el => {
-        el.addEventListener('click', () => {
-          let post_id = el.getAttribute('data-post-id');
-          window.open(`../${lang}/post.html?name=` + posts[parseInt(post_id) - 1].title.toLowerCase(), '_self');
-        });
+      let index = 0;
+      container.querySelectorAll('img').forEach(el => {
+        el.src = '../images/' + posts[postIds[index]].main_image;
+        el.parentElement.setAttribute('href', '../' + lang + '/post.html?name=' + posts[postIds[index]].title.toLowerCase());
+        ++index;
       });
+      index = 0;
+      container.querySelectorAll('h2 > a').forEach(el => {
+        el.setAttribute('href', '../' + lang + '/post.html?name=' + posts[postIds[index]].title.toLowerCase());
+        el.insertAdjacentText('beforeend',posts[postIds[index]].title);
+        ++index;
+      });
+      index = 0;
+      container.querySelectorAll('span').forEach(el => {
+        el.insertAdjacentText('beforeend',posts[postIds[index]].tag);
+        ++index;
+      });
+      index = 0;
+      container.querySelectorAll('p').forEach(el => {
+        el.insertAdjacentText('beforeend',posts[postIds[index]].paragraphs[0]);
+        ++index;
+      })
     });
 });
-const tab_section = document.querySelector('#tab-section');
-document.querySelectorAll('.tab-menu').forEach(el => {
+const tab_section = document.getElementById('tab-section');
+tab_section.querySelectorAll('.tab-menu').forEach(el => {
   el.addEventListener('click', () => {
     tab_section.style.setProperty('background-image', `url('${el.getAttribute('data-image')}')`);
   });
 });
-
-document.getElementById('children').addEventListener('change', (event) => {
-  const adults = document.querySelector('#adults');
-  const value = document.getElementById('children').value;
+const form = document.getElementById('vacancy-check-form');
+const children = form.querySelector('#children');
+const adults = form.querySelector('#adults');
+children.addEventListener('change', (event) => {
+  const value = children.value;
   if (value == 1 || value == 2) {
     const options = adults.options;
     for (let i = 0; i < options.length; i++) {
@@ -90,9 +82,8 @@ document.getElementById('children').addEventListener('change', (event) => {
     }
   }
 });
-document.getElementById('adults').addEventListener('change', (event) => {
-  const children = document.querySelector('#children');
-  const value = document.getElementById('adults').value;
+adults.addEventListener('change', (event) => {
+  const value = adults.value;
   if (value == 2) {
     const options = children.options;
     for (let i = 0; i < options.length; i++) {
@@ -118,16 +109,14 @@ document.getElementById('adults').addEventListener('change', (event) => {
     }
   }
 });
-document.getElementById('vacancy-check-button').addEventListener('click', function(e) {
+const formButton = form.querySelector('#vacancy-check-button');
+formButton.addEventListener('click', function(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  const form = document.getElementById('vacancy-check-form');
   if (form.checkValidity()) {
-    let adults = document.getElementById('adults').value;
-    let children = document.getElementById('children').value;
-    let dateIn = document.getElementById('checkin_date').value;
-    let dateOut = document.getElementById('checkout_date').value;
+    let dateIn = form.querySelector('#checkin_date').value;
+    let dateOut = form.querySelector('#checkout_date').value;
 
     dateIn = dateFormatChanger(dateIn);
     dateOut = dateFormatChanger(dateOut);
@@ -138,7 +127,7 @@ document.getElementById('vacancy-check-button').addEventListener('click', functi
     dateIn = dateIn.toISOString().split('T')[0];
     dateOut = dateOut.toISOString().split('T')[0];
 
-    window.open(`../${lang}/reservation.html?adults=${adults}&children=${children}&checkin=${dateIn}&checkout=${dateOut}`, '_self');
+    window.open(`../${lang}/reservation.html?adults=${adults.value}&children=${children.value}&checkin=${dateIn}&checkout=${dateOut}`, '_self');
 
   } else {
     form.reportValidity();

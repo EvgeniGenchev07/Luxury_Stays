@@ -1,0 +1,7 @@
+{% for t in dict.testimonials %}
+<div class="testimonial text-center slider-item">
+  <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
+  <blockquote><p>&ldquo;{{ t.text }}&rdquo;</p></blockquote>
+  <p><em>&mdash; {{ t.author }}</em></p>
+</div>
+{% endfor %}

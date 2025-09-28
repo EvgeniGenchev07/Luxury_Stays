@@ -1,0 +1,30 @@
+{% extends "layouts/base.njk" %}
+{% block content %}
+<section class="site-hero inner-page overlay" data-stellar-background-ratio="0.5" style="background-image: url(../images/building_face.webp)">
+  <div class="container">
+    <div class="row site-hero-inner justify-content-center align-items-center">
+      <div class="col-md-10 text-center" data-aos="fade">
+        <h1 class="heading mb-3">{{ dict.nav.posts }}</h1>
+        <ul class="custom-breadcrumbs mb-4">
+          <li><a class="hero-home-link" href="../{{ lang }}/index.html">{{ dict.nav.home }}</a></li>
+          <li>&bullet;</li>
+          <li>{{ dict.nav.posts }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section blog-post-entry bg-light" id="next">
+  <div class="container">
+    <div class="row" id="posts-container"></div>
+    <div class="row" data-aos="fade">
+      <div class="col-12">
+        <div class="custom-pagination">
+          <ul class="list-unstyled" id="page_indicator">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "layouts/base.njk" %}
+{% block content %}
+<section class="site-hero inner-page overlay" data-stellar-background-ratio="0.5" style="background-image: url(../images/building_face.webp)">
+  <div class="container">
+    <div class="row site-hero-inner justify-content-center align-items-center">
+      <div class="col-md-10 text-center" data-aos="fade">
+        <h1 class="heading mb-3">{{ dict.about.heading }}</h1>
+        <ul class="custom-breadcrumbs mb-4">
+          <li><a class="hero-home-link" href="../{{ lang }}/index.html">{{ dict.nav.home }}</a></li>
+          <li>&bullet;</li>
+          <li>{{ dict.nav.about }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <a class="mouse smoothscroll" href="#next"><div class="mouse-icon"><div class="mouse-wheel"></div></div></a>
+</section>
+
+<section class="py-5 bg-light" id="next">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-12 col-lg-7 ml-auto order-lg-2 position-relative mb-5" data-aos="fade-up">
+        <figure class="img-absolute"><img alt="Image" class="img-fluid" src="../images/bedroom_5.webp"></figure>
+        <img alt="Image" class="img-fluid rounded" src="../images/bedroom_4.webp">
+      </div>
+      <div class="col-md-12 col-lg-4 order-lg-1" data-aos="fade-up">
+        <h2 class="heading">{{ dict.index.welcomeHeading }}</h2>
+        <p class="mb-4">{{ dict.index.welcomeText }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section">
+  <div class="container" style="background-color: #fff">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-md-7 mb-5"><h2 class="heading" data-aos="fade-up">{{ dict.about.whyUs }}</h2></div>
+    </div>
+    {% include "partials/about-cards.njk" %}
+  </div>
+</div>
+
+<section class="section slider-section bg-light">
+  <div class="container">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-md-7">
+        <h2 class="heading" data-aos="fade-up">{{ dict.index.galleryHeading }}</h2>
+        <p data-aos="fade-up" data-aos-delay="100">{{ dict.index.galleryText }}</p>
+      </div>
+    </div>
+    <div class="row"><div class="col-md-12">{% include "partials/gallery.njk" %}</div></div>
+  </div>
+</section>
+
+<div class="section">
+  <div class="container">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-md-7 mb-5"><h2 class="heading" data-aos="fade">{{ dict.about.moreAboutUs }}</h2></div>
+    </div>
+    {% include "partials/about-text.njk" %}
+  </div>
+</div>
+
+<section class="section bg-image overlay" style="background-image: url('../images/building_face.webp');">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
+        <h2 class="text-white font-weight-bold">{{ dict.index.ctaHeading }}</h2>
+      </div>
+      <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
+        <a class="btn btn-outline-white-primary py-3 text-white px-5" href="../{{ lang }}/reservation.html">{{ dict.index.ctaButton }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

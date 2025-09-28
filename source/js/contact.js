@@ -1,4 +1,5 @@
-document.getElementById('contact-form').addEventListener('submit', function(event) {
+const contactForm = document.getElementById('contact-form');
+contactForm.addEventListener('submit', function(event) {
   event.preventDefault();
   let output = document.getElementById('form-output-global');
   output.classList.remove('error', 'success');
@@ -11,10 +12,10 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
     } else {
       const https_address = 'https://europe-central2-luxurystayskapanaplovdiv.cloudfunctions.net/api/sendMail';
-      let subject = document.getElementById('subject').value;
-      let name = document.getElementById('name').value;
-      let email = document.getElementById('email').value;
-      let message = document.getElementById('message').value;
+      let subject = contactForm.querySelector('#subject').value;
+      let name = contactForm.querySelector('#name').value;
+      let email = contactForm.querySelector('#email').value;
+      let message = contactForm.querySelector('#message').value;
       fetch(https_address, {
         method: 'POST',
         body:

@@ -1,0 +1,77 @@
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ meta.title }}</title>
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+  <!--[if lt IE 9]>
+  <script language="javascript" type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit={{ meta.viewportShrink | default('yes') }}">
+  <meta name="keywords" content="{{ meta.keywords }}">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Luxury Stays Kapana Plovdiv" />
+  <meta name="description" content="{{ meta.description }}">
+
+  <meta property="og:title" content="{{ meta.ogTitle }}">
+  <meta property="og:description" content="{{ meta.ogDescription }}">
+  <meta property="og:image" content="{{ meta.ogImage | default('https://luxurystays.bg/images/bedroom_3.webp') }}">
+  <meta property="og:url" content="{{ meta.ogUrl }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ meta.twitterTitle | default(meta.ogTitle) }}">
+  <meta name="twitter:description" content="{{ meta.twitterDescription | default(meta.description) }}">
+  <meta name="twitter:image" content="{{ meta.twitterImage | default(meta.ogImage) }}">
+  <link rel="alternate" hreflang="en" href="{{ meta.altEn }}">
+  <link rel="alternate" hreflang="bg" href="{{ meta.altBg }}">
+  <link rel="canonical" href="{{ meta.canonical }}">
+
+  {% if meta.ldJson %}
+  <script type="application/ld+json">
+  {{ meta.ldJson | safe }}
+  </script>
+  {% endif %}
+
+  <!-- Google Tag Manager -->
+  <script>(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-NSZTKXJC');</script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.iubenda.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Playfair+Display:400,700&display=swap">
+  {% if pageId != 'post' %}
+  <link rel="preload" as="image" href="../images/building_face.webp" imagesrcset="../images/building_face.webp 1920w" imagesizes="100vw">
+{% endif %}
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T">
+
+  <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha384-Gu3KVV2H9d+yA4QDpVB7VcOyhJlAVrcXd0thEjr4KznfaFPLe0xQJyonVxONa4ZC">
+
+  <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9">
+
+  <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha384-5IbgsdqrjF6rAX1mxBZkKRyUOgEr0/xCGkteJIaRKpvW0Ag0tf6lru4oL2ZhcMvo">
+  {% if pageId == 'about' or pageId == 'index' or pageId == 'reservation' %}
+      <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha384-Q8BgkilbsFGYNNiDqJm69hvDS7NCJWOodvfK/cwTyQD4VQA0qKzuPpvqNER1UC0F">
+      {% if pageId != 'reservation' %}
+        <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha384-kcNNzf7wI8//ZkNUaDd5JwxLoFaBgkj9Z4O4NwtuX9Lkmsz0HoITOxJsGkYxDuyG">
+      {% endif %}
+  {% endif %}
+  <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha384-tGBVFh2h9Zcme3k9gJLbGqDpD+jRd419j/6N32rharcTZa1X6xgxug6pFMGonjxU">
+  {% if pageId == 'reservation' %}
+      <link rel="stylesheet" href="../css/reservation.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap">
+  {% endif %}
+  <link rel="stylesheet" href="../css/style.css">
+
+  {% if pageId == 'post' %}
+    <link rel="stylesheet" href="../css/post.css">
+  {% endif %}

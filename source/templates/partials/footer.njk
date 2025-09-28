@@ -1,0 +1,56 @@
+<footer class="section footer-section">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-md-3 mb-5">
+        <ul class="list-unstyled link">
+          <li><a href="../{{ lang }}/index.html">{{ dict.nav.home }}</a></li>
+          <li><a href="../{{ lang }}/about.html">{{ dict.nav.about }}</a></li>
+          <li><a href="../{{ lang }}/posts.html">{{ dict.nav.posts }}</a></li>
+          <li><a href="../{{ lang }}/contact.html">{{ dict.nav.contact }}</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 mb-5">
+        <ul class="list-unstyled link">
+          <li><a href="../{{ lang }}/reservation.html">{{ dict.nav.reservation }}</a></li>
+          <li>
+            <a class="iubenda-nostyle iubenda-noiframe iubenda-embed iubenda-noiframe" href="https://www.iubenda.com/privacy-policy/20321686" title="{{ dict.legal.privacyTitle }}">{{ dict.legal.privacy }}</a>
+            <script type="text/javascript">(function(w, d) {var loader = function() {var s = d.createElement('script'), tag = d.getElementsByTagName('script')[0];s.src = 'https://cdn.iubenda.com/iubenda.js';tag.parentNode.insertBefore(s, tag);};if (w.addEventListener) {w.addEventListener('load', loader, false);} else if (w.attachEvent) {w.attachEvent('onload', loader);} else {w.onload = loader;}})(window, document);</script>
+          </li>
+          <li>
+            <a class="iubenda-nostyle iubenda-noiframe iubenda-embed iubenda-noiframe" href="https://www.iubenda.com/privacy-policy/20321686/cookie-policy" title="{{ dict.legal.cookieTitle }}">{{ dict.legal.cookie }}</a>
+            <script type="text/javascript">(function(w, d) {var loader = function() {var s = d.createElement('script'), tag = d.getElementsByTagName('script')[0];s.src = 'https://cdn.iubenda.com/iubenda.js';tag.parentNode.insertBefore(s, tag);};if (w.addEventListener) {w.addEventListener('load', loader, false);} else if (w.attachEvent) {w.attachEvent('onload', loader);} else {w.onload = loader;}})(window, document);</script>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3 mb-5 pr-md-5 contact-info">
+        <p><span class="d-block"><span class="fa-solid fa-location-dot h5 mr-3 text-primary"></span>{{ dict.footer.addressLabel }}:</span>
+          <span> <a href="https://maps.app.goo.gl/MjG9y5eHqBKvikp59" target="_blank">{{ dict.footer.address }}</a></span></p>
+        <p><span class="d-block"><span class="fa-solid fa-phone h5 mr-3 text-primary"></span>{{ dict.footer.phoneLabel }}:</span> <span> <a href="tel: 00359 87 613 1555">+359 87 613 1555</a></span></p>
+        <p><span class="d-block"><span class="fa-solid fa-envelope h5 mr-3 text-primary"></span>{{ dict.footer.emailLabel }}:</span> <span> <a href="mailto: booking@luxurystays.bg">booking@luxurystays.bg</a></span></p>
+      </div>
+      <div class="col-md-3 mb-5">
+        <p>{{ dict.footer.newsletter }}</p>
+        <form class="footer-newsletter" id="newsletter-form">
+          <div class="form-group">
+            <input class="form-control" type="email" placeholder="{{ dict.footer.emailPlaceholder }}">
+            <button class="btn" type="submit"><span class="fa fa-paper-plane"></span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row pt-5">
+      <p class="col-md-6 text-left">
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+        {{ dict.footer.copyright }}
+      </p>
+
+      <p class="col-md-6 text-right social">
+        <a href="https://www.instagram.com/luxurystays.plovdiv"><span class="fa-brands fa-instagram"></span></a>
+        <a href="https://www.facebook.com/share/17A2YftJPi/?mibextid=wwXIfr"><span class="fa-brands fa-facebook-f"></span></a>
+        <a href="https://linktr.ee/luxurystays.plovdiv"><span class="fa-brands fa-linktree"></span></a>
+        <a href="https://airbnb.com/h/luxurystaysbg"><span class="fa-brands fa-airbnb"></span></a>
+        <a href="https://www.booking.com/hotel/bg/luxury-stays-kapana-plovdiv.html"><span class="fa-solid fa-b"></span></a>
+      </p>
+    </div>
+  </div>
+</footer>

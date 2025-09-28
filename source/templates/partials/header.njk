@@ -1,0 +1,38 @@
+<header class="site-header js-site-header">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a class="logo-title" href="../{{ lang }}/index.html">LUXURY<br>STAYS</a>
+      </div>
+      <div class="col-6 col-lg-8">
+        <div class="site-menu-toggle js-site-menu-toggle" data-aos="fade">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="site-navbar js-site-navbar">
+          <nav role="navigation">
+            <div class="container">
+              <div class="row full-height align-items-center">
+                <div class="col-md-6 mx-auto">
+                  <ul class="list-unstyled menu">
+                    <li class="{% if pageId == 'index' %}active{% endif %}"><a href="../{{ lang }}/index.html">{{ dict.nav.home }}</a></li>
+                    <li class="{% if pageId == 'about' %}active{% endif %}"><a href="../{{ lang }}/about.html">{{ dict.nav.about }}</a></li>
+                    <li class="{% if pageId == 'posts' %}active{% endif %}"><a href="../{{ lang }}/posts.html">{{ dict.nav.posts }}</a></li>
+                    <li class="{% if pageId == 'contact' %}active{% endif %}"><a href="../{{ lang }}/contact.html">{{ dict.nav.contact }}</a></li>
+                    <li class="{% if pageId == 'reservation' %}active{% endif %}"><a href="../{{ lang }}/reservation.html">{{ dict.nav.reservation }}</a></li>
+                    <li>
+                      <div class="multi-button" id="lang_button_container">
+                        <button class="btn-lang" id="en">English</button>
+                        <button class="btn-lang" id="bg">Български</button>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

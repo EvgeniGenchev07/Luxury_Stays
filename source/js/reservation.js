@@ -5,7 +5,6 @@ const params_adults = params.get('adults');
 const params_checkin = params.get('checkin');
 const params_checkout = params.get('checkout');
 document.addEventListener('DOMContentLoaded', function() {
-  // Set minimum date for check-in to today
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);

@@ -1,0 +1,111 @@
+{% extends "layouts/base.njk" %}
+{% block content %}
+<section class="site-hero inner-page overlay" data-stellar-background-ratio="0.5" style="background-image: url(../images/building_face.webp)">
+  <div class="container">
+    <div class="row site-hero-inner justify-content-center align-items-center">
+      <div class="col-md-10 text-center" data-aos="fade">
+        <h1 class="heading mb-3">{{ dict.nav.contact }}</h1>
+        <ul class="custom-breadcrumbs mb-4">
+          <li><a class="hero-home-link" href="../{{ lang }}/index.html">{{ dict.nav.home }}</a></li>
+          <li>&bullet;</li>
+          <li>{{ dict.nav.contact }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <a class="mouse smoothscroll" href="#next">
+    <div class="mouse-icon">
+      <span class="mouse-wheel"></span>
+    </div>
+  </a>
+</section>
+
+<section class="section contact-section" id="next">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
+
+        <form class="bg-white p-md-5 p-4 mb-5 border" data-form-output="form-output-global" id="contact-form"
+              method="post">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input class="form-control contact-section-input" id="subject" placeholder="{{ dict.contact.subjectPlaceholder }}" required="required"
+                     type="text">
+            </div>
+            <div class="col-md-6 form-group">
+              <input class="form-control contact-section-input " id="name" placeholder="{{ dict.contact.namePlaceholder }}" required="required"
+                     type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 form-group">
+              <input class="form-control contact-section-input" id="email" placeholder="{{ dict.contact.emailPlaceholder }}" required="required"
+                     type="email">
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-12 form-group">
+              <textarea class="form-control contact-section-input" cols="30" id="message"
+                        name="message" placeholder="{{ dict.contact.messagePlaceholder }}" required="required" rows="8"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <div class="g-recaptcha" data-sitekey="6LelIwYrAAAAADB96e-yjYMj62EroB7YIuJnSjzR"
+                   data-size="compact"></div>
+            </div>
+            <div class="col-md-6 form-group">
+              <button class="send-btn font-weight-bold" type="submit">
+                              <span class="svg-wrapper-1">
+                                  <span class="svg-wrapper">
+                              <svg
+                                height="24"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                  <path d="M0 0h24v24H0z" fill="none"></path>
+                                  <path
+                                    d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                    fill="currentColor"
+                                  ></path></svg>
+                                  </span>
+                              </span>
+                <span class="span"> {{ dict.contact.sendButton }}</span>
+              </button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
+        <div class="row">
+          <div class="col-md-10 ml-auto contact-info">
+            <p><span class="d-block"><span class="fa-solid fa-location-dot h5 mr-3 text-primary"></span>{{ dict.footer.addressLabel }}:</span>
+              <span> <a class="contact-info-el" href="https://maps.app.goo.gl/MjG9y5eHqBKvikp59" target="_blank">{{ dict.footer.address }}</a></span>
+            </p>
+            <p><span class="d-block"><span class="fa-solid fa-phone h5 mr-3 text-primary"></span>{{ dict.footer.phoneLabel }}:</span> <span> <a
+              class="contact-info-el" href="tel: 00359 87 613 1555">+359 87 613 1555</a></span></p>
+            <p><span class="d-block"><span class="fa-solid fa-envelope h5 mr-3 text-primary"></span>{{ dict.footer.emailLabel }}:</span> <span> <a
+              class="contact-info-el" href="mailto: booking@luxurystays.bg">booking@luxurystays.bg</a></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section bg-image overlay" style="background-image: url('../images/building_face.webp');">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
+        <h2 class="text-white font-weight-bold">{{ dict.index.ctaHeading }}</h2>
+      </div>
+      <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
+        <a class="btn btn-outline-white-primary py-3 text-white px-5" href="../{{ lang }}/reservation.html">{{ dict.index.ctaButton }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

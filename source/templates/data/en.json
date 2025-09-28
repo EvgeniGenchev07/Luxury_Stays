@@ -1,0 +1,145 @@
+{
+  "lang": "en",
+  "title": "Luxury Stays",
+  "fullName": "Luxury Stays Kapana Plovdiv",
+  "dict": {
+    "nav": {"home": "Home", "about": "About", "posts": "Posts", "contact": "Contact", "reservation": "Reservation"},
+    "common": {"learnMore": "Learn More"},
+    "index": {
+      "welcomePrefix": "Welcome To",
+      "heroHeading": "A Best Place To Stay",
+      "checkin": "Check In",
+      "checkout": "Check Out",
+      "adults": "Adults",
+      "children": "Children",
+      "checkAvailability": "Check Availability",
+      "welcomeHeading": "Welcome",
+      "welcomeText": "Looking for the perfect stay in Plovdiv? Step into the heart of Kapana, where art, culture, and nightlife come alive! Whether you're here for a romantic escape, a business trip, or a city adventure, Plovdiv’s top attractions-the Roman Theater and Old Town-are just steps away. Don't just visit-experience the city's vibrant energy from the best spot in town! Book now and make Kapana your home away from home.\n#StayInTheTrap",
+      "galleryHeading": "Gallery",
+      "galleryText": "Scroll through our gallery and imagine yourself relaxing in these spaces after a day of exploring the city’s historic sites, enjoying a cup of coffee on a sunny balcony, or preparing for an evening out in Kapana’s lively nightlife scene.",
+      "foodHeading": "Savor the Flavors: Must-Try Food Spots in Plovdiv",
+      "foodText": "Plovdiv is a city where tradition and innovation come together, and nowhere is this more visible than in its food scene. From cozy cafés serving local delights to vibrant restaurants offering modern twists on Bulgarian classics, Plovdiv offers a taste of its rich cultural heritage in every bite.",
+      "dinner": "Dinner",
+      "breakfast": "Breakfast",
+      "pastries": "Pastries",
+      "coupon": "Coupon",
+      "dinnerText1": "Step into Coupon, Kapana's culinary gem, where Chef Moskov skillfully transforms Bulgarian classics into modern masterpieces. Nestled in the heart of Plovdiv's vibrant district, this restaurant offers a unique dining experience that blends local ingredients with global techniques, offering a fresh take on traditional flavors. Each dish reflects a perfect balance of heritage and innovation, inviting guests to rediscover the essence of Bulgarian cuisine with an exciting twist.",
+      "dinnerText2": "At Coupon, every meal is a celebration of local flavors, reimagined with an artistic touch. Chef Moskov’s menu showcases both familiar and daring combinations, creating unforgettable dishes that take you on a flavorful journey. With its contemporary atmosphere and bold approach to tradition, Coupon offers an experience that is as memorable as it is delicious.",
+      "kapanaBakery": "Kapana Bakery",
+      "breakfastText1": "Nestled in the heart of Plovdiv's artistic Kapana district, Kapana Bakery brings together the best of traditional Bulgarian baking and modern creativity. The bakery is a local favorite, offering a wide range of freshly baked breads, pastries, and desserts that celebrate Bulgaria's rich culinary heritage. Every item is made with high-quality, locally sourced ingredients, ensuring an authentic and flavorful experience.",
+      "breakfastText2": "At Kapana Bakery, you'll find a perfect blend of old and new, where classic recipes are reimagined with a contemporary twist. Whether you're enjoying a warm, crusty loaf or indulging in a sweet, flaky pastry, each bite is a reflection of the bakery's commitment to craftsmanship and quality. With its cozy atmosphere and mouthwatering offerings, Bakery Kapana is a must-visit spot for anyone seeking a taste of Plovdiv's vibrant culinary scene.",
+      "pastriesText1": "Dolce Plovdiv is a sweet escape located in the heart of Plovdiv, offering an irresistible array of handcrafted desserts and delightful treats. With a focus on high-quality ingredients and creative presentations, Dolce Plovdiv is where traditional flavors meet innovative twists, making every dessert a work of art. From velvety cakes to mouthwatering pastries, every bite promises a moment of indulgence.",
+      "pastriesText2": "Step into the world of Dolce Plovdiv and experience the perfect fusion of taste and design. Their stunning desserts not only satisfy your sweet tooth but also offer a visual feast, perfect for sharing on social media. Whether you're stopping by for a casual treat or celebrating a special occasion, Dolce Plovdiv guarantees an unforgettable experience, making it a must-visit destination for dessert lovers in the city.",
+      "peopleSay": "People Says",
+      "postsHeading": "Posts",
+      "postsText": "Delving into the rich history, traditions, and stories that define Plovdiv, Bulgaria. From ancient ruins to lively cultural events, each post uncovers the essence of this timeless city, where heritage, art, and community thrive together.",
+      "ctaHeading": "A Best Place To Stay. Reserve Now!",
+      "ctaButton": "Reserve Now"
+    },
+    "about": {
+      "heading": "About",
+      "whyUs": "Why Us",
+      "moreAboutUs": "More About Us",
+      "card1Title": "Luxury and Comfort",
+      "card1Text": "Your home away from home! Our apartments are thoughtfully designed with plush bedding, elegant interiors, high-speed Wi-Fi, and fully equipped kitchens to ensure a seamless and cozy stay. Whether you're here for business or leisure, experience the perfect blend of style and relaxation.",
+      "card2Title": "Unbeatable Location",
+      "card2Text": "Immerse yourself in Plovdiv’s most vibrant district! Located in the heart of Kapana, you’ll find yourself just steps away from charming cafés, art galleries, bustling nightlife, and historic landmarks like the Roman Theater. Walk everywhere and experience the city like a local!",
+      "card3Title": "Authentic Experience",
+      "card3Text": "Kapana is the heart of Plovdiv’s creativity, where art, history, and culture come alive. Stay in our stylish apartments and immerse yourself in colorful street murals, artisan boutiques, and lively cafés. Wake up to the aroma of fresh coffee, explore hidden gems, and experience the city's vibrant energy-all just steps from your door!",
+      "text1": "Nestled in the vibrant and artistic district of Kapana, our cozy apartments offer a unique experience for travelers looking to immerse themselves in the lively culture of Plovdiv. Kapana, which means \"The Trap,\" is a creative hub known for its colorful streets, eclectic shops, buzzing cafes, and dynamic nightlife—perfect for anyone seeking to explore the true spirit of the city.",
+      "text2": "We pride ourselves on providing a home away from home. Our apartments are designed to be stylish, comfortable, and equipped with you need for a memorable stay. Whether you're visiting for a romantic getaway, a business trip, or a family vacation, our spaces offer a perfect blend of modern comfort and charming local character.",
+      "text3": "Step outside and find yourself in the heart of Plovdiv's most exciting neighborhood. From vibrant street art to cozy cafes and unique boutiques, Kapana has it all. The city's top attractions, such as the Roman Theater and the Old Town, are just a short walk away.",
+      "text4": "Our apartments feature stylish interiors, comfortable beds, high-speed Wi-Fi, fully equipped kitchens, and smart TV. We ensure a relaxing and enjoyable stay so you can unwind after a day of exploring the city."
+    },
+    "contact": {
+      "subjectPlaceholder": "Subject",
+      "namePlaceholder": "Name",
+      "emailPlaceholder": "Email",
+      "messagePlaceholder": "Your Message",
+      "sendButton": "Send Message"
+    },
+    "reservation": {
+      "description": "Book your perfect stay with us",
+      "stepOneShortHeading": "Dates & Guests",
+      "stepTwoHeading": "Your Information",
+      "stepThreeHeading": "Confirmation",
+      "stepOneHeading": "Choose Your Dates and Guests",
+      "labels": {
+        "checkin": "Check-in Date",
+        "checkout": "Check-out Date",
+        "adults": "Adults",
+        "children": "Children",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "note": "Special Requests"
+      },
+      "selectOptions": {
+        "adults": [
+          "1 Adult",
+          "2 Adults",
+          "3 Adults"
+        ],
+        "children": [
+          "No Children",
+          "1 Child",
+          "2 Children",
+          "3 Children"
+        ]
+      },
+      "buttons": {
+        "next": "Next",
+        "previous": "Previous",
+        "retry": "Try Again",
+        "ok": "OK"
+      },
+      "confirmation": {
+        "successTitle": "Thank You For Your Reservation Request!",
+        "successText1": "We have received your booking details and will process your request shortly.",
+        "successText2": "You will receive a confirmation invoice by email within the next 24 hours.",
+        "successText3": "If you have any urgent questions, please contact us at",
+        "errorTitle": "Unable to Process Your Reservation",
+        "errorText1": "We encountered an issue while processing your reservation request.",
+        "errorText2": "Please try again in a few moments."
+      },
+      "modals": {
+        "dateConflictTitle": "Date Conflict",
+        "dateConflictText": "We're sorry, the dates you selected are not available. Please choose different dates for your stay.",
+        "loadingTitle": "Processing Your Request",
+        "loadingText": "Please wait while we check availability..."
+      }
+    },
+    "footer": {
+      "addressLabel": "Address",
+      "address": "ul. Stefan Verkovich 9, \n Kapana, Plovdiv",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email",
+      "newsletter": "Sign up for our newsletter",
+      "emailPlaceholder": "Email...",
+      "copyright": "All rights reserved | Luxury Stays Kapana Plovdiv"
+    },
+    "legal": {
+      "privacy": "Privacy Policy",
+      "cookie": "Cookie Policy",
+      "privacyTitle": "Privacy Policy",
+      "cookieTitle": "Cookie Policy"
+    },
+    "testimonials": [
+      {"text": "A great apartment in the heart of the Kapana, everything is walkable and easy. The apartment is quiet, clean and very comfortable. The building is new and secure, having a private secure underground locked parking space is a huge advantage in this area. Would highly recommend this place, and will definitely come again.&rdquo;", "author": "Alon"},
+      {"text": "The apartment was awesome! Great location in Kapana, a very short distance from all the restaurants. The bed (and lounge) were really comfortable. The apartment had everything we needed (toiletries and even laundry liquid so we could wash our clothes). Borislava was an amazing host, so helpful with all my questions about Plovdiv and even delivered us some ice when we arrived in the heat. It was really lovely and peaceful to sit on the balcony too. Would definitely stay here again. Thanks!!!&rdquo;", "author": "Clare"},
+      {"text": "Excellent apartment, as seen on the listing, and very responsive host. The place has a convenient garage which is a real amenity in that neighbourhood. Highly recommended!&rdquo;", "author": "Peter"},
+      {"text": "Highly recommended and absolutely amazing property! Great location! I would definitely stay there again!&rdquo;", "author": "Georgi"},
+      {"text": "Perfect location, right in Kapana; modern, clean apartment, equipped with everything you need; secure parking; very friendly landlord—in short everything perfect :)&rdquo;", "author": "Patrick"},
+      {"text": "It is a great location and the property let us check in a little early and park the car. We were met by someone with the keys to the garage, showed us to the parking, helped guide me while parking, showed us to the apartment, waited while we used the code to get in, and then left. There was an open WhatsApp chat for any questions. The apartment is newly refurbished, very clean, spacious, very well appointed, basically perfect.. Everything was in walking distance. I would highly recommend this property.&rdquo;", "author": "Scot"}
+    ],
+    "notfound": {
+      "description": "The page you are looking for does not exist."
+    },
+    "post": {
+      "read": "Read Article",
+      "viewAll": "View All",
+      "recommend": "You May Also Like"
+    }
+    }
+  }

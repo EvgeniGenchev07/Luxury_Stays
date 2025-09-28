@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /service/
+
+Sitemap: https://luxurystays.bg/sitemap.xml

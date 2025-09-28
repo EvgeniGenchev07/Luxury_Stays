@@ -14,6 +14,8 @@ import revReplace from 'gulp-rev-replace';
 import through2 from 'through2';
 import path from 'path';
 import fs from 'fs';
+import nunjucksRender from 'gulp-nunjucks-render';
+import data from 'gulp-data';
 // ---------- Helper functions ----------
 function minifyHtml(src, dest, ldJson = false) {
   return function htmlTask() {
@@ -99,6 +101,67 @@ function updateHtmlReferences() {
     .pipe(gulp.dest('dist'));
 }
 
+function seoFilesTransfer() {
+  return gulp.src(['source/seoOptimization/*.txt', 'source/seoOptimization/*.xml'])
+    .pipe(gulp.dest('dist'));
+}
+
+// ---------- Template rendering (Nunjucks) ----------
+function renderTemplates(lang) {
+  return function renderTask() {
+    return gulp.src('source/templates/pages/*.njk')
+      .pipe(data(function(file) {
+        const dictPath = `source/templates/data/${lang}.json`;
+        const dict = JSON.parse(fs.readFileSync(dictPath, 'utf8'));
+        // Page id from filename
+        const pageId = path.basename(file.path, '.njk');
+        // Build meta defaults; specific pages can be enhanced later
+        const baseUrl = 'https://luxurystays.bg';
+        const langPath = lang === 'en' ? 'en' : 'bg';
+        const altEn = `${baseUrl}/en/${pageId === 'index' ? '' : pageId + '.html'}`.replace(/\/\/$/, '/');
+        const altBg = `${baseUrl}/bg/${pageId === 'index' ? '' : pageId + '.html'}`.replace(/\/\/$/, '/');
+        const canonical = lang === 'en' ? altEn : altBg;
+        const ogUrl = canonical;
+        const titles = {
+          index: { en: 'Luxury Stays', bg: 'Luxury Stays' },
+          about: { en: 'About – Luxury Stays Kapana Plovdiv', bg: 'За нас – Luxury Stays Kapana Пловдив' },
+          posts: { en: 'Posts – Luxury Stays', bg: 'Публикации – Luxury Stays' },
+          post: { en: 'Post – Luxury Stays', bg: 'Публикация – Luxury Stays' },
+          contact: { en: 'Contact – Luxury Stays', bg: 'Контакти – Luxury Stays' },
+          reservation: { en: 'Reservation – Luxury Stays', bg: 'Резервация – Luxury Stays' }
+        };
+        const descriptions = {
+          index: {
+            en: "Experience the charm of Plovdiv's Kapana district with our luxurious apartments.",
+            bg: "Изживейте чарът на Пловдив с нашите луксозни апартаменти в квартал Капана."
+          },
+          about: {
+            en: "Learn more about Luxury Stays Kapana and our mission.",
+            bg: "Научете повече за Luxury Stays Kapana и нашата мисия."
+          }
+        };
+        const meta = {
+          title: (titles[pageId] && titles[pageId][lang]) || 'Luxury Stays',
+          keywords: lang === 'en' ? "luxury stays, luxury apartments in Kapana, Plovdiv vacation rentals, short-term rental Bulgaria" : "луксозни апартаменти, апартаменти в Капана, наеми в Пловдив, краткосрочен наем България",
+          description: (descriptions[pageId] && descriptions[pageId][lang]) || (lang === 'en' ? "Discover luxurious accommodations in Plovdiv's Kapana." : "Открийте луксозни настанявания в квартал Капана."),
+          ogTitle: (titles[pageId] && titles[pageId][lang]) || 'Luxury Stays',
+          ogDescription: (descriptions[pageId] && descriptions[pageId][lang]) || (lang === 'en' ? "Discover luxurious accommodations in Plovdiv's Kapana." : "Открийте луксозни настанявания в квартал Капана."),
+          ogImage: `${baseUrl}/images/bedroom_3.webp`,
+          ogUrl: ogUrl,
+          altEn: altEn,
+          altBg: altBg,
+          canonical: canonical
+        };
+        return { ...dict, pageId, meta };
+      }))
+      .pipe(nunjucksRender({ path: ['source/templates'] }))
+      .pipe(gulp.dest(`source/${lang}`));
+  };
+}
+
+export const renderEn = renderTemplates('en');
+export const renderBg = renderTemplates('bg');
+
 // ---------- HTML tasks ----------
 export const minifyHtmlEn = minifyHtml('source/en/*.html', 'dist/en', true);
 export const minifyHtmlBg = minifyHtml('source/bg/*.html', 'dist/bg', true);
@@ -113,10 +176,12 @@ export const scripts = minifyJs('source/js/*.js', 'dist/js');
 // ---------- CSS tasks ----------
 export const cssService = minifyCss('source/service/*.css', 'dist/service');
 export const cssAdmin = minifyCss('source/admin/*.css', 'dist/admin');
-export const styles = minifyCss('source/css/*.css', 'dist/css', true, ['source/en/*.html', 'source/js/*.js']);
+export const styles = minifyCss('source/css/*.css', 'dist/css', true, ['source/en/*.html', 'source/bg/*.html', 'source/js/*.js']);
 
 // ---------- Pipelines ----------
 export const base = gulp.series(
+  renderEn,
+  renderBg,
   minifyHtmlEn,
   minifyHtmlService,
   minifyHtmlBg,
@@ -130,7 +195,11 @@ export const service = gulp.series(jsService, cssService, minifyHtmlService);
 
 export const admin = gulp.series(minifyHtmlAdmin, jsAdmin, cssAdmin);
 
+export const seo = gulp.series(seoFilesTransfer);
+
 export const build = gulp.series(
+  renderEn,
+  renderBg,
   minifyHtmlEn,
   minifyHtmlService,
   minifyHtmlBg,
@@ -142,7 +211,8 @@ export const build = gulp.series(
   scripts,
   styles,
   hashAssets,
-  updateHtmlReferences
+  updateHtmlReferences,
+  seo
 );
 export const hash = gulp.series(hashAssets, updateHtmlReferences);
 export default build;

@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html lang="{{ lang }}">
+<head>
+  {% include "partials/head.njk" %}
+</head>
+<body>
+  {% include "partials/header.njk" %}
+  {% block content %}{% endblock %}
+  {% include "partials/footer.njk" %}
+  {% include "partials/scripts.njk" %}
+</body>
+</html>
