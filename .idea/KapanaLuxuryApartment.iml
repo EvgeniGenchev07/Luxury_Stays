@@ -36,5 +36,10 @@
     <orderEntry type="library" name="moment.js" level="application" />
     <orderEntry type="library" name="tempusdominus-bootstrap-4" level="application" />
     <orderEntry type="library" name="bootstrap-icons" level="application" />
+    <orderEntry type="library" name="embla-carousel" level="application" />
+    <orderEntry type="library" name="trig-js" level="application" />
+    <orderEntry type="library" name="simple-parallax-js" level="application" />
+    <orderEntry type="library" name="embla-carousel-autoplay" level="application" />
+    <orderEntry type="library" name="rellax" level="application" />
   </component>
 </module>

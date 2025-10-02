@@ -5,6 +5,25 @@ const months = [
 ];
 document.addEventListener('DOMContentLoaded', function()
 {
+  const checkout_date_box = document.getElementById('checkout_box');
+  const checkout_date_input = document.getElementById('checkout_date');
+  const checkin_date_box = document.getElementById('checkin_box');
+  const checkin_date_input = document.getElementById('checkin_date');
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  checkout_date_box.addEventListener('click', () => {
+    checkout_date_input.showPicker?.();
+    checkout_date_input.focus();
+  });
+  checkin_date_box.addEventListener('click', () => {
+    checkin_date_input.showPicker?.();
+    checkin_date_input.focus();
+  });
+  checkout_date_input.min = `${yyyy}-${mm}-${dd}`;
+  checkin_date_input.min = `${yyyy}-${mm}-${dd}`;
+
   fetch(`../locales/${lang}.json`)
     .then(response => response.json())
     .then(data => {
@@ -117,10 +136,10 @@ formButton.addEventListener('click', function(e) {
   if (form.checkValidity()) {
     let dateIn = form.querySelector('#checkin_date').value;
     let dateOut = form.querySelector('#checkout_date').value;
-
-    dateIn = dateFormatChanger(dateIn);
-    dateOut = dateFormatChanger(dateOut);
-
+    console.log(dateIn);
+    console.log(dateOut);
+    dateIn = new Date(dateIn);
+    dateOut = new Date(dateOut);
     dateIn = new Date(dateIn.getTime() - dateIn.getTimezoneOffset() * 60000);
     dateOut = new Date(dateOut.getTime() - dateOut.getTimezoneOffset() * 60000);
 
@@ -134,8 +153,3 @@ formButton.addEventListener('click', function(e) {
   }
 });
 
-function dateFormatChanger(date) {
-  date = date.split(' ');
-  date[1] = date[1].replace(',', '');
-  return new Date(date[2] + '-' + (months.indexOf(date[1]) + 1) + '-' + date[0]);
-}

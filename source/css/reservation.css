@@ -372,3 +372,6 @@ button:disabled {
         width: 100%;
     }
 }
+.site-header{
+    z-index: 100 !important;
+}

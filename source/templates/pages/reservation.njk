@@ -1,6 +1,6 @@
 {% extends "layouts/base.njk" %}
 {% block content %}
-    <section class="site-hero inner-page overlay" data-stellar-background-ratio="0.5" style="background-image: url(../images/building_face.webp)">
+    <section class="site-hero inner-page overlay parallax" data-speed="0.5" style="background-image: url(../images/building_face.webp)">
         <div class="container">
             <div class="row site-hero-inner justify-content-center align-items-center">
                 <div class="col-md-10 text-center" data-aos="fade">
@@ -165,8 +165,14 @@
                 </div>
             </div>
             <div class="row">
-                <div class="js-carousel-2 owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
-                    {% include "partials/testimonials.njk" %}
+                <div class="embla-testimonial mb-5" data-aos="fade-up" data-aos-delay="200">
+                    <button class="embla-testimonial__prev embla__button embla__button--prev"><span class="slider-controls"><svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 6L9 12L15 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></span></button>
+                    <div class="embla-testimonial__viewport">
+                        <div class="embla__container">
+                            {% include "partials/testimonials.njk" %}
+                        </div>
+                    </div>
+                    <button class="embla-testimonial__next embla__button embla__button--next"><span class="slider-controls"><svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></span></button>
                 </div>
             </div>
         </div>

@@ -51,20 +51,13 @@
   <link rel="preload" as="image" href="../images/building_face.webp" imagesrcset="../images/building_face.webp 1920w" imagesizes="100vw">
 
   <!-- Vendor CSS -->
-  <link rel="stylesheet" crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T">
-
-  <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha384-Gu3KVV2H9d+yA4QDpVB7VcOyhJlAVrcXd0thEjr4KznfaFPLe0xQJyonVxONa4ZC">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
   <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9">
 
-  <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha384-5IbgsdqrjF6rAX1mxBZkKRyUOgEr0/xCGkteJIaRKpvW0Ag0tf6lru4oL2ZhcMvo">
   
       <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha384-Q8BgkilbsFGYNNiDqJm69hvDS7NCJWOodvfK/cwTyQD4VQA0qKzuPpvqNER1UC0F">
-      
-        <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha384-kcNNzf7wI8//ZkNUaDd5JwxLoFaBgkj9Z4O4NwtuX9Lkmsz0HoITOxJsGkYxDuyG">
-      
   
-  <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha384-tGBVFh2h9Zcme3k9gJLbGqDpD+jRd419j/6N32rharcTZa1X6xgxug6pFMGonjxU">
   
   <link rel="stylesheet" href="../css/style.css">
 
@@ -111,7 +104,7 @@
   </div>
 </header>
   
-<section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(../images/building_face.webp)">
+<section class="site-hero overlay parallax" data-speed="0.5" style="background-image: url(../images/building_face.webp)">
   <div class="container">
     <div class="row site-hero-inner justify-content-center align-items-center">
       <div class="col-md-10 text-center" data-aos="fade-up">
@@ -131,11 +124,11 @@
           <div class="row">
             <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
               <label class="font-weight-bold text-black" for="checkin_date">Check In</label>
-              <div class="field-icon-wrap"><div class="icon"><span class="icon-calendar"></span></div><input class="form-control" id="checkin_date" type="text" required></div>
+              <div id="checkin_box" class="field-icon-wrap"><div class="icon"></div><input class="form-control" id="checkin_date" type="date" required></div>
             </div>
             <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
               <label class="font-weight-bold text-black" for="checkout_date">Check Out</label>
-              <div class="field-icon-wrap"><div class="icon"><span class="icon-calendar"></span></div><input class="form-control" id="checkout_date" type="text" required></div>
+              <div id="checkout_box" class="field-icon-wrap"><div class="icon"></div><input class="form-control" id="checkout_date" type="date" required></div>
             </div>
             <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
               <div class="row">
@@ -190,62 +183,68 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div class="home-slider major-carousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
+        <div class="embla-gallery mb-5" data-aos="fade-up" data-aos-delay="200">
+    <button class="embla-gallery__prev embla__button embla__button--prev"><span class="slider-controls"><svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 6L9 12L15 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></span></button>
+    <div class="embla-gallery__viewport">
+        <div class="embla__container">
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/living_room_6.webp"><img  class="img-fluid" src="../images/living_room_6.webp" alt="living room 6"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/living_room_6.webp"><img  class="img-fluid" src="../images/living_room_6.webp" alt="living room 6"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/living_room_1.webp"><img  class="img-fluid" src="../images/living_room_1.webp" alt="living room 1"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/living_room_1.webp"><img  class="img-fluid" src="../images/living_room_1.webp" alt="living room 1"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/kitchen_2.webp"><img loading="lazy" class="img-fluid" src="../images/kitchen_2.webp" alt="kitchen 2"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/kitchen_2.webp"><img loading="lazy" class="img-fluid" src="../images/kitchen_2.webp" alt="kitchen 2"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/collage_4.webp"><img loading="lazy" class="img-fluid" src="../images/collage_4.webp" alt="collage 4"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/collage_4.webp"><img loading="lazy" class="img-fluid" src="../images/collage_4.webp" alt="collage 4"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_11.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_11.webp" alt="bedroom 11"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_11.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_11.webp" alt="bedroom 11"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_3.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_3.webp" alt="bedroom 3"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_3.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_3.webp" alt="bedroom 3"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_7.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_7.webp" alt="bedroom 7"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_7.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_7.webp" alt="bedroom 7"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_13.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_13.webp" alt="bedroom 13"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_13.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_13.webp" alt="bedroom 13"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bathroom_2.webp"><img loading="lazy" class="img-fluid" src="../images/bathroom_2.webp" alt="bathroom 2"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bathroom_2.webp"><img loading="lazy" class="img-fluid" src="../images/bathroom_2.webp" alt="bathroom 2"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bathroom_1.webp"><img loading="lazy" class="img-fluid" src="../images/bathroom_1.webp" alt="bathroom 1"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bathroom_1.webp"><img loading="lazy" class="img-fluid" src="../images/bathroom_1.webp" alt="bathroom 1"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/hall_3.webp"><img loading="lazy" class="img-fluid" src="../images/hall_3.webp" alt="hall 3"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/hall_3.webp"><img loading="lazy" class="img-fluid" src="../images/hall_3.webp" alt="hall 3"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/balcony_1.webp"><img loading="lazy" class="img-fluid" src="../images/balcony_1.webp" alt="balcony 1"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/balcony_1.webp"><img loading="lazy" class="img-fluid" src="../images/balcony_1.webp" alt="balcony 1"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/balcony_2.webp"><img loading="lazy" class="img-fluid" src="../images/balcony_2.webp" alt="balcony 2"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/balcony_2.webp"><img loading="lazy" class="img-fluid" src="../images/balcony_2.webp" alt="balcony 2"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/living_room_2.webp"><img loading="lazy" class="img-fluid" src="../images/living_room_2.webp" alt="living room 2"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/living_room_2.webp"><img loading="lazy" class="img-fluid" src="../images/living_room_2.webp" alt="living room 2"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/living_room_7.webp"><img loading="lazy" class="img-fluid" src="../images/living_room_7.webp" alt="living room 7"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/living_room_7.webp"><img loading="lazy" class="img-fluid" src="../images/living_room_7.webp" alt="living room 7"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_1.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_1.webp" alt="bedroom 1"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_1.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_1.webp" alt="bedroom 1"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_2.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_2.webp" alt="bedroom 2"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_2.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_2.webp" alt="bedroom 2"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_4.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_4.webp" alt="bedroom 4"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_4.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_4.webp" alt="bedroom 4"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_6.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_6.webp" alt="bedroom 6"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_6.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_6.webp" alt="bedroom 6"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_8.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_8.webp" alt="bedroom 8"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_8.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_8.webp" alt="bedroom 8"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_9.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_9.webp" alt="bedroom 9"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_9.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_9.webp" alt="bedroom 9"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_10.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_10.webp" alt="bedroom 10"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_10.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_10.webp" alt="bedroom 10"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/bedroom_12.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_12.webp" alt="bedroom 12"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/bedroom_12.webp"><img loading="lazy" class="img-fluid" src="../images/bedroom_12.webp" alt="bedroom 12"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/collage_1.webp"><img loading="lazy" class="img-fluid" src="../images/collage_1.webp" alt="collage 1"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/collage_1.webp"><img loading="lazy" class="img-fluid" src="../images/collage_1.webp" alt="collage 1"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/collage_2.webp"><img loading="lazy" class="img-fluid" src="../images/collage_2.webp" alt="collage 2"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/collage_2.webp"><img loading="lazy" class="img-fluid" src="../images/collage_2.webp" alt="collage 2"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/collage_3.webp"><img loading="lazy" class="img-fluid" src="../images/collage_3.webp" alt="collage 3"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/collage_3.webp"><img loading="lazy" class="img-fluid" src="../images/collage_3.webp" alt="collage 3"></a></div>
   
-  <div class="slider-item"><a data-fancybox="images" href="../images/collage_5.webp"><img loading="lazy" class="img-fluid" src="../images/collage_5.webp" alt="collage 5"></a></div>
+  <div class="embla__slide"><a data-fancybox="images" href="../images/collage_5.webp"><img loading="lazy" class="img-fluid" src="../images/collage_5.webp" alt="collage 5"></a></div>
   
+        </div>
+    </div>
+    <button class="embla-gallery__next embla__button embla__button--next"><span class="slider-controls"><svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></span></button>
 </div>
       </div>
     </div>
@@ -307,46 +306,52 @@
       </div>
     </div>
     <div class="row">
-      <div class="js-carousel-2 owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
-        
-<div class="testimonial text-center slider-item">
+        <div class="embla-testimonial mb-5" data-aos="fade-up" data-aos-delay="200">
+            <button class="embla-testimonial__prev embla__button embla__button--prev"><span class="slider-controls"><svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 6L9 12L15 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></span></button>
+            <div class="embla-testimonial__viewport">
+                <div class="embla__container">
+                    
+<div class="testimonial text-center embla__slide">
   <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
-  <blockquote><p>&ldquo;A great apartment in the heart of the Kapana, everything is walkable and easy. The apartment is quiet, clean and very comfortable. The building is new and secure, having a private secure underground locked parking space is a huge advantage in this area. Would highly recommend this place, and will definitely come again.&amp;rdquo;&rdquo;</p></blockquote>
+  <blockquote><p>&ldquo;A great apartment in the heart of the Kapana, everything is walkable and easy. The apartment is quiet, clean and very comfortable. The building is new and secure, having a private secure underground locked parking space is a huge advantage in this area. Would highly recommend this place, and will definitely come again.&amp;rdquo;</p></blockquote>
   <p><em>&mdash; Alon</em></p>
 </div>
 
-<div class="testimonial text-center slider-item">
+<div class="testimonial text-center embla__slide">
   <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
-  <blockquote><p>&ldquo;The apartment was awesome! Great location in Kapana, a very short distance from all the restaurants. The bed (and lounge) were really comfortable. The apartment had everything we needed (toiletries and even laundry liquid so we could wash our clothes). Borislava was an amazing host, so helpful with all my questions about Plovdiv and even delivered us some ice when we arrived in the heat. It was really lovely and peaceful to sit on the balcony too. Would definitely stay here again. Thanks!!!&amp;rdquo;&rdquo;</p></blockquote>
+  <blockquote><p>&ldquo;The apartment was awesome! Great location in Kapana, a very short distance from all the restaurants. The bed (and lounge) were really comfortable. The apartment had everything we needed (toiletries and even laundry liquid so we could wash our clothes). Borislava was an amazing host, so helpful with all my questions about Plovdiv and even delivered us some ice when we arrived in the heat. It was really lovely and peaceful to sit on the balcony too. Would definitely stay here again. Thanks!!!&amp;rdquo;</p></blockquote>
   <p><em>&mdash; Clare</em></p>
 </div>
 
-<div class="testimonial text-center slider-item">
+<div class="testimonial text-center embla__slide">
   <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
-  <blockquote><p>&ldquo;Excellent apartment, as seen on the listing, and very responsive host. The place has a convenient garage which is a real amenity in that neighbourhood. Highly recommended!&amp;rdquo;&rdquo;</p></blockquote>
+  <blockquote><p>&ldquo;Excellent apartment, as seen on the listing, and very responsive host. The place has a convenient garage which is a real amenity in that neighbourhood. Highly recommended!&amp;rdquo;</p></blockquote>
   <p><em>&mdash; Peter</em></p>
 </div>
 
-<div class="testimonial text-center slider-item">
+<div class="testimonial text-center embla__slide">
   <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
-  <blockquote><p>&ldquo;Highly recommended and absolutely amazing property! Great location! I would definitely stay there again!&amp;rdquo;&rdquo;</p></blockquote>
+  <blockquote><p>&ldquo;Highly recommended and absolutely amazing property! Great location! I would definitely stay there again!&amp;rdquo;</p></blockquote>
   <p><em>&mdash; Georgi</em></p>
 </div>
 
-<div class="testimonial text-center slider-item">
+<div class="testimonial text-center embla__slide">
   <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
-  <blockquote><p>&ldquo;Perfect location, right in Kapana; modern, clean apartment, equipped with everything you need; secure parking; very friendly landlord—in short everything perfect :)&amp;rdquo;&rdquo;</p></blockquote>
+  <blockquote><p>&ldquo;Perfect location, right in Kapana; modern, clean apartment, equipped with everything you need; secure parking; very friendly landlord—in short everything perfect :)&amp;rdquo;</p></blockquote>
   <p><em>&mdash; Patrick</em></p>
 </div>
 
-<div class="testimonial text-center slider-item">
+<div class="testimonial text-center embla__slide">
   <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
-  <blockquote><p>&ldquo;It is a great location and the property let us check in a little early and park the car. We were met by someone with the keys to the garage, showed us to the parking, helped guide me while parking, showed us to the apartment, waited while we used the code to get in, and then left. There was an open WhatsApp chat for any questions. The apartment is newly refurbished, very clean, spacious, very well appointed, basically perfect.. Everything was in walking distance. I would highly recommend this property.&amp;rdquo;&rdquo;</p></blockquote>
+  <blockquote><p>&ldquo;It is a great location and the property let us check in a little early and park the car. We were met by someone with the keys to the garage, showed us to the parking, helped guide me while parking, showed us to the apartment, waited while we used the code to get in, and then left. There was an open WhatsApp chat for any questions. The apartment is newly refurbished, very clean, spacious, very well appointed, basically perfect.. Everything was in walking distance. I would highly recommend this property.&amp;rdquo;</p></blockquote>
   <p><em>&mdash; Scot</em></p>
 </div>
 
 
-      </div>
+                </div>
+            </div>
+            <button class="embla-testimonial__next embla__button embla__button--next"><span class="slider-controls"><svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></span></button>
+        </div>
     </div>
   </div>
 </section>
@@ -432,18 +437,18 @@
         </ul>
       </div>
       <div class="col-md-3 mb-5 pr-md-5 contact-info">
-        <p><span class="d-block"><span class="fa-solid fa-location-dot h5 mr-3 text-primary"></span>Address:</span>
+        <p><span class="d-block"><span class="h5 mr-3 text-primary"><svg fill="#ffba5a" width="24px" height="24px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16.114-0.011c-6.559 0-12.114 5.587-12.114 12.204 0 6.93 6.439 14.017 10.77 18.998 0.017 0.020 0.717 0.797 1.579 0.797h0.076c0.863 0 1.558-0.777 1.575-0.797 4.064-4.672 10-12.377 10-18.998 0-6.618-4.333-12.204-11.886-12.204zM16.515 29.849c-0.035 0.035-0.086 0.074-0.131 0.107-0.046-0.032-0.096-0.072-0.133-0.107l-0.523-0.602c-4.106-4.71-9.729-11.161-9.729-17.055 0-5.532 4.632-10.205 10.114-10.205 6.829 0 9.886 5.125 9.886 10.205 0 4.474-3.192 10.416-9.485 17.657zM16.035 6.044c-3.313 0-6 2.686-6 6s2.687 6 6 6 6-2.687 6-6-2.686-6-6-6zM16.035 16.044c-2.206 0-4.046-1.838-4.046-4.044s1.794-4 4-4c2.207 0 4 1.794 4 4 0.001 2.206-1.747 4.044-3.954 4.044z"></path> </g></svg></span>Address:</span>
           <span> <a href="https://maps.app.goo.gl/MjG9y5eHqBKvikp59" target="_blank">ul. Stefan Verkovich 9, 
  Kapana, Plovdiv</a></span></p>
-        <p><span class="d-block"><span class="fa-solid fa-phone h5 mr-3 text-primary"></span>Phone:</span> <span> <a href="tel: 00359 87 613 1555">+359 87 613 1555</a></span></p>
-        <p><span class="d-block"><span class="fa-solid fa-envelope h5 mr-3 text-primary"></span>Email:</span> <span> <a href="mailto: booking@luxurystays.bg">booking@luxurystays.bg</a></span></p>
+        <p><span class="d-block"><span class="h5 mr-3 text-primary"><svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#ffba5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></span>Phone:</span> <span> <a href="tel: 00359 87 613 1555">+359 87 613 1555</a></span></p>
+        <p><span class="d-block"><span class="h5 mr-3 text-primary"><svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke="#ffba5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <rect x="3" y="5" width="18" height="14" rx="2" stroke="#ffba5a" stroke-width="2" stroke-linecap="round"></rect> </g></svg></span>Email:</span> <span> <a href="mailto: booking@luxurystays.bg">booking@luxurystays.bg</a></span></p>
       </div>
       <div class="col-md-3 mb-5">
         <p>Sign up for our newsletter</p>
         <form class="footer-newsletter" id="newsletter-form">
           <div class="form-group">
             <input class="form-control" type="email" placeholder="Email...">
-            <button class="btn" type="submit"><span class="fa fa-paper-plane"></span></button>
+            <button class="btn" type="submit"><span><svg width="24px" height="24px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>ionicons-v5-n</title><path d="M53.12,199.94l400-151.39a8,8,0,0,1,10.33,10.33l-151.39,400a8,8,0,0,1-15-.34L229.66,292.45a16,16,0,0,0-10.11-10.11L53.46,215A8,8,0,0,1,53.12,199.94Z" style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line x1="460" y1="52" x2="227" y2="285" style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line></g></svg></span></button>
           </div>
         </form>
       </div>
@@ -455,11 +460,24 @@
       </p>
 
       <p class="col-md-6 text-right social">
-        <a href="https://www.instagram.com/luxurystays.plovdiv"><span class="fa-brands fa-instagram"></span></a>
-        <a href="https://www.facebook.com/share/17A2YftJPi/?mibextid=wwXIfr"><span class="fa-brands fa-facebook-f"></span></a>
-        <a href="https://linktr.ee/luxurystays.plovdiv"><span class="fa-brands fa-linktree"></span></a>
-        <a href="https://airbnb.com/h/luxurystaysbg"><span class="fa-brands fa-airbnb"></span></a>
-        <a href="https://www.booking.com/hotel/bg/luxury-stays-kapana-plovdiv.html"><span class="fa-solid fa-b"></span></a>
+          <a href="https://www.instagram.com/luxurystays.plovdiv" aria-label="Instagram" target="_blank">
+              <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#737378" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#737378"></path> <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="#737378"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z" fill="#737378"></path> </g></svg>
+          </a>
+
+          <a href="https://www.facebook.com/share/17A2YftJPi/?mibextid=wwXIfr" aria-label="Facebook" target="_blank">
+              <svg fill="#737378" width="24px" height="24px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="m1416.013 791.915-30.91 225.617h-371.252v789.66H788.234v-789.66H449.808V791.915h338.426V585.137c0-286.871 176.207-472.329 449.09-472.329 116.87 0 189.744 6.205 231.822 11.845l-3.272 213.66-173.5.338c-4.737-.451-117.771-9.25-199.332 65.655-52.568 48.169-79.191 117.433-79.191 205.65v181.96h402.162Zm-247.276-304.018c44.446-41.401 113.71-36.889 118.787-36.663l289.467-.113 6.204-417.504-43.544-10.717C1511.675 16.02 1426.053 0 1237.324 0 901.268 0 675.425 235.206 675.425 585.137v93.97H337v451.234h338.425V1920h451.234v-789.66h356.7l61.932-451.233H1126.66v-69.152c0-54.937 14.214-96 42.078-122.058Z" fill-rule="evenodd"></path> </g></svg>          </svg>
+          </a>
+
+          <a href="https://linktr.ee/luxurystays.plovdiv" aria-label="Linktree" target="_blank">
+              <svg fill="#737378" width="24px" height="24px" viewBox="0 0 32 32" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style> .cls-1 { fill: none; } </style> </defs> <path d="M18.57,28C17.897,26.7251,16,22.2261,16,12v-.1313l1.1172.7446A6.4613,6.4613,0,0,1,20,18h2a8.457,8.457,0,0,0-3.7734-7.0508L16.8027,10h1.5308a7.04,7.04,0,0,1,4.2,1.4L24.4,12.8l1.2-1.6L23.7334,9.8a9.06,9.06,0,0,0-5.4-1.8H17.1172A7.0306,7.0306,0,0,1,22,6h2V4H22a9.035,9.035,0,0,0-7,3.3643A9.035,9.035,0,0,0,8,4H6V6H8a7.0306,7.0306,0,0,1,4.8828,2H11.6665a9.06,9.06,0,0,0-5.4,1.8L4.4,11.2l1.2,1.6L7.4668,11.4a7.04,7.04,0,0,1,4.2-1.4h1.5308l-1.4239.9492A8.457,8.457,0,0,0,8,18h2a6.4613,6.4613,0,0,1,2.8828-5.3867L14,11.8687V12c0,8.9438,1.4116,13.7646,2.3611,16H2v" transform="translate(0 0)"></path> <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"></rect> </g></svg>
+          </a>
+
+          <a href="https://airbnb.com/h/luxurystaysbg" aria-label="Airbnb" target="_blank">
+              <svg fill="#737378" width="24px" height="24px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>airbnb</title> <path d="M29.524 22.279c-0.372-1.044-0.752-1.907-1.183-2.74l0.058 0.123v-0.038c-2.361-5.006-4.551-9.507-6.632-13.551l-0.139-0.204c-1.483-3.040-2.544-4.866-5.627-4.866-3.049 0-4.344 2.118-5.667 4.871l-0.101 0.2c-2.086 4.044-4.275 8.551-6.627 13.555v0.066l-0.699 1.525c-0.262 0.63-0.396 0.96-0.431 1.058-0.279 0.691-0.441 1.492-0.441 2.332 0 3.526 2.859 6.385 6.385 6.385 0.020 0 0.040-0 0.060-0l-0.003 0c0.117-0 0.232-0.012 0.342-0.036l-0.011 0.002h0.465c2.744-0.574 5.073-2.061 6.71-4.121l0.018-0.024c1.656 2.082 3.983 3.568 6.65 4.132l0.075 0.013h0.465c0.099 0.021 0.214 0.034 0.331 0.034h0c0.017 0 0.038 0 0.059 0 3.526 0 6.384-2.858 6.384-6.384 0-0.84-0.162-1.642-0.457-2.376l0.015 0.043zM27.999 25.266c-0.262 1.581-1.309 2.87-2.719 3.467l-0.030 0.011c-2.815 1.225-5.602-0.729-7.988-3.379 3.945-4.937 4.674-8.782 2.98-11.269-0.887-1.289-2.353-2.123-4.015-2.123-0.080 0-0.159 0.002-0.237 0.006l0.011-0c-0.023-0-0.049-0.001-0.076-0.001-2.816 0-5.098 2.282-5.098 5.098 0 0.583 0.098 1.142 0.278 1.664l-0.011-0.036c0.782 2.574 2.032 4.8 3.665 6.686l-0.019-0.023c-0.978 1.128-2.103 2.094-3.352 2.879l-0.062 0.036c-0.657 0.387-1.43 0.657-2.256 0.758l-0.029 0.003c-0.186 0.027-0.401 0.043-0.62 0.043-2.474 0-4.48-2.006-4.48-4.48 0-0.599 0.117-1.17 0.33-1.692l-0.011 0.030c0.165-0.431 0.494-1.225 1.056-2.451l0.031-0.066c1.829-3.971 4.051-8.485 6.604-13.49l0.066-0.165 0.725-1.395c0.348-0.857 0.932-1.559 1.672-2.043l0.017-0.010c0.425-0.248 0.935-0.395 1.48-0.395 0.027 0 0.054 0 0.081 0.001l-0.004-0c1.024 0.009 1.933 0.497 2.514 1.251l0.006 0.008c0.197 0.299 0.431 0.696 0.727 1.191l0.697 1.361 0.1 0.199c2.551 5.004 4.775 9.507 6.597 13.489l0.033 0.031 0.666 1.525 0.397 0.955c0.199 0.493 0.314 1.065 0.314 1.664 0 0.232-0.017 0.46-0.051 0.683l0.003-0.025zM16.001 23.841c-1.367-1.544-2.407-3.411-2.991-5.47l-0.024-0.099c-0.126-0.348-0.198-0.749-0.198-1.167 0-0.711 0.21-1.372 0.57-1.927l-0.008 0.014c0.543-0.803 1.45-1.325 2.479-1.325 0.060 0 0.12 0.002 0.18 0.005l-0.008-0c0.052-0.003 0.112-0.005 0.173-0.005 1.030 0 1.938 0.525 2.469 1.323l0.007 0.011c0.351 0.538 0.56 1.196 0.56 1.904 0 0.422-0.074 0.826-0.211 1.201l0.008-0.024c-0.624 2.155-1.661 4.019-3.029 5.588l0.015-0.017z"></path> </g></svg>        </a>
+
+          <a href="https://www.booking.com/hotel/bg/luxury-stays-kapana-plovdiv.html" aria-label="Booking.com" target="_blank">
+              <svg width="24px" height="24px" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" fill="#737378"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><linearGradient id="a" x1="16" x2="176" y1="96" y2="96" gradientUnits="userSpaceOnUse"><stop offset="0"></stop></linearGradient></defs><path stroke="url(#a)" stroke-linejoin="round" stroke-width="12" d="M75.984 145.016H50.841V115.31c0-6.33 2.465-9.74 7.986-10.422h17.256a18.873 18.873 0 0 1 14.81 5.373 18.378 18.378 0 0 1 5.403 14.643c0 12.662-7.74 20.21-20.213 20.21zM50.791 64.71v-7.792c0-6.818 2.958-10.13 9.368-10.52h12.916c11.044 0 17.749 6.527 17.749 17.533 0 8.279-4.536 18.019-17.256 18.019H50.89Zm57.387 29.707-4.536-2.532 3.944-3.41c4.634-3.895 12.325-12.759 12.325-28.002C119.91 37.097 101.57 22 73.223 22h-35.99C28.79 22.286 22.075 29.093 22 37.438v132.464h51.864c31.552 0 51.865-16.947 51.865-43.246 0-14.122-6.557-26.297-17.65-32.385"></path><ellipse cx="151.94" cy="152.17" fill="#737378" stroke="#737378" stroke-linejoin="round" stroke-width="8" rx="11.805" ry="11.707"></ellipse></g></svg>
+          </a>
       </p>
     </div>
   </div>
@@ -482,27 +500,21 @@
   <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSZTKXJC" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
     
-        
-        <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha384-duAtk5RV7s42V6Zuw+tRBFcqD8RjRKw6RFnxmxIj1lUGAQJyum/vtcUQX8lqKQjp" defer></script>
-    
 
     <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"></script>
 
     <script crossorigin="anonymous" src="https://code.jquery.com/jquery-migrate-3.0.1.min.js" integrity="sha384-w5FBDpYZssTSnIDL59XH9TYLpEJ2dDP4RPhSPtJd2iLxUY5L8AATkjOsbM4Ohmax"></script>
     
-    <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" defer></script>
-
-    <script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
     
 
     
-        <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha384-l/y5WJTphApmSlx76Ev6k4G3zxu/+19CVvn9OTKI7gs4Yu5Hm8mjpdtdr5oyhnNo" defer></script>
+        <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+        <script src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"></script>
         
             <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha384-Zm+UU4tdcfAm29vg+MTbfu//q5B/lInMbMCr4T8c9rQFyOv6PlfQYpB5wItcXWe7" defer></script>
         
     
-    <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js" integrity="sha384-pPQqVsrLJIDmHCvvNX3mu8xxDcJeddG3vulN1v9TyQ7uTqXMQfmQchRrwkFMf1T2" defer></script>
-
 
     <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha384-n1AULnKdMJlK1oQCLNDL9qZsDgXtH6jRYFCpBtWFc+a9Yve0KSoMn575rk755NJZ" defer></script>
     <script defer src="../js/main.js"></script>
