@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{3889158, OwlCarousel2, animate.css, aos, api, bootstrap, bootstrap-datepicker, bootstrap-icons, embla-carousel, embla-carousel-autoplay, fancybox, font-awesome, ionicons, iubenda_cs, jquery-3.3.1, jquery-migrate-3.0.1, moment.js, popper.js, rellax, safe-tcf-v2, simple-parallax-js, stellar.js, stub, stub-v2, tempusdominus-bootstrap-4, timepicker, trig-js}" />
+    <file url="PROJECT" libraries="{3889158, OwlCarousel2, animate.css, aos, api, bootstrap, bootstrap-datepicker, bootstrap-icons, embla-carousel, embla-carousel-autoplay, fancybox, font-awesome, glightbox, ionicons, iubenda_cs, jquery-3.3.1, jquery-migrate-3.0.1, moment.js, popper.js, rellax, safe-tcf-v2, simple-parallax-js, stellar.js, stub, stub-v2, tempusdominus-bootstrap-4, timepicker, trig-js}" />
     <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>

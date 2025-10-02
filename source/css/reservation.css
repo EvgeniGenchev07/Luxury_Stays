@@ -1,7 +1,3 @@
-.site-header {
-    z-index: 100;
-}
-
 .container-wizard {
     width: 100%;
     max-width: 800px;
@@ -158,7 +154,7 @@
     margin-top: 30px;
 }
 
-button {
+button:not(.subscribe-btn) {
     padding: 15px 30px;
     border: none;
     border-radius: 10px;
@@ -188,7 +184,7 @@ button.next:hover, button.submit:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-button:disabled {
+button:not(.subscribe-btn):disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
@@ -368,7 +364,7 @@ button:disabled {
         gap: 10px;
     }
 
-    button {
+    button:not(.subscribe-btn) {
         width: 100%;
     }
 }

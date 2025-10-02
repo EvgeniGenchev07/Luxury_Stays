@@ -69,6 +69,10 @@ const tab_section = document.getElementById('tab-section');
 tab_section.querySelectorAll('.tab-menu').forEach(el => {
   el.addEventListener('click', () => {
     tab_section.style.setProperty('background-image', `url('${el.getAttribute('data-image')}')`);
+    tab_section.querySelectorAll('.tab-menu').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    el.classList.add('active');
   });
 });
 const form = document.getElementById('vacancy-check-form');

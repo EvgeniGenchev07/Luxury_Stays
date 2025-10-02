@@ -41,14 +41,18 @@
   })(window, document, 'script', 'dataLayer', 'GTM-NSZTKXJC');</script>
   <!-- End Google Tag Manager -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.iubenda.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://cs.iubenda.com">
+  <link rel="preconnect" href="https://cdn.iubenda.com">
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Playfair+Display:400,700&display=swap">
   
-  <link rel="preload" as="image" href="../images/building_face.webp" imagesrcset="../images/building_face.webp 1920w" imagesizes="100vw">
+      <link rel="preload" as="image" href="../images/building_face.webp" imagesrcset="../images/building_face.webp 1920w" imagesizes="100vw">
+      
 
   <!-- Vendor CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -56,8 +60,7 @@
   <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9">
 
   
-      <link rel="stylesheet" crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha384-Q8BgkilbsFGYNNiDqJm69hvDS7NCJWOodvfK/cwTyQD4VQA0qKzuPpvqNER1UC0F">
-  
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" integrity="sha384-GPAzSuZc0kFvdIev6wm9zg8gnafE8tLso7rsAYQfc9hAdWCpOcpcNI5W9lWkYcsd" crossorigin="anonymous">  
   
       <link rel="stylesheet" href="../css/reservation.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap">
@@ -157,17 +160,17 @@
                         <h2 class="text-center step-header">Изберете дати и гости</h2>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="checkin"><i class="fas fa-calendar-alt"></i> Настаняване</label>
+                                <label for="checkin"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#777" stroke-width="2.16" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i> Настаняване</label>
                                 <input class="contact-section-input form-control" id="checkin" required type="date">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="checkout"><i class="fas fa-calendar-alt"></i> Напускане</label>
+                                <label for="checkout"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#777" stroke-width="2.16" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i> Напускане</label>
                                 <input class="contact-section-input form-control" id="checkout" required type="date">
                             </div>
                         </div>
                         <div class="row" id="adults_children_row">
                             <div class="form-group col-md-6">
-                                <label for="adults"><i class="fas fa-user"></i> Възрастни</label>
+                                <label for="adults"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8Z" fill="#777"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.43094 16.9025C7.05587 16.2213 9.2233 16 12 16C14.771 16 16.9351 16.2204 18.5586 16.8981C20.3012 17.6255 21.3708 18.8613 21.941 20.6587C22.1528 21.3267 21.6518 22 20.9592 22H3.03459C2.34482 22 1.84679 21.3297 2.0569 20.6654C2.62537 18.8681 3.69119 17.6318 5.43094 16.9025Z" fill="#777"></path> </g></svg></i> Възрастни</label>
                                 <select class="contact-section-input form-control" id="adults" required>
                                     <option value="1">1 възрастен</option>
                                     <option value="2">2 възрастни</option>
@@ -175,7 +178,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="children"><i class="fas fa-child"></i> Деца</label>
+                                <label for="children"><i><svg fill="#777" width="1rem" height="1rem" viewBox="-64 0 512 512" xmlns="http://www.w3.org/2000/svg" stroke="#777"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M120 72c0-39.765 32.235-72 72-72s72 32.235 72 72c0 39.764-32.235 72-72 72s-72-32.236-72-72zm254.627 1.373c-12.496-12.497-32.758-12.497-45.254 0L242.745 160H141.254L54.627 73.373c-12.496-12.497-32.758-12.497-45.254 0-12.497 12.497-12.497 32.758 0 45.255L104 213.254V480c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V368h16v112c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V213.254l94.627-94.627c12.497-12.497 12.497-32.757 0-45.254z"></path></g></svg></i> Деца</label>
                                 <select class="contact-section-input form-control" id="children" required>
                                     <option value="0">Без деца</option>
                                     <option value="1">1 дете</option>
@@ -195,24 +198,24 @@
                         <h2 class="text-center step-header">Вашата информация</h2>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="firstName"><i class="fas fa-user"></i> Име</label>
+                                <label for="firstName"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="white"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8Z" fill="#777"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.43094 16.9025C7.05587 16.2213 9.2233 16 12 16C14.771 16 16.9351 16.2204 18.5586 16.8981C20.3012 17.6255 21.3708 18.8613 21.941 20.6587C22.1528 21.3267 21.6518 22 20.9592 22H3.03459C2.34482 22 1.84679 21.3297 2.0569 20.6654C2.62537 18.8681 3.69119 17.6318 5.43094 16.9025Z" fill="#777"></path> </g></svg></i> Име</label>
                                 <input class="contact-section-input form-control" id="firstName" required type="text">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="lastName"><i class="fas fa-user"></i> Фамилия</label>
+                                <label for="lastName"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="white"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8Z" fill="#777"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.43094 16.9025C7.05587 16.2213 9.2233 16 12 16C14.771 16 16.9351 16.2204 18.5586 16.8981C20.3012 17.6255 21.3708 18.8613 21.941 20.6587C22.1528 21.3267 21.6518 22 20.9592 22H3.03459C2.34482 22 1.84679 21.3297 2.0569 20.6654C2.62537 18.8681 3.69119 17.6318 5.43094 16.9025Z" fill="#777"></path> </g></svg></i> Фамилия</label>
                                 <input class="contact-section-input form-control" id="lastName" required type="text">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email"><i class="fas fa-envelope"></i> Имейл адрес</label>
+                            <label for="email"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <rect x="3" y="5" width="18" height="14" rx="2" stroke="#777" stroke-width="2" stroke-linecap="round"></rect> </g></svg></i> Имейл адрес</label>
                             <input class="contact-section-input form-control" id="email" required type="email">
                         </div>
                         <div class="form-group">
-                            <label for="phone"><i class="fas fa-phone"></i> Телефонен номер</label>
+                            <label for="phone"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i> Телефонен номер</label>
                             <input class="contact-section-input form-control" id="phone" required type="tel">
                         </div>
                         <div class="form-group">
-                            <label for="note"><i class="fas fa-sticky-note"></i> Специални изисквания</label>
+                            <label for="note"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M19.8201 14H15.6001C15.04 14 14.76 14 14.5461 14.109C14.3579 14.2049 14.2049 14.3578 14.1091 14.546C14.0001 14.7599 14.0001 15.0399 14.0001 15.6V19.82M20 12.7269V7.2C20 6.0799 20 5.51984 19.782 5.09202C19.5903 4.71569 19.2843 4.40973 18.908 4.21799C18.4802 4 17.9201 4 16.8 4H7.2C6.0799 4 5.51984 4 5.09202 4.21799C4.71569 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.0799 4 7.2V16.8C4 17.9201 4 18.4802 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.0799 20 7.2 20H12.9496C13.4578 20 13.7118 20 13.9498 19.9407C14.1608 19.8882 14.3618 19.8016 14.5449 19.6844C14.7515 19.5522 14.926 19.3675 15.2751 18.9983L19.1254 14.9252C19.4486 14.5833 19.6101 14.4124 19.7255 14.2156C19.8278 14.041 19.903 13.8519 19.9486 13.6548C20 13.4325 20 13.1973 20 12.7269Z" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i> Специални изисквания</label>
                             <textarea class="contact-section-input form-control" id="note" placeholder="Специални изисквания" rows="4"></textarea>
                         </div>
                         <div class="btn-group">
@@ -224,7 +227,7 @@
                     <!-- Step 3 -->
                     <div class="form-step" id="form-step-3">
                         <div class="confirmation" id="confirmation-success">
-                            <i class="fas fa-check-circle"></i>
+                            <i><svg width="5rem" height="5rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="10" stroke="#eac007" stroke-width="1.5"></circle> <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#eac007" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i>
                             <h2 class="text-center step-header">Благодарим Ви за заявката за резервация!</h2>
                             <p>Получихме вашите детайли и ще обработим заявката Ви скоро.</p>
                             <p>Ще получите потвърждение и фактура по имейл в рамките на 24 часа.</p>
@@ -232,11 +235,11 @@
                         </div>
 
                         <div class="confirmation" id="confirmation-error" style="display: none;">
-                            <i class="fas fa-exclamation-circle" style="color: #e74c3c;"></i>
+                            <i><svg width="3rem" height="3rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 9L15 15M15 9L9 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i>
                             <h2 class="text-center step-header">Неуспешна обработка на резервацията</h2>
                             <p>Възникна проблем при обработката на заявката Ви за резервация.</p>
                             <p>Моля, опитайте отново след малко.</p>
-                            <button class="retry-btn" id="retry-btn"><i class="fas fa-redo"></i> Опитай отново</button>
+                            <button class="retry-btn" id="retry-btn"><i><svg width="2rem" height="2rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Edit / Redo"> <path id="Vector" d="M13.9998 8H18.9998V3M18.7091 16.3569C17.7772 17.7918 16.4099 18.8902 14.8079 19.4907C13.2059 20.0913 11.4534 20.1624 9.80791 19.6937C8.16246 19.225 6.71091 18.2413 5.66582 16.8867C4.62073 15.5321 4.03759 13.878 4.00176 12.1675C3.96593 10.4569 4.47903 8.78001 5.46648 7.38281C6.45392 5.98561 7.86334 4.942 9.48772 4.40479C11.1121 3.86757 12.8661 3.86499 14.4919 4.39795C16.1177 4.93091 17.5298 5.97095 18.5209 7.36556" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg></i> Опитай отново</button>
                         </div>
                     </div>
                 </form>
@@ -278,37 +281,37 @@
                         <div class="embla__container">
                             
 <div class="testimonial text-center embla__slide">
-  <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
+  <div class="justify-content-center align-content-center align-items-center author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
   <blockquote><p>&ldquo;Страхотен апартамент в сърцето на Капана, всичко е на пешеходно разстояние и лесно достъпно. Апартаментът е тих, чист и много удобен. Сградата е нова и сигурна, а наличието на частно, заключващо се подземно паркомясто е огромно предимство в този район. Горещо препоръчвам това място и определено ще дойда отново.</p></blockquote>
   <p><em>&mdash; Alon</em></p>
 </div>
 
 <div class="testimonial text-center embla__slide">
-  <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
+  <div class="justify-content-center align-content-center align-items-center author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
   <blockquote><p>&ldquo;Апартаментът беше страхотен! Отлична локация в Капана, на много кратко разстояние от всички ресторанти. Леглото (и диванът) бяха много удобни. Апартаментът имаше всичко необходимо (тоалетни принадлежности и дори препарат за пране, за да изперем дрехите си). Борислава беше невероятен домакин, много полезна с всичките ми въпроси за Пловдив и дори ни донесе лед, когато пристигнахме в жегата. Беше истинско удоволствие и много спокойно да седим на балкона. Определено бих отседнала отново тук. Благодарим!!!</p></blockquote>
   <p><em>&mdash; Clare</em></p>
 </div>
 
 <div class="testimonial text-center embla__slide">
-  <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
+  <div class="justify-content-center align-content-center align-items-center author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
   <blockquote><p>&ldquo;Отличен апартамент, точно както е описан в обявата, и много отзивчив домакин. Мястото разполага с удобно гаражно място, което е истинско удобство в този квартал. Силно препоръчвам!</p></blockquote>
   <p><em>&mdash; Peter</em></p>
 </div>
 
 <div class="testimonial text-center embla__slide">
-  <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
+  <div class="justify-content-center align-content-center align-items-center author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
   <blockquote><p>&ldquo;Силно препоръчвам и абсолютно невероятен имот! Отлична локация! Определено бих отседнал там отново!</p></blockquote>
   <p><em>&mdash; Georgi</em></p>
 </div>
 
 <div class="testimonial text-center embla__slide">
-  <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
+  <div class="justify-content-center align-content-center align-items-center author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
   <blockquote><p>&ldquo;Перфектна локация, точно в Капана; модерен, чист апартамент, оборудван с всичко необходимо; сигурен паркинг; много дружелюбен наемодател — с две думи всичко беше перфектно :)</p></blockquote>
   <p><em>&mdash; Patrick</em></p>
 </div>
 
 <div class="testimonial text-center embla__slide">
-  <div class="author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
+  <div class="justify-content-center align-content-center align-items-center author-image mb-3"><img src="../images/default_profile.webp" loading="lazy" class="rounded-circle mx-auto" alt="Image placeholder"></div>
   <blockquote><p>&ldquo;Страхотна локация, а собственикът ни позволи да се настаним малко по-рано и да паркираме колата. Бяхме посрещнати от човек с ключовете за гаража, който ни показа паркинга, помогна ми при паркирането, заведе ни до апартамента, изчака докато въведем кода за вход и след това си тръгна. Имаше отворен чат в WhatsApp за всякакви въпроси. Апартаментът е наскоро реновиран, много чист, просторен, добре оборудван – на практика перфектен. Всичко беше на пешеходно разстояние. Горещо препоръчвам този имот.</p></blockquote>
   <p><em>&mdash; Scot</em></p>
 </div>
@@ -371,7 +374,7 @@
         <form class="footer-newsletter" id="newsletter-form">
           <div class="form-group">
             <input class="form-control" type="email" placeholder="Имейл...">
-            <button class="btn" type="submit"><span><svg width="24px" height="24px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>ionicons-v5-n</title><path d="M53.12,199.94l400-151.39a8,8,0,0,1,10.33,10.33l-151.39,400a8,8,0,0,1-15-.34L229.66,292.45a16,16,0,0,0-10.11-10.11L53.46,215A8,8,0,0,1,53.12,199.94Z" style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line x1="460" y1="52" x2="227" y2="285" style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line></g></svg></span></button>
+            <button class="btn subscribe-btn" type="submit"><span><svg width="24px" height="24px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>ionicons-v5-n</title><path d="M53.12,199.94l400-151.39a8,8,0,0,1,10.33,10.33l-151.39,400a8,8,0,0,1-15-.34L229.66,292.45a16,16,0,0,0-10.11-10.11L53.46,215A8,8,0,0,1,53.12,199.94Z" style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line x1="460" y1="52" x2="227" y2="285" style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line></g></svg></span></button>
           </div>
         </form>
       </div>
@@ -425,20 +428,13 @@
     
             <script async defer src="https://www.google.com/recaptcha/api.js"></script>
     
-
-    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"></script>
-
-    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-migrate-3.0.1.min.js" integrity="sha384-w5FBDpYZssTSnIDL59XH9TYLpEJ2dDP4RPhSPtJd2iLxUY5L8AATkjOsbM4Ohmax"></script>
     
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
     
 
     
-        <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
-        <script src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"></script>
-        
+        <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js" integrity="sha384-XGqLM9+dJ+PFOMZn6IuZgRRIoxcAT5fx4eIZCx7K3O2Dj5RA7EOlJ3yOS8Jd+kiY" crossorigin="anonymous"></script>        
     
-
     <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha384-n1AULnKdMJlK1oQCLNDL9qZsDgXtH6jRYFCpBtWFc+a9Yve0KSoMn575rk755NJZ" defer></script>
     <script defer src="../js/main.js"></script>
 

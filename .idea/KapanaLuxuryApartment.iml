@@ -41,5 +41,6 @@
     <orderEntry type="library" name="simple-parallax-js" level="application" />
     <orderEntry type="library" name="embla-carousel-autoplay" level="application" />
     <orderEntry type="library" name="rellax" level="application" />
+    <orderEntry type="library" name="glightbox" level="application" />
   </component>
 </module>

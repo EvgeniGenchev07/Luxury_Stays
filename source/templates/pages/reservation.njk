@@ -50,17 +50,17 @@
                         <h2 class="text-center step-header">{{ dict.reservation.stepOneHeading }}</h2>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="checkin"><i class="fas fa-calendar-alt"></i> {{ dict.reservation.labels.checkin }}</label>
+                                <label for="checkin"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#777" stroke-width="2.16" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i> {{ dict.reservation.labels.checkin }}</label>
                                 <input class="contact-section-input form-control" id="checkin" required type="date">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="checkout"><i class="fas fa-calendar-alt"></i> {{ dict.reservation.labels.checkout }}</label>
+                                <label for="checkout"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#777" stroke-width="2.16" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i> {{ dict.reservation.labels.checkout }}</label>
                                 <input class="contact-section-input form-control" id="checkout" required type="date">
                             </div>
                         </div>
                         <div class="row" id="adults_children_row">
                             <div class="form-group col-md-6">
-                                <label for="adults"><i class="fas fa-user"></i> {{ dict.reservation.labels.adults }}</label>
+                                <label for="adults"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8Z" fill="#777"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.43094 16.9025C7.05587 16.2213 9.2233 16 12 16C14.771 16 16.9351 16.2204 18.5586 16.8981C20.3012 17.6255 21.3708 18.8613 21.941 20.6587C22.1528 21.3267 21.6518 22 20.9592 22H3.03459C2.34482 22 1.84679 21.3297 2.0569 20.6654C2.62537 18.8681 3.69119 17.6318 5.43094 16.9025Z" fill="#777"></path> </g></svg></i> {{ dict.reservation.labels.adults }}</label>
                                 <select class="contact-section-input form-control" id="adults" required>
                                     <option value="1">{{ dict.reservation.selectOptions.adults[0] }}</option>
                                     <option value="2">{{ dict.reservation.selectOptions.adults[1] }}</option>
@@ -68,7 +68,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="children"><i class="fas fa-child"></i> {{ dict.reservation.labels.children }}</label>
+                                <label for="children"><i><svg fill="#777" width="1rem" height="1rem" viewBox="-64 0 512 512" xmlns="http://www.w3.org/2000/svg" stroke="#777"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M120 72c0-39.765 32.235-72 72-72s72 32.235 72 72c0 39.764-32.235 72-72 72s-72-32.236-72-72zm254.627 1.373c-12.496-12.497-32.758-12.497-45.254 0L242.745 160H141.254L54.627 73.373c-12.496-12.497-32.758-12.497-45.254 0-12.497 12.497-12.497 32.758 0 45.255L104 213.254V480c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V368h16v112c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V213.254l94.627-94.627c12.497-12.497 12.497-32.757 0-45.254z"></path></g></svg></i> {{ dict.reservation.labels.children }}</label>
                                 <select class="contact-section-input form-control" id="children" required>
                                     <option value="0">{{ dict.reservation.selectOptions.children[0] }}</option>
                                     <option value="1">{{ dict.reservation.selectOptions.children[1] }}</option>
@@ -88,24 +88,24 @@
                         <h2 class="text-center step-header">{{ dict.reservation.stepTwoHeading }}</h2>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="firstName"><i class="fas fa-user"></i> {{ dict.reservation.labels.firstName }}</label>
+                                <label for="firstName"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="white"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8Z" fill="#777"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.43094 16.9025C7.05587 16.2213 9.2233 16 12 16C14.771 16 16.9351 16.2204 18.5586 16.8981C20.3012 17.6255 21.3708 18.8613 21.941 20.6587C22.1528 21.3267 21.6518 22 20.9592 22H3.03459C2.34482 22 1.84679 21.3297 2.0569 20.6654C2.62537 18.8681 3.69119 17.6318 5.43094 16.9025Z" fill="#777"></path> </g></svg></i> {{ dict.reservation.labels.firstName }}</label>
                                 <input class="contact-section-input form-control" id="firstName" required type="text">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="lastName"><i class="fas fa-user"></i> {{ dict.reservation.labels.lastName }}</label>
+                                <label for="lastName"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="white"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8Z" fill="#777"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.43094 16.9025C7.05587 16.2213 9.2233 16 12 16C14.771 16 16.9351 16.2204 18.5586 16.8981C20.3012 17.6255 21.3708 18.8613 21.941 20.6587C22.1528 21.3267 21.6518 22 20.9592 22H3.03459C2.34482 22 1.84679 21.3297 2.0569 20.6654C2.62537 18.8681 3.69119 17.6318 5.43094 16.9025Z" fill="#777"></path> </g></svg></i> {{ dict.reservation.labels.lastName }}</label>
                                 <input class="contact-section-input form-control" id="lastName" required type="text">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email"><i class="fas fa-envelope"></i> {{ dict.reservation.labels.email }}</label>
+                            <label for="email"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <rect x="3" y="5" width="18" height="14" rx="2" stroke="#777" stroke-width="2" stroke-linecap="round"></rect> </g></svg></i> {{ dict.reservation.labels.email }}</label>
                             <input class="contact-section-input form-control" id="email" required type="email">
                         </div>
                         <div class="form-group">
-                            <label for="phone"><i class="fas fa-phone"></i> {{ dict.reservation.labels.phone }}</label>
+                            <label for="phone"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i> {{ dict.reservation.labels.phone }}</label>
                             <input class="contact-section-input form-control" id="phone" required type="tel">
                         </div>
                         <div class="form-group">
-                            <label for="note"><i class="fas fa-sticky-note"></i> {{ dict.reservation.labels.note }}</label>
+                            <label for="note"><i><svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M19.8201 14H15.6001C15.04 14 14.76 14 14.5461 14.109C14.3579 14.2049 14.2049 14.3578 14.1091 14.546C14.0001 14.7599 14.0001 15.0399 14.0001 15.6V19.82M20 12.7269V7.2C20 6.0799 20 5.51984 19.782 5.09202C19.5903 4.71569 19.2843 4.40973 18.908 4.21799C18.4802 4 17.9201 4 16.8 4H7.2C6.0799 4 5.51984 4 5.09202 4.21799C4.71569 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.0799 4 7.2V16.8C4 17.9201 4 18.4802 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.0799 20 7.2 20H12.9496C13.4578 20 13.7118 20 13.9498 19.9407C14.1608 19.8882 14.3618 19.8016 14.5449 19.6844C14.7515 19.5522 14.926 19.3675 15.2751 18.9983L19.1254 14.9252C19.4486 14.5833 19.6101 14.4124 19.7255 14.2156C19.8278 14.041 19.903 13.8519 19.9486 13.6548C20 13.4325 20 13.1973 20 12.7269Z" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i> {{ dict.reservation.labels.note }}</label>
                             <textarea class="contact-section-input form-control" id="note" placeholder="{{ dict.reservation.labels.note }}" rows="4"></textarea>
                         </div>
                         <div class="btn-group">
@@ -117,7 +117,7 @@
                     <!-- Step 3 -->
                     <div class="form-step" id="form-step-3">
                         <div class="confirmation" id="confirmation-success">
-                            <i class="fas fa-check-circle"></i>
+                            <i><svg width="5rem" height="5rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="10" stroke="#eac007" stroke-width="1.5"></circle> <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#eac007" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i>
                             <h2 class="text-center step-header">{{ dict.reservation.confirmation.successTitle }}</h2>
                             <p>{{ dict.reservation.confirmation.successText1 }}</p>
                             <p>{{ dict.reservation.confirmation.successText2 }}</p>
@@ -125,11 +125,11 @@
                         </div>
 
                         <div class="confirmation" id="confirmation-error" style="display: none;">
-                            <i class="fas fa-exclamation-circle" style="color: #e74c3c;"></i>
+                            <i><svg width="3rem" height="3rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 9L15 15M15 9L9 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></i>
                             <h2 class="text-center step-header">{{ dict.reservation.confirmation.errorTitle }}</h2>
                             <p>{{ dict.reservation.confirmation.errorText1 }}</p>
                             <p>{{ dict.reservation.confirmation.errorText2 }}</p>
-                            <button class="retry-btn" id="retry-btn"><i class="fas fa-redo"></i> {{ dict.reservation.buttons.retry }}</button>
+                            <button class="retry-btn" id="retry-btn"><i><svg width="2rem" height="2rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Edit / Redo"> <path id="Vector" d="M13.9998 8H18.9998V3M18.7091 16.3569C17.7772 17.7918 16.4099 18.8902 14.8079 19.4907C13.2059 20.0913 11.4534 20.1624 9.80791 19.6937C8.16246 19.225 6.71091 18.2413 5.66582 16.8867C4.62073 15.5321 4.03759 13.878 4.00176 12.1675C3.96593 10.4569 4.47903 8.78001 5.46648 7.38281C6.45392 5.98561 7.86334 4.942 9.48772 4.40479C11.1121 3.86757 12.8661 3.86499 14.4919 4.39795C16.1177 4.93091 17.5298 5.97095 18.5209 7.36556" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg></i> {{ dict.reservation.buttons.retry }}</button>
                         </div>
                     </div>
                 </form>

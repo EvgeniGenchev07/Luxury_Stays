@@ -4,7 +4,7 @@ contactForm.addEventListener('submit', function(event) {
   let output = document.getElementById('form-output-global');
   output.classList.remove('error', 'success');
   this.classList.add('form-in-process');
-  output.innerHTML = '<p><span class="icon text-middle fa fa-circle-o-notch fa-spin icon-xxs"></span><span>Sending</span></p>';
+  output.innerHTML = '<p><span class="icon text-middle spin icon-spin icon-xxs"></span><span>Sending</span></p>';
   output.classList.add('active');
   if (this.checkValidity()) {
     const grecaptcha_response = grecaptcha.getResponse();
@@ -30,24 +30,24 @@ contactForm.addEventListener('submit', function(event) {
       })
         .then((res) => {
           if (res.ok) {
-            output.innerHTML = ' <p class="snackbars-left"><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>' + 'Successfully sent!' + '</span></p>';
+            output.innerHTML = ' <p class="snackbars-left"><span>' + 'Successfully sent!' + '</span></p>';
             output.classList.add('success');
             this.reset();
             setTimeout(() => output.classList.remove('active', 'success'), 2000);
           } else {
-            output.innerHTML = ' <p class="snackbars-left"><span class="icon icon-xxs mdi mdi-alert-outline text-middle"></span><span>' + 'reCAPTCHA is not verified' + '</span></p>';
+            output.innerHTML = ' <p class="snackbars-left"></span><span>' + 'reCAPTCHA is not verified' + '</span></p>';
             output.classList.add('error');
             setTimeout(() => output.classList.remove('active', 'error'), 2000);
           }
         })
         .catch(() => {
-          output.innerHTML = ' <p class="snackbars-left"><span class="icon icon-xxs mdi mdi-alert-outline text-middle"></span><span>' + 'Aw, snap! Something went wrong.' + '</span></p>';
+          output.innerHTML = ' <p class="snackbars-left"></span><span>' + 'Aw, snap! Something went wrong.' + '</span></p>';
           output.classList.add('error');
           setTimeout(() => output.classList.remove('active', 'error'), 2000);
         });
     }
   } else {
-    output.innerHTML = ' <p class="snackbars-left"><span class="icon icon-xxs mdi mdi-alert-outline text-middle"></span><span>' + 'Please, enter correct data.' + '</span></p>';
+    output.innerHTML = ' <p class="snackbars-left"><span>' + 'Please, enter correct data.' + '</span></p>';
     output.classList.add('error');
     setTimeout(() => output.classList.remove('active', 'error'), 2000);
   }

@@ -18,22 +18,15 @@
     {% if pageId == 'contact' or pageId == 'reservation' %}
             <script async defer src="https://www.google.com/recaptcha/api.js"></script>
     {% endif %}
-
-    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"></script>
-
-    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-migrate-3.0.1.min.js" integrity="sha384-w5FBDpYZssTSnIDL59XH9TYLpEJ2dDP4RPhSPtJd2iLxUY5L8AATkjOsbM4Ohmax"></script>
     {% if pageId != 'post' or pageId != 'posts' %}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
     {% endif %}
 
     {% if pageId == 'about' or pageId == 'index' or pageId == 'reservation' %}
-        <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
-        <script src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"></script>
-        {% if pageId != 'reservation' %}
-            <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha384-Zm+UU4tdcfAm29vg+MTbfu//q5B/lInMbMCr4T8c9rQFyOv6PlfQYpB5wItcXWe7" defer></script>
+        <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js" integrity="sha384-XGqLM9+dJ+PFOMZn6IuZgRRIoxcAT5fx4eIZCx7K3O2Dj5RA7EOlJ3yOS8Jd+kiY" crossorigin="anonymous"></script>        {% if pageId != 'reservation' %}
+            <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js" integrity="sha384-MZZbZ6RXJudK43v1qY1zOWKOU2yfeBPatuFoKyHAaAgHTUZhwblRTc9CphTt4IGQ" crossorigin="anonymous"></script>
         {% endif %}
     {% endif %}
-
     <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha384-n1AULnKdMJlK1oQCLNDL9qZsDgXtH6jRYFCpBtWFc+a9Yve0KSoMn575rk755NJZ" defer></script>
     <script defer src="../js/main.js"></script>
 {% if pageId == 'index' %}

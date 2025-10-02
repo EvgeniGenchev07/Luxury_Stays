@@ -77,21 +77,21 @@ document.addEventListener('DOMContentLoaded', function() {
   var emblaGalleryNode = document.querySelector('.embla-gallery__viewport');
 
   if(emblaGalleryNode) {
-    var emblaGallery = EmblaCarousel(emblaGalleryNode, { loop: true, dragFree: true });
-    document.querySelector('.embla-gallery__prev').addEventListener('click', emblaGallery.scrollPrev, false);
-    document.querySelector('.embla-gallery__next').addEventListener('click', emblaGallery.scrollNext, false);
+    var emblaGallery = EmblaCarousel(emblaGalleryNode, { loop: true, dragFree: false });
+    emblaGalleryNode.parentElement.querySelector('.embla-gallery__prev').addEventListener('click', emblaGallery.scrollPrev, false);
+    emblaGalleryNode.parentElement.querySelector('.embla-gallery__next').addEventListener('click', emblaGallery.scrollNext, false);
+    const lightbox = GLightbox({ selector: '.glightbox' });
   }
   var emblaTestimonialNode = document.querySelector('.embla-testimonial__viewport');
 
   if(emblaTestimonialNode) {
-    var emblaTestimonial = EmblaCarousel(emblaTestimonialNode, { loop: true, dragFree: true });
-    document.querySelector('.embla-testimonial__prev').addEventListener('click', emblaTestimonial.scrollPrev, false);
-    document.querySelector('.embla-testimonial__next').addEventListener('click', emblaTestimonial.scrollNext, false);
+    var emblaTestimonial = EmblaCarousel(emblaTestimonialNode, { loop: true, dragFree: false });
+    emblaTestimonialNode.parentElement.querySelector('.embla-testimonial__prev').addEventListener('click', emblaTestimonial.scrollPrev, false);
+    emblaTestimonialNode.parentElement.querySelector('.embla-testimonial__next').addEventListener('click', emblaTestimonial.scrollNext, false);
   }
 });
 
 function initParallax() {
-  if (window.innerWidth <= 768) return; // disable on mobile
 
   const parallaxEls = document.querySelectorAll(".parallax");
 
