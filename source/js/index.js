@@ -66,12 +66,17 @@ document.addEventListener('DOMContentLoaded', function()
     });
 });
 const tab_section = document.getElementById('tab-section');
+const tab_content = tab_section.querySelector('.tab-content');
 tab_section.querySelectorAll('.tab-menu').forEach(el => {
   el.addEventListener('click', () => {
     tab_section.style.setProperty('background-image', `url('${el.getAttribute('data-image')}')`);
     tab_section.querySelectorAll('.tab-menu').forEach(tab => {
         tab.classList.remove('active');
     });
+    tab_content.querySelectorAll('.tab-pane').forEach(tab => {
+      tab.classList.remove('active','show');
+    })
+    tab_content.querySelector('[aria-labelledby='+el.id+']').classList.add('active','show');
     el.classList.add('active');
   });
 });

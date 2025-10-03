@@ -1299,36 +1299,6 @@ textarea.form-control {
     background-attachment: fixed;
 }
 
-/* Fix for iOS Safari - disable background-attachment: fixed on mobile devices */
-@media (max-width: 768px) {
-    .bg-image {
-        background-attachment: scroll !important;
-    }
-}
-
-/* Additional fix for iOS Safari specifically */
-@supports (-webkit-touch-callout: none) {
-    .bg-image {
-        background-attachment: scroll !important;
-    }
-}
-
-/* Additional mobile optimizations for background images */
-@media (max-width: 768px) {
-    .bg-image.overlay {
-        background-attachment: scroll !important;
-        background-position: center center !important;
-        background-size: cover !important;
-    }
-
-    /* Ensure proper background behavior on mobile */
-    section.bg-image {
-        background-attachment: scroll !important;
-        background-position: center center !important;
-        background-size: cover !important;
-    }
-}
-
 .food-menu-tabs {
     text-align: center;
 }
@@ -1619,7 +1589,11 @@ textarea.form-control {
 .send-btn:hover .span {
     transform: translateX(20vw);
 }
-
+@media (max-width: 991.98px) {
+    .send-btn:hover .span {
+        transform: translateX(40vw);
+    }
+}
 .send-btn:active {
     transform: scale(0.95);
 }
@@ -1633,7 +1607,14 @@ textarea.form-control {
         transform: translateY(-0.4em);
     }
 }
-
+@media (max-width: 950px) {
+    .send-btn:hover .span {
+        transform: translateX(40vw);
+    }
+    .send-btn:hover svg {
+        transform: translateX(8vw) rotate(45deg) scale(1.1);
+    }
+}
 .snackbars {
     max-width: 280px;
     padding: 9px 16px;

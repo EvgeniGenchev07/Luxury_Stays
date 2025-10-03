@@ -44,7 +44,7 @@ function build_page_indicators(posts_count, per_page) {
     a.classList.add("smoothscroll");
     a.innerText = i.toString();
     li.appendChild(a);
-
+    const beginning = document.getElementById('#next');
     li.addEventListener("click", function () {
       const next_page = parseInt(this.getAttribute("page-number"), 10);
       if (next_page !== current_page) {
@@ -54,6 +54,10 @@ function build_page_indicators(posts_count, per_page) {
           .classList.remove("active");
         this.classList.add("active");
         current_page = next_page;
+      beginning.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
       }
     });
 

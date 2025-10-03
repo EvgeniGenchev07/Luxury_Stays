@@ -1,6 +1,9 @@
 .container-wizard {
-    width: 100%;
+    width: 95%;
     max-width: 800px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     overflow: hidden;
@@ -38,12 +41,14 @@
 
 .form-container {
     padding: 30px;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .step-progress {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     position: relative;
 }
 
@@ -154,7 +159,7 @@
     margin-top: 30px;
 }
 
-button:not(.subscribe-btn) {
+button:not(.subscribe-btn,.embla__button) {
     padding: 15px 30px;
     border: none;
     border-radius: 10px;
@@ -184,7 +189,7 @@ button.next:hover, button.submit:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-button:not(.subscribe-btn):disabled {
+button:not(.subscribe-btn,.embla__button):disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
@@ -364,7 +369,7 @@ button:not(.subscribe-btn):disabled {
         gap: 10px;
     }
 
-    button:not(.subscribe-btn) {
+    button:not(.subscribe-btn,.embla__button) {
         width: 100%;
     }
 }
