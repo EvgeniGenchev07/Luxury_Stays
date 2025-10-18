@@ -9,12 +9,6 @@ const post_body = (index, post, isLazy = false) => `
       <a href="${"../"+lang+"/post.html?name=" + post.title.toLowerCase()}" class="mb-4 d-block post-link">
         <img 
           src="../images/${post.main_image}" 
-          srcset="../images/${post.main_image.replace('.webp','-480.webp')} 480w,
-                  ../images/${post.main_image.replace('.webp','-768.webp')} 768w,
-                  ../images/${post.main_image} 1200w"
-          sizes="(max-width: 600px) 480px,
-                 (max-width: 900px) 768px,
-                 1200px"
           alt="${post.title}" 
           class="img-fluid" 
           ${isLazy ? 'loading="lazy"' : ''}>

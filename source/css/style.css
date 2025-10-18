@@ -9,6 +9,19 @@
     --black: #000;
     --white: #fff;
 }
+*::-webkit-scrollbar {
+    display: none !important;
+}
+
+* {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden !important;
+}
+
 body {
     background: #fff;
     font-family: "Roboto", arial, sans-serif;

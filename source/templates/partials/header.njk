@@ -17,7 +17,7 @@
                   <ul class="list-unstyled menu">
                     <li class="{% if pageId == 'index' %}active{% endif %}"><a href="../{{ lang }}/index.html">{{ dict.nav.home }}</a></li>
                     <li class="{% if pageId == 'about' %}active{% endif %}"><a href="../{{ lang }}/about.html">{{ dict.nav.about }}</a></li>
-                    <li class="{% if pageId == 'posts' %}active{% endif %}"><a href="../{{ lang }}/posts.html">{{ dict.nav.posts }}</a></li>
+                    <li class="{% if pageId == 'posts' or pageId == 'post' %}active{% endif %}"><a href="../{{ lang }}/posts.html">{{ dict.nav.posts }}</a></li>
                     <li class="{% if pageId == 'contact' %}active{% endif %}"><a href="../{{ lang }}/contact.html">{{ dict.nav.contact }}</a></li>
                     <li class="{% if pageId == 'reservation' %}active{% endif %}"><a href="../{{ lang }}/reservation.html">{{ dict.nav.reservation }}</a></li>
                     <li>

@@ -15,6 +15,7 @@ import through2 from 'through2';
 import path from 'path';
 import fs from 'fs';
 import nunjucksRender from 'gulp-nunjucks-render';
+import jsonmin from 'gulp-jsonmin';
 import data from 'gulp-data';
 // ---------- Helper functions ----------
 function minifyHtml(src, dest, ldJson = false) {
@@ -55,10 +56,20 @@ function minifyCss(src, dest, purge = false, purgeContent = []) {
   };
 }
 
+function minifyJson(src,dest){
+  return function jsonTask() {
+    return gulp.src(src)
+      .pipe(jsonmin())
+      .pipe(gulp.dest('dist/locales'));
+  };
+}
+
 // ---------- Image optimization ---------
 export function images() {
-  return gulp.src('source/images/**/*.{jpg,jpeg,png,svg,webp}', { base: 'source/images' })
-    .pipe(gulp.dest('dist/images'));
+  return function imageTask() {
+    return gulp.src('source/images/*.{jpg,jpeg,png,svg,webp,ico}')
+      .pipe(gulp.dest('dist/images'));
+  };
 }
 
 // ---------- Hash & update HTML references ----------
@@ -178,6 +189,12 @@ export const cssService = minifyCss('source/service/*.css', 'dist/service');
 export const cssAdmin = minifyCss('source/admin/*.css', 'dist/admin');
 export const styles = minifyCss('source/css/*.css', 'dist/css', true, ['source/en/*.html', 'source/bg/*.html', 'source/js/*.js']);
 
+// ---------- JSON tasks ----------
+export const jsonLocales = minifyJson('source/locales/*.json', 'dist/locales');
+
+// ---------- Image optimization ----------
+export const imagesDist = images();
+
 // ---------- Pipelines ----------
 export const base = gulp.series(
   renderEn,
@@ -186,7 +203,9 @@ export const base = gulp.series(
   minifyHtmlService,
   minifyHtmlBg,
   cssService,
-  styles
+  styles,
+  jsonLocales,
+  updateHtmlReferences,
 );
 
 export const js = gulp.series(jsService, scripts);
@@ -210,6 +229,7 @@ export const build = gulp.series(
   cssAdmin,
   scripts,
   styles,
+  jsonLocales,
   hashAssets,
   updateHtmlReferences,
   seo

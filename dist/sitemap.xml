@@ -5,6 +5,9 @@
     <!-- Index Page -->
     <url>
         <loc>https://luxurystays.bg/en/index.html</loc>
+        <lastmod>2025-10-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="bg" href="https://luxurystays.bg/bg/index.html"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://luxurystays.bg/en/index.html"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurystays.bg/en/index.html"/>
@@ -13,6 +16,9 @@
     <!-- About Page -->
     <url>
         <loc>https://luxurystays.bg/en/about.html</loc>
+        <lastmod>2025-10-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="bg" href="https://luxurystays.bg/bg/about.html"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://luxurystays.bg/en/about.html"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurystays.bg/en/about.html"/>
@@ -21,6 +27,9 @@
     <!-- Contact Page -->
     <url>
         <loc>https://luxurystays.bg/en/contact.html</loc>
+        <lastmod>2025-10-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
         <xhtml:link rel="alternate" hreflang="bg" href="https://luxurystays.bg/bg/contact.html"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://luxurystays.bg/en/contact.html"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurystays.bg/en/contact.html"/>
@@ -29,6 +38,9 @@
     <!-- Reservation Page -->
     <url>
         <loc>https://luxurystays.bg/en/reservation.html</loc>
+        <lastmod>2025-10-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
         <xhtml:link rel="alternate" hreflang="bg" href="https://luxurystays.bg/bg/reservation.html"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://luxurystays.bg/en/reservation.html"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurystays.bg/en/reservation.html"/>
@@ -37,6 +49,9 @@
     <!-- Blog Posts Page -->
     <url>
         <loc>https://luxurystays.bg/en/posts.html</loc>
+        <lastmod>2025-10-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
         <xhtml:link rel="alternate" hreflang="bg" href="https://luxurystays.bg/bg/posts.html"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://luxurystays.bg/en/posts.html"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurystays.bg/en/posts.html"/>
